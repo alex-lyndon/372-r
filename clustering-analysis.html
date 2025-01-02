@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2024-11-25" />
+<meta name="date" content="2025-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -322,11 +322,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="canonical-correlation-analysis.html"><a href="canonical-correlation-analysis.html"><i class="fa fa-check"></i><b>10</b> Canonical Correlation Analysis</a>
 <ul>
 <li class="chapter" data-level="" data-path="canonical-correlation-analysis.html"><a href="canonical-correlation-analysis.html#learning-outcomes-8"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="10.1" data-path="canonical-correlation-analysis.html"><a href="canonical-correlation-analysis.html#objective"><i class="fa fa-check"></i><b>10.1</b> Objective</a></li>
+<li class="chapter" data-level="10.2" data-path="canonical-correlation-analysis.html"><a href="canonical-correlation-analysis.html#obtain-the-canonical-variates-pairs"><i class="fa fa-check"></i><b>10.2</b> Obtain the Canonical Variates Pairs</a></li>
+<li class="chapter" data-level="10.3" data-path="canonical-correlation-analysis.html"><a href="canonical-correlation-analysis.html#interpretation"><i class="fa fa-check"></i><b>10.3</b> Interpretation</a></li>
+<li class="chapter" data-level="10.4" data-path="canonical-correlation-analysis.html"><a href="canonical-correlation-analysis.html#testing-mathbfsigma_120"><i class="fa fa-check"></i><b>10.4</b> Testing <span class="math inline">\(\mathbf{\Sigma}_{12}=0\)</span></a></li>
 <li class="chapter" data-level="" data-path="canonical-correlation-analysis.html"><a href="canonical-correlation-analysis.html#revisit-learning-outcomes-2"><i class="fa fa-check"></i>Revisit Learning Outcomes</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html"><i class="fa fa-check"></i><b>11</b> Multidimensional Scaling</a>
 <ul>
 <li class="chapter" data-level="" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#learning-outcomes-9"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="11.1" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#objective-1"><i class="fa fa-check"></i><b>11.1</b> Objective</a></li>
+<li class="chapter" data-level="11.2" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#methods"><i class="fa fa-check"></i><b>11.2</b> Methods</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#classical-scaling"><i class="fa fa-check"></i><b>11.2.1</b> Classical Scaling</a></li>
+<li class="chapter" data-level="11.2.2" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#metric-scaling"><i class="fa fa-check"></i><b>11.2.2</b> Metric Scaling</a></li>
+<li class="chapter" data-level="11.2.3" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#non-metric-scaling"><i class="fa fa-check"></i><b>11.2.3</b> Non-metric Scaling</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#example"><i class="fa fa-check"></i><b>11.3</b> Example</a></li>
 <li class="chapter" data-level="" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#revisit-learning-outcomes-3"><i class="fa fa-check"></i>Revisit Learning Outcomes</a></li>
 </ul></li>
 </ul>
@@ -424,7 +436,7 @@ As a result, the cluster dendrogram is as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="clustering-analysis.html#cb3-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="clustering-analysis.html#cb3-2" tabindex="-1"></a>shcm <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(x),<span class="at">method=</span><span class="st">&quot;single&quot;</span>)</span>
 <span id="cb3-3"><a href="clustering-analysis.html#cb3-3" tabindex="-1"></a><span class="fu">plot</span>(shcm, <span class="at">ylab=</span><span class="st">&quot;Distance&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Variables&quot;</span>,<span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-3-1.png" width="65%" /></p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Conduct a hierarchical clustering with complete linkage.</li>
 </ol>
@@ -451,7 +463,7 @@ As a result, the cluster dendrogram is as follows:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="clustering-analysis.html#cb4-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
 <span id="cb4-2"><a href="clustering-analysis.html#cb4-2" tabindex="-1"></a>chcm <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(x),<span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
 <span id="cb4-3"><a href="clustering-analysis.html#cb4-3" tabindex="-1"></a><span class="fu">plot</span>(chcm, <span class="at">ylab=</span><span class="st">&quot;Distance&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Variables&quot;</span>,<span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-4-1.png" width="65%" /></p>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Conduct a hierarchical clustering with average linkage.</li>
 </ol>
@@ -495,7 +507,7 @@ As a result, the cluster dendrogram is as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="clustering-analysis.html#cb5-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="clustering-analysis.html#cb5-2" tabindex="-1"></a>ahcm <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(x),<span class="at">method=</span><span class="st">&quot;average&quot;</span>)</span>
 <span id="cb5-3"><a href="clustering-analysis.html#cb5-3" tabindex="-1"></a><span class="fu">plot</span>(ahcm, <span class="at">ylab=</span><span class="st">&quot;Distance&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Variables&quot;</span>,<span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-5-1.png" width="65%" /></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="clustering-analysis.html#cb6-1" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">cutree</span>(ahcm,<span class="dv">2</span>)</span>
 <span id="cb6-2"><a href="clustering-analysis.html#cb6-2" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">cutree</span>(ahcm,<span class="dv">3</span>)</span></code></pre></div>
 <p>This dendrogram tells us that cutting at distance=5 results in two clusters <span class="math inline">\(\{x_3\}, \{x_1,x_4,x_2,x_5\}\)</span>; cutting at distance=3 results in three clusters <span class="math inline">\(\{x_3\}, \{x_1,x_4\}, \{x_2,x_5\}\)</span>.</p>
@@ -506,10 +518,10 @@ As a result, the cluster dendrogram is as follows:</p>
 <p>Compared to the hierarchical clustering, <span class="math inline">\(K\)</span>-mean is much more efficient in computation. The algorithm of <span class="math inline">\(K\)</span>-mean is as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Arbitrarily pick the centers of the <span class="math inline">\(K\)</span> clusters <span class="math inline">\(\mathbf{m}_1^{(\mbox{old})}, \mathbf{m}_2^{(\mbox{old})},\cdots, \mathbf{m}_K^{(\mbox{old})}\)</span>.</li>
-<li>Assign each object to one and only one of the clusters, choose the one with the shortest distance from the object to the group center. That is <span class="math inline">\(Y=\mbox{argmin}_j d(\mathbf{x},\mathbf{m}_j)\)</span>.</li>
+<li>Assign each object to one and only one of the clusters, choose the one with the shortest distance from the object to the group center. That is <span class="math inline">\(Y=\argmin_j d(\mathbf{x},\mathbf{m}_j)\)</span>.</li>
 <li>Update the group (cluster) centers
 <span class="math display">\[
-\mathbf{m}_i^{(\mbox{new})}=\frac{1}{n_i}\displaystyle\sum_{\mathbf{x}\in G_i} \mathbf{x}, i=1, 2, \cdots, K, \quad \mbox{$n_i$ is the number of objects in group $i$}
+\mathbf{m}_i^{(\mbox{new})}=\frac{1}{n_i}\dsum_{\mathbf{x}\in G_i} \mathbf{x}, i=1, 2, \cdots, K, \quad \mbox{$n_i$ is the number of objects in group $i$}
 \]</span></li>
 <li>Repeat steps (2) and (3) until convergence, i.e., the centers won’t change anymore.</li>
 </ol>
@@ -557,7 +569,7 @@ As a result, the cluster dendrogram is as follows:</p>
 <h3><span class="header-section-number">9.2.3</span> Model-Based Clustering<a href="clustering-analysis.html#model-based-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The model-based clustering method models the joint distribution of the data using a mixture model of <span class="math inline">\(K\)</span> components
 <span class="math display">\[
-f(\mathbf{x})=\displaystyle\sum_{i=1}^K p_if_i(\mathbf{x}), \quad \mbox{ with component proportions  $p_i\ge 0$ and $\sum p_i=1$.}
+f(\mathbf{x})=\dsum_{i=1}^K p_if_i(\mathbf{x}), \quad \mbox{ with component proportions  $p_i\ge 0$ and $\sum p_i=1$.}
 \]</span>
 A popular choice of the components is <span class="math inline">\(f_i(\mathbf{x})\sim \mbox{MVN}(\mathbf{\mu}_i, \mathbf{\Sigma}_i)\)</span>, which results in a multivariate normal mixture model. Suppose there are <span class="math inline">\(n\)</span> independent observations <span class="math inline">\(\mathbf{x}_1, \mathbf{x}_2, \cdots, \mathbf{x}_n\)</span>, the likelihood function of the multivariate normal mixture is
 <span class="math display">\[
@@ -567,13 +579,7 @@ There are a lot of unknown parameters in the above model:</p>
 <ul>
 <li>The mixture proportions <span class="math inline">\(p_1, p_2, \cdots, p_K\)</span> with the constraint <span class="math inline">\(\sum p_i=1 \Longrightarrow K-1\)</span> parameters.</li>
 <li>The mean vectors <span class="math inline">\(\mathbf{\mu}_i, i=1, \cdots, K\)</span>, each mean vector is a <span class="math inline">\(p\times 1\)</span> vector <span class="math inline">\(\Longrightarrow p\times K\)</span> parameters.
--The covariance matrices <span class="math inline">\(\mathbf{\Sigma}_i, i=1, \cdots, K\)</span>. A covariance matrix is symmetric with <span class="math inline">\(\mbox{Var}(X_i), i=1, \cdots, p\)</span> as the diagonal elements and covariance <span class="math inline">\(\mbox{Cov}(X_i, X_j), i&lt;j , i,j=1, \cdots, p\)</span>. Therefore, each covariance matrix consists of <span class="math inline">\(
-\left(
-\begin{array}{@{ }c@{ }}
-    p\\2
-    \end{array}
-    \right)
-    +p=\frac{p(p+1)}{2}\)</span> parameters. There are <span class="math inline">\(K\)</span> covariance matrices <span class="math inline">\(\Longrightarrow \frac{p(p+1)}{2}\times K\)</span> parameters.</li>
+-The covariance matrices <span class="math inline">\(\mathbf{\Sigma}_i, i=1, \cdots, K\)</span>. A covariance matrix is symmetric with <span class="math inline">\(\var(X_i), i=1, \cdots, p\)</span> as the diagonal elements and covariance <span class="math inline">\(\cov(X_i, X_j), i&lt;j , i,j=1, \cdots, p\)</span>. Therefore, each covariance matrix consists of <span class="math inline">\(\bin{p}{2}+p=\frac{p(p+1)}{2}\)</span> parameters. There are <span class="math inline">\(K\)</span> covariance matrices <span class="math inline">\(\Longrightarrow \frac{p(p+1)}{2}\times K\)</span> parameters.</li>
 </ul>
 <p>As a result, the full model has <span class="math inline">\((k-1)+pK+\frac{p(p+1)}{2}\times K\)</span> parameters. Take the Iris data for example, with <span class="math inline">\(K=3, p=4\)</span>, the number of parameters of the mixture model ends up to be 44. When <span class="math inline">\(p\)</span> is large, the following reduced models can be considered:</p>
 [
@@ -597,22 +603,22 @@ where <span class="math inline">\(n\)</span> is the number of observations. BIC 
 <p>In order to solve the MLE of the mixture model, membership information (each object belongs to which group) is required. The membership information; however, is missing. Therefore, the <em>Expectation-Maximization</em> (EM) algorithm is used to find the MLE. The EM algorithm is a very popular method handling missing values.</p>
 <p>In order to capture the membership information, we introduce a vector of <span class="math inline">\(K\)</span> binary (unobserved) variables <span class="math inline">\(\mathbf{Z}_i^T=[Z_{i1}, Z_{i2}, \cdots, Z_{iK}]\)</span> for each object <span class="math inline">\(\mathbf{x}_i\)</span>, where <span class="math inline">\(z_{ij}=1, z_{il}=0, l\ne j\)</span> if object <span class="math inline">\(i\)</span> belongs to group <span class="math inline">\(j\)</span>. Then the membership weight of <span class="math inline">\(\mathbf{x}_i\)</span> in group <span class="math inline">\(j\)</span> is
 <span class="math display">\[
-w_{ij}=P(Z_{ij}=1|\mathbf{x}_i)=\mbox{E}(Z_{ij}|\mathbf{x}_i)=P(Z_{ij}=1|\mathbf{x}_i)=\frac{f_j(\mathbf{x}_i)p_j}{\displaystyle\sum_{m=1}^K f_m(\mathbf{x}_i)p_m}, \quad i=1, 2, \cdots, n, \quad j=1, 2,\cdots, K
+w_{ij}=P(Z_{ij}=1|\mathbf{x}_i)=\E(Z_{ij}|\mathbf{x}_i)=P(Z_{ij}=1|\mathbf{x}_i)=\frac{f_j(\mathbf{x}_i)p_j}{\dsum_{m=1}^K f_m(\mathbf{x}_i)p_m}, \quad i=1, 2, \cdots, n, \quad j=1, 2,\cdots, K
 \]</span>
-For each <span class="math inline">\(\mathbf{x}_i\)</span>, <span class="math inline">\(\displaystyle\sum_{j=1}^K w_{ij}=1\)</span>. As a result, we have a <span class="math inline">\(n\times K\)</span> membership matrix with each row sum equal to 1.</p>
+For each <span class="math inline">\(\mathbf{x}_i\)</span>, <span class="math inline">\(\dsum_{j=1}^K w_{ij}=1\)</span>. As a result, we have a <span class="math inline">\(n\times K\)</span> membership matrix with each row sum equal to 1.</p>
 <p>The steps of the EM algorithm are as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Set the initial values for the parameters <span class="math inline">\(p_1, \cdots, p_K; \mathbf{\mu}_1, \cdots, \mathbf{\mu}_K; \mathbf{\Sigma}_1, \cdots, \mathbf{\Sigma}_K\)</span>.</li>
-<li>E-step. Update the membership weight <span class="math inline">\(w_{ij}=\mbox{E}(Z_{ij})\)</span>:
+<li>E-step. Update the membership weight <span class="math inline">\(w_{ij}=\E(Z_{ij})\)</span>:
 <span class="math display">\[
-w_{ij}=\frac{f_j(\mathbf{x}_i)p_j}{\displaystyle\sum_{m=1}^K f_m(\mathbf{x}_i)p_m}, \quad i=1, 2, \cdots, n, \quad j=1, 2,\cdots, K
+w_{ij}=\frac{f_j(\mathbf{x}_i)p_j}{\dsum_{m=1}^K f_m(\mathbf{x}_i)p_m}, \quad i=1, 2, \cdots, n, \quad j=1, 2,\cdots, K
 \]</span></li>
 <li>M-step. Update the parameters
 <span class="math display">\[
-p_j^{\mbox{new}}=\frac{n_j}{n}, \quad \mbox{with } \quad n_j=\displaystyle\sum_{i=1}^n w_{ij} \quad (\mbox{sum of $j$ column of the membership weight matrix})
+p_j^{\mbox{new}}=\frac{n_j}{n}, \quad \mbox{with } \quad n_j=\dsum_{i=1}^n w_{ij} \quad (\mbox{sum of $j$ column of the membership weight matrix})
 \]</span>
 <span class="math display">\[
-\mathbf{\mu}_j^{\mbox{new}}=\frac{1}{n_j}\displaystyle\sum_{i=1}^n w_{ij}\mathbf{x}_i, \quad \mathbf{\Sigma}_j^{\mbox{new}}=\frac{1}{n_j}\displaystyle\sum_{i=1}^n w_{ij}(\mathbf{x}_i-\mathbf{\mu}_j^{\mbox{new}})(\mathbf{x}_i-\mathbf{\mu}_j^{\mbox{new}})^T
+\mathbf{\mu}_j^{\mbox{new}}=\frac{1}{n_j}\dsum_{i=1}^n w_{ij}\mathbf{x}_i, \quad \mathbf{\Sigma}_j^{\mbox{new}}=\frac{1}{n_j}\dsum_{i=1}^n w_{ij}(\mathbf{x}_i-\mathbf{\mu}_j^{\mbox{new}})(\mathbf{x}_i-\mathbf{\mu}_j^{\mbox{new}})^T
 \]</span></li>
 <li>Repeat steps (2) &amp; (3) until convergence (no change).</li>
 </ol>
@@ -639,7 +645,7 @@ w_{ij}=\left\{
 ##  [9] &quot;df&quot;             &quot;bic&quot;            &quot;icl&quot;            &quot;hypvol&quot;        
 ## [13] &quot;parameters&quot;     &quot;z&quot;              &quot;classification&quot; &quot;uncertainty&quot;</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="clustering-analysis.html#cb9-1" tabindex="-1"></a><span class="fu">plot</span>(tt,<span class="at">what=</span><span class="st">&quot;classification&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-8-1.png" width="65%" /></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="clustering-analysis.html#cb10-1" tabindex="-1"></a>tt<span class="sc">$</span>classification</span></code></pre></div>
 <pre><code>##   [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 ##  [38] 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
@@ -656,7 +662,7 @@ w_{ij}=\left\{
 ##  [9] &quot;df&quot;             &quot;bic&quot;            &quot;icl&quot;            &quot;hypvol&quot;        
 ## [13] &quot;parameters&quot;     &quot;z&quot;              &quot;classification&quot; &quot;uncertainty&quot;</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="clustering-analysis.html#cb14-1" tabindex="-1"></a><span class="fu">plot</span>(mb,<span class="at">what=</span><span class="st">&quot;classification&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-9-1.png" width="65%" /></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="clustering-analysis.html#cb15-1" tabindex="-1"></a><span class="fu">table</span>(iris[,yind],mb<span class="sc">$</span>classification)</span></code></pre></div>
 <pre><code>##             
 ##               1  2  3
@@ -722,7 +728,7 @@ w_{ij}=\left\{
 <div id="the-elbow-plot-method" class="section level3 hasAnchor" number="9.3.1">
 <h3><span class="header-section-number">9.3.1</span> The Elbow Plot Method<a href="clustering-analysis.html#the-elbow-plot-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We use the <span class="math inline">\(\verb`elbow plot`\)</span> (scree plot) to help identify the most proper value of <span class="math inline">\(K\)</span>. Recall the decomposition of the total variation of the observations (SST) into between-group variation (SSB) and within-group variation (SSW), i.e., <span class="math inline">\(SST=SSB+SSW\)</span>. If all objects are in one group, then <span class="math inline">\(SSW=SST\)</span>. The within-group variation drops when number of clusters <span class="math inline">\(K\)</span> increases. The <span class="math inline">\(\verb`elbow plot`\)</span> plots SSW versus # of groups, we choose the value of <span class="math inline">\(K\)</span> at where the plot starts flat. Recall the resulting dendrogram of clustering the observations <span class="math inline">\(x_1=5, x_2=3, x_3=9, x_4=6, x_5=1\)</span> using hierarchical clustering with average linkage is</p>
-<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-10-1.png" width="65%" /></p>
 <p>To draw the scree plot, we calculate the within-cluster variation SSW for different values of <span class="math inline">\(K\)</span>:</p>
 <ul>
 <li>When <span class="math inline">\(K=2\)</span>, the two clusters are <span class="math inline">\(\{x_1, x_4, x_2, x_5\}\)</span> and <span class="math inline">\(\{x_3\}\)</span>. The centers for the two groups are <span class="math inline">\(m_1=\frac{5+6+3+1}{4}=3.75\)</span> and <span class="math inline">\(m_2=9\)</span>. And the
@@ -740,7 +746,7 @@ SSW=[(5-5.5)^2+(6-5.5)^2]+0+0+0=0.5
 </ul>
 <p>The scree plot is given by</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="clustering-analysis.html#cb17-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="fl">14.75</span>,<span class="fl">2.5</span>,<span class="fl">0.5</span>),<span class="at">xlab=</span><span class="st">&quot;K: # of Groups&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;SSW: Within Sum of Squares&quot;</span>, <span class="at">cex=</span><span class="fl">1.5</span>,<span class="at">type=</span><span class="st">&quot;o&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-11-1.png" width="65%" /></p>
 <p>The scree plot shows that curve becomes flat at <span class="math inline">\(K=3\)</span>; therefore, <span class="math inline">\(K=3\)</span> is a proper number of clusters. We can calculate the within-group sum of squares using K-means:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="clustering-analysis.html#cb18-1" tabindex="-1"></a>kvec <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span></span>
 <span id="cb18-2"><a href="clustering-analysis.html#cb18-2" tabindex="-1"></a>klen <span class="ot">&lt;-</span> <span class="fu">length</span>(kvec)</span>
@@ -750,7 +756,7 @@ SSW=[(5-5.5)^2+(6-5.5)^2]+0+0+0=0.5
 <span id="cb18-6"><a href="clustering-analysis.html#cb18-6" tabindex="-1"></a>  wss[i] <span class="ot">&lt;-</span> kmeans_result<span class="sc">$</span>tot.withinss</span>
 <span id="cb18-7"><a href="clustering-analysis.html#cb18-7" tabindex="-1"></a>}</span>
 <span id="cb18-8"><a href="clustering-analysis.html#cb18-8" tabindex="-1"></a><span class="fu">plot</span>(kvec, wss, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Elbow Method&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Number of Clusters&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Within-cluster Sum of Squares&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-12-1.png" width="65%" /></p>
 </div>
 <div id="the-silhouette-score" class="section level3 hasAnchor" number="9.3.2">
 <h3><span class="header-section-number">9.3.2</span> The Silhouette Score<a href="clustering-analysis.html#the-silhouette-score" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -770,7 +776,7 @@ where <span class="math inline">\(a(i)\)</span> is the average distance from the
 <span id="cb19-9"><a href="clustering-analysis.html#cb19-9" tabindex="-1"></a>  ss[i] <span class="ot">&lt;-</span> obj<span class="sc">$</span>avg.width</span>
 <span id="cb19-10"><a href="clustering-analysis.html#cb19-10" tabindex="-1"></a>}</span>
 <span id="cb19-11"><a href="clustering-analysis.html#cb19-11" tabindex="-1"></a><span class="fu">plot</span>(kvec, ss, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Silhouette Method&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Number of Clusters&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Average Silhouette Width&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="65%" />
+<p><img src="Plots/unnamed-chunk-13-1.png" width="65%" />
 Since <span class="math inline">\(K=2\)</span> gives the largest silhouette score, the optimal number of clusters is two.</p>
 </div>
 <div id="gap-statistics" class="section level3 hasAnchor" number="9.3.3">
@@ -793,11 +799,11 @@ where <span class="math inline">\(W_k\)</span> is the total intra-cluster variat
 <span id="cb20-4"><a href="clustering-analysis.html#cb20-4" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="dv">5</span>]), kmeans, <span class="at">method =</span> <span class="st">&quot;wss&quot;</span>) <span class="sc">+</span></span>
 <span id="cb20-5"><a href="clustering-analysis.html#cb20-5" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">4</span>, <span class="at">linetype =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
 <span id="cb20-6"><a href="clustering-analysis.html#cb20-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Elbow method&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-14-1.png" width="65%" /></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="clustering-analysis.html#cb21-1" tabindex="-1"></a><span class="co"># Silhouette method</span></span>
 <span id="cb21-2"><a href="clustering-analysis.html#cb21-2" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="dv">5</span>]), kmeans, <span class="at">method =</span> <span class="st">&quot;silhouette&quot;</span>)<span class="sc">+</span></span>
 <span id="cb21-3"><a href="clustering-analysis.html#cb21-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Silhouette method&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-13-2.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-14-2.png" width="65%" /></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="clustering-analysis.html#cb22-1" tabindex="-1"></a><span class="co"># Gap statistic method</span></span>
 <span id="cb22-2"><a href="clustering-analysis.html#cb22-2" tabindex="-1"></a><span class="co"># nboot = 50 to keep the function speedy. </span></span>
 <span id="cb22-3"><a href="clustering-analysis.html#cb22-3" tabindex="-1"></a><span class="co"># recommended value: nboot= 500 for your analysis.</span></span>
@@ -805,17 +811,17 @@ where <span class="math inline">\(W_k\)</span> is the total intra-cluster variat
 <span id="cb22-5"><a href="clustering-analysis.html#cb22-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb22-6"><a href="clustering-analysis.html#cb22-6" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="dv">5</span>]), kmeans, <span class="at">nstart =</span> <span class="dv">25</span>,  <span class="at">method =</span> <span class="st">&quot;gap_stat&quot;</span>, <span class="at">nboot =</span> <span class="dv">50</span>)<span class="sc">+</span></span>
 <span id="cb22-7"><a href="clustering-analysis.html#cb22-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Gap statistic method&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-13-3.png" width="65%" /></p>
+<p><img src="Plots/unnamed-chunk-14-3.png" width="65%" /></p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="clustering-analysis.html#cb23-1" tabindex="-1"></a><span class="co">#voting of multiple indices</span></span>
 <span id="cb23-2"><a href="clustering-analysis.html#cb23-2" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="dv">5</span>]), <span class="at">distance =</span> <span class="st">&quot;euclidean&quot;</span>,<span class="at">min.nc=</span><span class="dv">2</span>, <span class="at">max.nc=</span><span class="dv">10</span>, </span>
 <span id="cb23-3"><a href="clustering-analysis.html#cb23-3" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&quot;kmeans&quot;</span>,<span class="at">index =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Plots/unnamed-chunk-15-1.png" width="672" /></p>
 <pre><code>## *** : The Hubert index is a graphical method of determining the number of clusters.
 ##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
 ##                 significant increase of the value of the measure i.e the significant peak in Hubert
 ##                 index second differences plot. 
 ## </code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<p><img src="Plots/unnamed-chunk-15-2.png" width="672" /></p>
 <pre><code>## *** : The D index is a graphical method of determining the number of clusters. 
 ##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
 ##                 second differences plot) that corresponds to a significant increase of the value of
@@ -837,13 +843,13 @@ where <span class="math inline">\(W_k\)</span> is the total intra-cluster variat
 ## *******************************************************************</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="clustering-analysis.html#cb26-1" tabindex="-1"></a>nb2 <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>)]), <span class="at">distance =</span> <span class="st">&quot;euclidean&quot;</span>,<span class="at">min.nc=</span><span class="dv">2</span>, <span class="at">max.nc=</span><span class="dv">10</span>, </span>
 <span id="cb26-2"><a href="clustering-analysis.html#cb26-2" tabindex="-1"></a>            <span class="at">method =</span> <span class="st">&quot;kmeans&quot;</span>,<span class="at">index =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-3.png" width="672" /></p>
+<p><img src="Plots/unnamed-chunk-15-3.png" width="672" /></p>
 <pre><code>## *** : The Hubert index is a graphical method of determining the number of clusters.
 ##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
 ##                 significant increase of the value of the measure i.e the significant peak in Hubert
 ##                 index second differences plot. 
 ## </code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-14-4.png" width="672" /></p>
+<p><img src="Plots/unnamed-chunk-15-4.png" width="672" /></p>
 <pre><code>## *** : The D index is a graphical method of determining the number of clusters. 
 ##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
 ##                 second differences plot) that corresponds to a significant increase of the value of
@@ -918,7 +924,7 @@ f(y\mid\theta)=\lambda f_1(y\mid\mu_1,\sigma_1^2) + (1-\lambda)f_2(y\mid\mu_2,\s
 <li>Suppose we don’t know the class label, we can use the EM algorithm to estimate the parameters, i.e., <span class="math inline">\(\lambda, \mu_i, \sigma_1=i, i=1, 2\)</span>.</li>
 </ol>
 <ul>
-<li>[(a)] If the class label is unknown, we need to introduce a latent variable <span class="math inline">\(Z\)</span> to indicate the class label: <span class="math inline">\(z=1\)</span> for class 1 and <span class="math inline">\(z=0\)</span> for class 2. The latent variable <span class="math inline">\(Z\)</span> can be modeled by a Bernoulli distribution, <span class="math inline">\(Z\sim \text{Bernoulli}(\lambda)\)</span>. Given the data <span class="math inline">\(x_1, \cdots, x_n\)</span> and class label <span class="math inline">\(z_1, \cdots, z_n\)</span>, write down the likelihood function of the completed data.
+<li><p>[(2a)] If the class label is unknown, we need to introduce a latent variable <span class="math inline">\(Z\)</span> to indicate the class label: <span class="math inline">\(z=1\)</span> for class 1 and <span class="math inline">\(z=0\)</span> for class 2. The latent variable <span class="math inline">\(Z\)</span> can be modeled by a Bernoulli distribution, <span class="math inline">\(Z\sim \text{Bernoulli}(\lambda)\)</span>. Given the data <span class="math inline">\(x_1, \cdots, x_n\)</span> and class label <span class="math inline">\(z_1, \cdots, z_n\)</span>, write down the likelihood function of the completed data.
 <span class="math display">\[
 g(x,z\mid\theta)=
 [f_1(x\mid\mu_1,\sigma_1^2)]^{z}[f_2(x\mid\mu_2,\sigma^2_2)]^{1-z}\lambda^z(1-\lambda)^{1-z}, \quad \text{with }z=0, 1.
@@ -935,27 +941,22 @@ And then the log-likelihood function based on the completed data is
 (1-z_i)\log f_2(x_i\mid\mu_2,\sigma^2_2) +
 z_i\log\lambda +
 (1-z_i)\log(1-\lambda)].
-\]</span></li>
-</ul>
-E-step of the EM algorithm: calculate
-<span class="math display">\[\begin{align*}
-Q(\theta)&amp;=\mathbb{E}_Z[\log g(x, z\mid\theta)]\\
-&amp;=\mathbb{E}\left[\sum_{i=1}^n z_i\log f_1(x_i\mid\mu_1,\sigma_1^2)+(1-z_i)\log f_2(x_i\mid\mu_2,\sigma_2^2)+z_i\log\lambda+(1-z_i)\log(1-\lambda)\right]\\
-&amp;=\sum_{i=1}^n \left[\pi_i\log f_1(x_i\mid\mu_1,\sigma_1^2)+(1-\pi_i) f_2(x_i\mid\mu_2,\sigma_2^2)+\pi_i\log\lambda+(1-\pi_i)\log(1-\lambda)\right]\\
-&amp;=\sum_{i=1}^n
-\pi_i\log f_1(x_i\mid\mu_1,\sigma_1^2)
-+ (1-\pi_i) f_2(x_i\mid\mu_2,\sigma_2^2)
-+ \pi_i\log\lambda
-+ (1-\pi_i)\log(1-\lambda)\\
-&amp; = \sum_{i=1}^n
-\pi_i\left[
--\frac{1}{2}\log 2\pi\sigma_1^2-\frac{1}{2\sigma_1^2}(x_i-\mu_1)^2
-\right]
-+ (1-\pi_i)\left[
--\frac{1}{2}\log 2\pi\sigma_2^2-\frac{1}{2\sigma_2^2}(x_i-\mu_2)^2
-\right] + \pi_i\log\lambda \\
-&amp;+ (1-\pi_i)\log(1-\lambda).
-\end{align*}\]</span>
+\]</span></p></li>
+<li><p>[(2b)] E-step of the EM algorithm: calculate
+\begin{align*}
+Q()&amp;=<em>Z[g(x, z)]\
+&amp;=\
+&amp;=</em>{i=1}^n \
+&amp;=_{i=1}^n
+_if_1(x_i_1,_1^2)</p></li>
+<li><p>(1-_i) f_2(x_i_2,_2^2)</p></li>
+<li><p>_i</p></li>
+<li><p>(1-<em>i)(1-)\
+&amp; = </em>{i=1}^n
+_i</p></li>
+<li><p>(1-_i)+ _i\
+&amp;+ (1-_i)(1-).
+\end{align*}
 Note that the conditional distribution of <span class="math inline">\(Z\)</span>
 <span class="math display">\[
 h(z\mid x,\theta) \propto [\lambda f_1(x\mid\mu_1,\sigma_1^2)]^z[(1-\lambda)f_2(x\mid\mu_2,\sigma_2^2)]^{1-z}\sim \text{Bernoulli}\left(\frac{\lambda f_1(x\mid\mu_1,\sigma_1^2)}{\lambda f_1(x\mid\mu_1,\sigma_1^2)+ (1-\lambda)f_2(x\mid\mu_2,\sigma_2^2)}
@@ -964,14 +965,15 @@ h(z\mid x,\theta) \propto [\lambda f_1(x\mid\mu_1,\sigma_1^2)]^z[(1-\lambda)f_2(
 Therefore,
 <span class="math display">\[
 \pi_i=\mathbb{E}[z_i\mid x_i, \theta]=\frac{\lambda f_1(x\mid\mu_1,\sigma_1^2)}{\lambda f_1(x_i\mid\mu_1,\sigma_1^2)+ (1-\lambda)f_2(x_i\mid\mu_2,\sigma_2^2)}
-\]</span>
-<p>M-step of the EM algorithm: find the values of <span class="math inline">\(\theta\)</span> such that
+\]</span></p></li>
+<li><p>[(2c)] M-step of the EM algorithm: find the values of <span class="math inline">\(\theta\)</span> such that
 <span class="math display">\[
 Q(\theta)=\sum_{i=1}^n\pi_i\left[
 -\frac{1}{2}\log 2\pi\sigma_1^2-\frac{1}{2\sigma_1^2}(x_i-\mu_1)^2
 \right]+(1-\pi_i)\left[-\frac{1}{2}\log 2\pi\sigma_2^2-\frac{1}{2\sigma_2^2}(x_i-\mu_2)^2\right]+\pi_i\log\lambda+(1-\pi_i)\log(1-\lambda)
 \]</span>
-is maximized. Take the derivatives with respect to <span class="math inline">\(\lambda, \mu_1, \mu_2, \sigma_1^2, \sigma_2^2\)</span>, we obtain</p>
+is maximized. Take the derivatives with respect to <span class="math inline">\(\lambda, \mu_1, \mu_2, \sigma_1^2, \sigma_2^2\)</span>, we obtain</p></li>
+</ul>
 <p><span class="math display">\[\begin{align*}
 \frac{\partial Q}{\partial \lambda}&amp;=0\Longrightarrow \sum\left[\pi_i \frac{1}{\lambda}+(1-\pi_i)\frac{1}{1-\lambda}(-1)\right]\Longrightarrow \hat \lambda=\frac{\sum \pi_i}{n}\\
 \frac{\partial Q}{\partial \mu_1}&amp;=0\Longrightarrow \sum \left[\pi_i (-\frac{1}{2\sigma_1^2})2(x_i-\mu_1)(-1)\right]=0\Longrightarrow \hat \mu_1 =\frac{\sum \pi_i x_i}{\sum \pi_i}\\
@@ -1045,6 +1047,12 @@ is maximized. Take the derivatives with respect to <span class="math inline">\(\
 <div id="revisit-learning-outcomes-1" class="section level2 unnumbered hasAnchor">
 <h2>Revisit Learning Outcomes<a href="clustering-analysis.html#revisit-learning-outcomes-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>After finishing this chapter, students should be able to</p>
+<ul>
+<li>Explain the differences between classification and cluster problems.</li>
+<li>Describe briefly the main idea and procedure of hierarchical clustering, <span class="math inline">\(K\)</span>-means, and model-based clustering methods.</li>
+<li>Conduct a clustering analysis using hierarchical clustering method, <span class="math inline">\(K\)</span>-means, and model-based clustering in R.</li>
+<li>Interpret the R computer outputs of hierarchical clustering, <span class="math inline">\(K\)</span>-means, and model-based clustering methods.</li>
+</ul>
 
 </div>
 </div>

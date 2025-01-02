@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2024-11-25" />
+<meta name="date" content="2025-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -331,6 +331,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html"><i class="fa fa-check"></i><b>11</b> Multidimensional Scaling</a>
 <ul>
 <li class="chapter" data-level="" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#learning-outcomes-9"><i class="fa fa-check"></i>Learning Outcomes</a></li>
+<li class="chapter" data-level="11.1" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#objective-1"><i class="fa fa-check"></i><b>11.1</b> Objective</a></li>
+<li class="chapter" data-level="11.2" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#methods"><i class="fa fa-check"></i><b>11.2</b> Methods</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#classical-scaling"><i class="fa fa-check"></i><b>11.2.1</b> Classical Scaling</a></li>
+<li class="chapter" data-level="11.2.2" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#metric-scaling"><i class="fa fa-check"></i><b>11.2.2</b> Metric Scaling</a></li>
+<li class="chapter" data-level="11.2.3" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#non-metric-scaling"><i class="fa fa-check"></i><b>11.2.3</b> Non-metric Scaling</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#example"><i class="fa fa-check"></i><b>11.3</b> Example</a></li>
 <li class="chapter" data-level="" data-path="multidimensional-scaling.html"><a href="multidimensional-scaling.html#revisit-learning-outcomes-3"><i class="fa fa-check"></i>Revisit Learning Outcomes</a></li>
 </ul></li>
 </ul>
@@ -386,19 +394,19 @@ p\le q
 \]</span>
 with
 <span class="math display">\[
-\mbox{Cov}\left[
+\cov\left[
 \begin{array}{c}
 \mathbf{X}\\ \cdots\\\mathbf{Y}
 \end{array}
-\right]=\mbox{Cov}\left[
+\right]=\cov\left[
 \begin{array}{c}
 X_1\\ X_2\\ \vdots\\ X_p\\ \cdots \\ Y_1\\ Y_2\\ \vdots\\ Y_q
 \end{array}
 \right]=\left[
 \begin{array}{ccc}
-\mbox{Var}(\mathbf{X}) &amp;\vdots &amp;\mbox{Cov}(\mathbf{X},\mathbf{Y})   \\
+\var(\mathbf{X}) &amp;\vdots &amp;\cov(\mathbf{X},\mathbf{Y})   \\
 \cdots&amp;\cdots&amp;\cdots\\
-\mbox{Cov}(\mathbf{Y},\mathbf{X})   &amp;\vdots &amp;  \mbox{Var}(\mathbf{Y})\\
+\cov(\mathbf{Y},\mathbf{X})   &amp;\vdots &amp;  \var(\mathbf{Y})\\
 \end{array}
 \right]=\left[
 \begin{array}{ccc}
@@ -421,18 +429,18 @@ v_q&amp;=\mathbf{b}_q^{T}\mathbf{Y}=b_{q1}Y_1+b_{q2}Y_2+\cdots+b_{qq}Y_q\\
 \end{align*}\]</span>
 with
 <span class="math display">\[
-\mbox{Cov}(u_1, v_1)\ge \mbox{Cov}(u_2, v_2)\ge \cdots \ge \mbox{Cov}(u_p, v_p).
+\cov(u_1, v_1)\ge \cov(u_2, v_2)\ge \cdots \ge \cov(u_p, v_p).
 \]</span>
 And the canonical variates pairs <span class="math inline">\((u_i, v_i)\)</span> are uncorrelated, that is
 <span class="math display">\[
-\mbox{Cov}(u_i, u_j)=0, \mbox{Cov}(u_i, v_j)=0, \mbox{Cov}(v_i, v_j)=0, \mbox{Cov}(u_j, v_i)=0, \mbox{ for $i&lt;j$}.
+\cov(u_i, u_j)=0, \cov(u_i, v_j)=0, \cov(v_i, v_j)=0, \cov(u_j, v_i)=0, \mbox{ for $i&lt;j$}.
 \]</span>
 The correlations of the canonical variates pairs <span class="math inline">\(\rho_i=\text{Corr}(u_i, v_i)\)</span> are called the canonical correlations. Canonical correlation analysis allows us to summarize the covariance matrix <span class="math inline">\(\mathbf{\Sigma}_{12}\)</span> whose dimension is <span class="math inline">\(p\times q\)</span> using <span class="math inline">\(p\)</span> canonical correlations <span class="math inline">\(\rho_i, i=1, 2, \cdots, p\)</span>.</p>
 </div>
 <div id="obtain-the-canonical-variates-pairs" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> Obtain the Canonical Variates Pairs<a href="canonical-correlation-analysis.html#obtain-the-canonical-variates-pairs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It can be shown that the first canonical variates pair is associated to the eigenvector corresponding to the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>, the correlation of the first canonical pair is the square root of the largest eigenvalue. In general, the <span class="math inline">\(i\)</span>th canonical variates pair is associated to the eigenvector corresponding to the <span class="math inline">\(i\)</span>th largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>.</p>
-<p><span class="math inline">\(\textbf{Proof}\)</span>: We want to maximize <span class="math inline">\(\mbox{Cov}(u, v)=\mbox{Cov}(\mathbf{a}^T\mathbf{X},\mathbf{b}^T\mathbf{Y})=\mathbf{a}^T\mathbf{\Sigma}_{12}\mathbf{b}\)</span> with the constraints <span class="math inline">\(\mathbf{a}^T\mathbf{\Sigma}_{11}\mathbf{a}=1\)</span> and <span class="math inline">\(\mathbf{b}^T\mathbf{\Sigma}_{22}\mathbf{b}=1\)</span>.
+<p><span class="math inline">\(\textbf{Proof}\)</span>: We want to maximize <span class="math inline">\(\cov(u, v)=\cov(\mathbf{a}^T\mathbf{X},\mathbf{b}^T\mathbf{Y})=\mathbf{a}^T\mathbf{\Sigma}_{12}\mathbf{b}\)</span> with the constraints <span class="math inline">\(\mathbf{a}^T\mathbf{\Sigma}_{11}\mathbf{a}=1\)</span> and <span class="math inline">\(\mathbf{b}^T\mathbf{\Sigma}_{22}\mathbf{b}=1\)</span>.
 The steps to obtain the canonical variates pairs are as follows.</p>
 <ol style="list-style-type: decimal">
 <li>Find the eigenvalues of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>, <span class="math inline">\(\lambda_1^2 \ge \lambda_2^2 \ge \cdots \ge \lambda_p^2\)</span>. Obtain the corresponding unit eigenvectors <span class="math inline">\(\mathbf{e}_1, \mathbf{e}_2, \cdots, \mathbf{e}_p\)</span>.</li>
@@ -445,7 +453,7 @@ v_i=\mathbf{b}_i^T\mathbf{Y}; \quad \mathbf{b}_i=\frac{1}{\lambda_i}\mathbf{\Sig
 \]</span>
 And the correlation of <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span> is
 <span class="math display">\[
-\rho_i=\frac{\mbox{Cov}(u_i, v_i)}{\sqrt{\mbox{Var}(u_i)\mbox{Var}(v_i)}}=\frac{\mathbf{a}_i^T \mathbf{\Sigma}_{12}\mathbf{b}_i}{\sqrt{(\mathbf{a}_i^T \mathbf{\Sigma}_{11}\mathbf{a}_i)(\mathbf{b}_i^T \mathbf{\Sigma}_{22}\mathbf{b}_i)}}=\lambda_i
+\rho_i=\frac{\cov(u_i, v_i)}{\sqrt{\var(u_i)\var(v_i)}}=\frac{\mathbf{a}_i^T \mathbf{\Sigma}_{12}\mathbf{b}_i}{\sqrt{(\mathbf{a}_i^T \mathbf{\Sigma}_{11}\mathbf{a}_i)(\mathbf{b}_i^T \mathbf{\Sigma}_{22}\mathbf{b}_i)}}=\lambda_i
 \]</span></li>
 </ol>
 <p><span class="math inline">\(\textbf{Note}\)</span>:If we want to find <span class="math inline">\(q\)</span> canonical variates to represent <span class="math inline">\(\mathbf{Y}\)</span>, we can find the eigenvalues of the matrix <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\)</span>, <span class="math inline">\(\lambda_1^2 \ge \lambda_2^2 \ge \cdots \ge \lambda_p^2\ge \cdots \ge \lambda_q^2\)</span>. The first <span class="math inline">\(p\)</span> eigenvalues are the same as those of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>. Obtain the corresponding unit eigenvectors <span class="math inline">\(\mathbf{f}_1, \mathbf{f}_2, \cdots, \mathbf{f}_q\)</span>. Then
@@ -454,7 +462,7 @@ And the correlation of <span class="math inline">\(u_i\)</span> and <span class=
 \]</span></p>
 <p><span class="math inline">\(\textbf{Proof}\)</span>:The first canonical variates pair is the one giving the largest correlation. That is to maximize
 <span class="math display">\[
-\rho=\frac{\mbox{Cov}(u, v)}{\sqrt{\mbox{Var}(u)\mbox{Var}(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}.
+\rho=\frac{\cov(u, v)}{\sqrt{\var(u)\var(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}.
 \]</span>
 This is equivalent to maximizing <span class="math inline">\(\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}\)</span> with the constraints <span class="math inline">\(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a}=1\)</span> and <span class="math inline">\(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b}=1\)</span>. Using the Lagrange multiplier method, we want to find
 <span class="math display">\[
@@ -493,11 +501,11 @@ It can be shown that <span class="math inline">\(\mathbf{b}^T \mathbf{\Sigma}_{2
 <span class="math display">\[
 u_i=\mathbf{a}_i^T\mathbf{X}; \quad \mathbf{a}_i=\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_i; \quad \quad v_i=\mathbf{b}_i^T\mathbf{Y}; \quad \mathbf{b}_i=\mathbf{\Sigma}_{22}^{-1/2}\mathbf{f}_i
 \]</span>
-And the correlation of <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span> is <span class="math inline">\(\rho_i=\frac{\mbox{Cov}(u_i, v_i)}{\sqrt{\mbox{Var}(u_i)\mbox{Var}(v_i)}}=\lambda_i\)</span>.</li>
+And the correlation of <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span> is <span class="math inline">\(\rho_i=\frac{\cov(u_i, v_i)}{\sqrt{\var(u_i)\var(v_i)}}=\lambda_i\)</span>.</li>
 </ol>
 <p><span class="math inline">\(\textbf{Proof}\)</span>: Recall that we want to find <span class="math inline">\(\mathbf{a}\)</span> and <span class="math inline">\(\mathbf{b}\)</span> such that
 <span class="math display">\[
-\rho=\frac{\mbox{Cov}(u, v)}{\sqrt{\mbox{Var}(u)\mbox{Var}(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}.
+\rho=\frac{\cov(u, v)}{\sqrt{\var(u)\var(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}.
 \]</span>
 is maximized. Let
 <span class="math display">\[
@@ -505,7 +513,7 @@ is maximized. Let
 \]</span>
 then
 <span class="math display">\[
-\rho=\mbox{Corr}(u,v)=\frac{\mbox{Cov}(u, v)}{\sqrt{\mbox{Var}(u)\mbox{Var}(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}=\frac{\mathbf{c}^T\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\mathbf{d}}{\sqrt{(\mathbf{c}^T\mathbf{c})(\mathbf{d}^T\mathbf{d})}}.
+\rho=\corr(u,v)=\frac{\cov(u, v)}{\sqrt{\var(u)\var(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}=\frac{\mathbf{c}^T\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\mathbf{d}}{\sqrt{(\mathbf{c}^T\mathbf{c})(\mathbf{d}^T\mathbf{d})}}.
 \]</span>
 By Cauchy Schwarz inequality, the numerator
 <span class="math display">\[
@@ -515,7 +523,7 @@ By Cauchy Schwarz inequality, the numerator
 <span class="math display">\[
 \mathbf{c}^T\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{c}\le \lambda_1\mathbf{c}^T\mathbf{c}
 \]</span>
-where <span class="math inline">\(\lambda_1\)</span> is the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\)</span> and maximum is attained when <span class="math inline">\(\mathbf{c}=\mathbf{e}_1\)</span>, the unit eigenvector associated with <span class="math inline">\(\lambda_1\)</span>. Therefore, <span class="math inline">\(\mathbf{a}=\mathbf{\Sigma}_{11}^{-1/2} \mathbf{c}=\mathbf{\Sigma}_{11}^{-1/2} \mathbf{e}_1\)</span> and <span class="math inline">\(\mathbf{b} \propto \mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1\)</span>, the <span class="math inline">\(\max_{\mathbf{a}, \mathbf{b}}\mbox{Corr}(\mathbf{a}^T\mathbf{X},\mathbf{b}^T\mathbf{Y})=\sqrt{\lambda_1}\)</span>. Take <span class="math inline">\(\mathbf{b}=\mathbf{\Sigma}_{22}^{-1/2}\mathbf{f}_1\)</span> where <span class="math inline">\(\mathbf{f}_1=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{|\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1|}=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{\sqrt{\lambda_1}}\)</span>, the normalized form of <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1\)</span>.</p>
+where <span class="math inline">\(\lambda_1\)</span> is the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\)</span> and maximum is attained when <span class="math inline">\(\mathbf{c}=\mathbf{e}_1\)</span>, the unit eigenvector associated with <span class="math inline">\(\lambda_1\)</span>. Therefore, <span class="math inline">\(\mathbf{a}=\mathbf{\Sigma}_{11}^{-1/2} \mathbf{c}=\mathbf{\Sigma}_{11}^{-1/2} \mathbf{e}_1\)</span> and <span class="math inline">\(\mathbf{b} \propto \mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1\)</span>, the <span class="math inline">\(\max_{\mathbf{a}, \mathbf{b}}\corr(\mathbf{a}^T\mathbf{X},\mathbf{b}^T\mathbf{Y})=\sqrt{\lambda_1}\)</span>. Take <span class="math inline">\(\mathbf{b}=\mathbf{\Sigma}_{22}^{-1/2}\mathbf{f}_1\)</span> where <span class="math inline">\(\mathbf{f}_1=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{|\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1|}=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{\sqrt{\lambda_1}}\)</span>, the normalized form of <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1\)</span>.</p>
 <p>It can be shown that <span class="math inline">\(\mathbf{f}_1\)</span> is the unit engenvector corresponding to the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\)</span>. Since <span class="math inline">\(\mathbf{e}_1\)</span> is the unit eigenvector corresponding to the largest eigenvalue of <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\)</span>, we have
 <span class="math display">\[\begin{equation}
 \label{eq:eq3}
@@ -532,7 +540,7 @@ which means <span class="math inline">\(\lambda_1\)</span> is also the largest e
 \]</span>
 Another way, an easier way to show that <span class="math inline">\(\mathbf{b}=\mathbf{\Sigma}_{22}^{-1/2}\mathbf{f}\)</span> where <span class="math inline">\(\mathbf{f}\)</span> is the unit eigenvector corresponding to the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\)</span> is
 <span class="math display">\[
-\rho=\frac{\mbox{Cov}(u, v)}{\sqrt{\mbox{Var}(u)\mbox{Var}(v)}}=\frac{\mbox{Cov}(v, u)}{\sqrt{\mbox{Var}(v)\mbox{Var}(u)}}\frac{\mathbf{b}^T \mathbf{\Sigma}_{21}\mathbf{a}}{\sqrt{(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})}}.
+\rho=\frac{\cov(u, v)}{\sqrt{\var(u)\var(v)}}=\frac{\cov(v, u)}{\sqrt{\var(v)\var(u)}}\frac{\mathbf{b}^T \mathbf{\Sigma}_{21}\mathbf{a}}{\sqrt{(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})}}.
 \]</span>
 We will arrive at the conclusion by the same logic as we did for <span class="math inline">\(\mathbf{a}\)</span> using Cauchy Schwarz inequality.</p>
 <p><span class="math inline">\(\textbf{Result}\)</span></p>
@@ -595,16 +603,16 @@ We will arrive at the conclusion by the same logic as we did for <span class="ma
 <span class="math display">\[
 u_1=1.2501X_1-0.2367X_2+1.2491X_3, \quad v_1=0.0440Y_1+0.0551Y_2+0.0194Y_3-0.0038Y_4
 \]</span>
-<span class="math inline">\(u_1\)</span> is more related to locus-of-control and motivation since their coefficients are larger in magnitude.<span class="math inline">\(v_1\)</span> is contributed by reading, writing and math. And their correlation is <span class="math inline">\(\rho_1=\mbox{Corr}(u_1, v_1)=0.4464\)</span>.</p>
+<span class="math inline">\(u_1\)</span> is more related to locus-of-control and motivation since their coefficients are larger in magnitude.<span class="math inline">\(v_1\)</span> is contributed by reading, writing and math. And their correlation is <span class="math inline">\(\rho_1=\corr(u_1, v_1)=0.4464\)</span>.</p>
 <p>Similarly, the second and third pairs are
 <span class="math display">\[
 u_2=-0.7660X_1-0.8421X_2+2.6360X_3, \quad v_2=0.0016Y_1+0.0904Y_2+0.0030Y_3-0.1242Y_4
 \]</span>
-<span class="math inline">\(u_2\)</span> is more related to motivation and <span class="math inline">\(v_2\)</span> is more related to science. Their correlation is <span class="math inline">\(\rho_2=\mbox{Corr}(u_2, v_2)=0.1534\)</span>.
+<span class="math inline">\(u_2\)</span> is more related to motivation and <span class="math inline">\(v_2\)</span> is more related to science. Their correlation is <span class="math inline">\(\rho_2=\corr(u_2, v_2)=0.1534\)</span>.
 <span class="math display">\[
 u_3=-0.4967X_1-1.2051X_2-1.0935X_3, \quad v_3=-0.0883Y_1+0.0961Y_2-0.0878Y_3+0.0885Y_4
 \]</span>
-<span class="math inline">\(u_3\)</span> is more related to self-concept and motivation, <span class="math inline">\(v_3\)</span> is quite uniformly contributed by reading, writing, math and science. Their correlation is <span class="math inline">\(\rho_3=\mbox{Corr}(u_3, v_3)=0.0225\)</span>.</p>
+<span class="math inline">\(u_3\)</span> is more related to self-concept and motivation, <span class="math inline">\(v_3\)</span> is quite uniformly contributed by reading, writing, math and science. Their correlation is <span class="math inline">\(\rho_3=\corr(u_3, v_3)=0.0225\)</span>.</p>
 <p>We can also obtain the canonical correlations and the canonical variate pairs using the built-in R function.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="canonical-correlation-analysis.html#cb15-1" tabindex="-1"></a><span class="fu">library</span>(CCA)</span>
 <span id="cb15-2"><a href="canonical-correlation-analysis.html#cb15-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">cc</span>(x1,x2)</span>

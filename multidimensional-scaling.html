@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2024-11-26" />
+<meta name="date" content="2025-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -381,14 +381,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.2.1</span> Classical Scaling<a href="multidimensional-scaling.html#classical-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The classical scaling is find <span class="math inline">\(\delta_{ij}\)</span> such that <span class="math inline">\(\delta_{ij} \approx d_{ij}\)</span>, i.e., the following stress function
 <span class="math display">\[
-\mbox{Stress}=\left[\frac{\displaystyle\sum_{i&lt;j}(\delta_{ij}-d_{ij})^2}{\displaystyle\sum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
+\mbox{Stress}=\left[\frac{\dsum_{i&lt;j}(\delta_{ij}-d_{ij})^2}{\dsum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
 \]</span></p>
 </div>
 <div id="metric-scaling" class="section level3 hasAnchor" number="11.2.2">
 <h3><span class="header-section-number">11.2.2</span> Metric Scaling<a href="multidimensional-scaling.html#metric-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Metric scaling methods assume there exist a monotonic function <span class="math inline">\(f\)</span> such that
 <span class="math display">\[
-\mbox{Stress}=\left[\frac{\displaystyle\sum_{i&lt;j}[\delta_{ij}-f(d_{ij})]^2}{\displaystyle\sum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
+\mbox{Stress}=\left[\frac{\dsum_{i&lt;j}[\delta_{ij}-f(d_{ij})]^2}{\dsum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
 \]</span>
 For example, we can let <span class="math inline">\(f(d_{ij})=\alpha+\beta d_{ij}\)</span>. Numerical iteration procedures are used to search for the configuration <span class="math inline">\(\delta_{ij}\)</span>, the values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> such that the stress above is minimized. If the function <span class="math inline">\(f(d_{ij})=d_{ij}\)</span>, we have the classical scaling.
 ### Non-metric Scaling
@@ -398,7 +398,7 @@ d_{ij}&lt;d_{kl} \Longrightarrow f(d_{ij})\le f(d_{kl}) \Longrightarrow \delta_{
 \]</span>
 where <span class="math inline">\(\delta_{ij}^{\ast}\)</span> are not distance, they are just numbers representing the ranking of the original distance <span class="math inline">\(d_{ij}\)</span>. The configuration of <span class="math inline">\(\delta_{ij}\)</span> is obtained using numerical iterative methods such that the stress function
 <span class="math display">\[
-\mbox{Stress}=\left[\frac{\displaystyle\sum_{i&lt;j}[\delta_{ij}-f(\delta_{ij}^{\ast})]^2}{\displaystyle\sum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
+\mbox{Stress}=\left[\frac{\dsum_{i&lt;j}[\delta_{ij}-f(\delta_{ij}^{\ast})]^2}{\dsum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
 \]</span>
 Non-metric scaling methods do not use the actual magnitude of <span class="math inline">\(d_{ij}\)</span> to determine <span class="math inline">\(\delta_{ij}\)</span>, only the rank of <span class="math inline">\(d_{ij}\)</span> is used to guarantee that <span class="math inline">\(\delta_{ij}\)</span> maintains the same ranking as <span class="math inline">\(d_{ij}\)</span>.</p>
 </div>
@@ -411,21 +411,21 @@ Non-metric scaling methods do not use the actual magnitude of <span class="math 
 <span id="cb1-3"><a href="multidimensional-scaling.html#cb1-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> loc[,<span class="dv">2</span>]</span>
 <span id="cb1-4"><a href="multidimensional-scaling.html#cb1-4" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;n&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">asp=</span><span class="dv">1</span>)</span>
 <span id="cb1-5"><a href="multidimensional-scaling.html#cb1-5" tabindex="-1"></a><span class="fu">text</span>(x,y,<span class="fu">rownames</span>(loc),<span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-1-1.png" width="80%" /></p>
+<p><img src="Plots/unnamed-chunk-2-1.png" width="80%" /></p>
 <p>Does it make sense? We would expect Stockholm to be the most northern city of the bunch and Athens to be the most southern. Let’s simply multiply the second column by -1. Plot of recovered from the distances gives a reasonably accurate representation of the actual locations of the European cities.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="multidimensional-scaling.html#cb2-1" tabindex="-1"></a>loc<span class="ot">=</span><span class="fu">cmdscale</span>(eurodist) <span class="co"># metric scaling</span></span>
 <span id="cb2-2"><a href="multidimensional-scaling.html#cb2-2" tabindex="-1"></a>x<span class="ot">=</span>loc[,<span class="dv">1</span>]</span>
 <span id="cb2-3"><a href="multidimensional-scaling.html#cb2-3" tabindex="-1"></a>y<span class="ot">=</span><span class="sc">-</span>loc[,<span class="dv">2</span>]</span>
 <span id="cb2-4"><a href="multidimensional-scaling.html#cb2-4" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;n&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">asp=</span><span class="dv">1</span>)</span>
 <span id="cb2-5"><a href="multidimensional-scaling.html#cb2-5" tabindex="-1"></a><span class="fu">text</span>(x,y,<span class="fu">rownames</span>(loc),<span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="80%" /></p>
+<p><img src="Plots/unnamed-chunk-3-1.png" width="80%" /></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="multidimensional-scaling.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb3-2"><a href="multidimensional-scaling.html#cb3-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">isoMDS</span>(eurodist,<span class="at">k=</span><span class="dv">2</span>, <span class="at">trace=</span>F) <span class="co"># non-metric scaling</span></span>
 <span id="cb3-3"><a href="multidimensional-scaling.html#cb3-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> fit<span class="sc">$</span>points[,<span class="dv">1</span>]</span>
 <span id="cb3-4"><a href="multidimensional-scaling.html#cb3-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span>fit<span class="sc">$</span>points[,<span class="dv">2</span>]</span>
 <span id="cb3-5"><a href="multidimensional-scaling.html#cb3-5" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;n&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span>
 <span id="cb3-6"><a href="multidimensional-scaling.html#cb3-6" tabindex="-1"></a><span class="fu">text</span>(x,y,<span class="fu">rownames</span>(loc),<span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-2-2.png" width="80%" /></p>
+<p><img src="Plots/unnamed-chunk-3-2.png" width="80%" /></p>
 <p></p>
 </div>
 <div id="revisit-learning-outcomes-3" class="section level2 unnumbered hasAnchor">

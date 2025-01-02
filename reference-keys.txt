@@ -160,3 +160,8 @@ example
 classical-scaling
 metric-scaling
 non-metric-scaling
+fig:unnamed-chunk-4
+tab:unnamed-chunk-23
+tab:unnamed-chunk-5
+tab:unnamed-chunk-9
+tab:unnamed-chunk-34
