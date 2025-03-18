@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-01-02" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -505,7 +505,7 @@ which is a <span class="math inline">\(n\times m\)</span> matrix.</p>
 <div id="basic-operations-on-matrix" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Basic Operations on Matrix<a href="matrix-algebra.html#basic-operations-on-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>The <em>trace</em> of square matrix <span class="math inline">\(\mathbf{A}_{n\times n}\)</span> is defined as the sum of the diagonal elements. That is <span class="math inline">\(\mbox{Trace}(\mathbf{A})=\dsum_{i=1}^n a_{ii}\)</span>.</li>
+<li>The <em>trace</em> of square matrix <span class="math inline">\(\mathbf{A}_{n\times n}\)</span> is defined as the sum of the diagonal elements. That is <span class="math inline">\(\mbox{Trace}(\mathbf{A})=\displaystyle\sum_{i=1}^n a_{ii}\)</span>.</li>
 <li>For an square matrix <span class="math inline">\(\mathbf{A}_{n\times n}\)</span>, if there exists another square matrix <span class="math inline">\(\mathbf{B}_{n\times n}\)</span>, such that <span class="math inline">\(\mathbf{A}\mathbf{B}=\mathbf{B}\mathbf{A}=\mathbf{I}_{n\times n}\)</span>, then <span class="math inline">\(\mathbf{B}\)</span> is called the {} of <span class="math inline">\(\mathbf{A}\)</span>. The inverse of a matrix does not necessarily exist, the condition that the inverse of <span class="math inline">\(\mathbf{A}_{n\times n}\)</span> exists is that the <span class="math inline">\(n\)</span> columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent.</li>
 <li>For any constant <span class="math inline">\(c\)</span>, we have
 <span class="math display">\[
@@ -775,7 +775,7 @@ where <span class="math inline">\(\sigma_{ii}=Var(X_i)\)</span> and <span class=
 <span class="math display">\[
 \mathbf{\bar x}^{T}=[\bar x_1, \bar x_2, \cdots, \bar x_n]
 \]</span>
-where <span class="math inline">\(\bar x_j=\frac{1}{n}\dsum_{i=1}^n x_{ij}, j=1, 2, \cdots, p\)</span>; and
+where <span class="math inline">\(\bar x_j=\frac{1}{n}\displaystyle\sum_{i=1}^n x_{ij}, j=1, 2, \cdots, p\)</span>; and
 <span class="math display">\[
 \mathbf{S}=\left[\begin{array}{ccc}
 s_{11} &amp;\cdots&amp; s_{1p}\\
@@ -783,9 +783,9 @@ s_{11} &amp;\cdots&amp; s_{1p}\\
 s_{p1}&amp; \cdots&amp; s_{pp}
 \end{array}
 \right]=\left[\begin{array}{ccc}
-\frac{1}{n-1}\dsum_{j=1}^n (x_{j1}-\bar x_1)^2 &amp;\cdots&amp; \frac{1}{n-1}\dsum_{j=1}^n (x_{j1}-\bar x_1)(x_{jp}-\bar x_p)\\
+\frac{1}{n-1}\displaystyle\sum_{j=1}^n (x_{j1}-\bar x_1)^2 &amp;\cdots&amp; \frac{1}{n-1}\displaystyle\sum_{j=1}^n (x_{j1}-\bar x_1)(x_{jp}-\bar x_p)\\
 \vdots&amp;\ddots&amp;\vdots\\
-\frac{1}{n-1}\dsum_{j=1}^n (x_{jp}-\bar x_p)(x_{j1}-\bar x_1)&amp; \cdots&amp; \frac{1}{n-1}\dsum_{j=1}^n (x_{jp}-\bar x_p)^2
+\frac{1}{n-1}\displaystyle\sum_{j=1}^n (x_{jp}-\bar x_p)(x_{j1}-\bar x_1)&amp; \cdots&amp; \frac{1}{n-1}\displaystyle\sum_{j=1}^n (x_{jp}-\bar x_p)^2
 \end{array}
 \right]
 \]</span>

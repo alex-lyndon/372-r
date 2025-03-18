@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-01-02" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -469,7 +469,7 @@ where <span class="math inline">\(\mathbf{\Sigma}\)</span> is the variance-covar
 <ol style="list-style-type: decimal">
 <li>Non-negative. For any <span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span>, <span class="math inline">\(d(\mathbf{x}, \mathbf{y})\ge 0\)</span>.</li>
 <li>Identified. <span class="math inline">\(d(\mathbf{x}, \mathbf{x})= 0\)</span>.
-%For any <span class="math inline">\(\mathbf{x}\ne \mathbf{y}\)</span>, <span class="math inline">\(d(\mathbf{x}, \mathbf{y})&gt; 0\)</span>; if <span class="math inline">\(\mathbf{x}=\mathbf{y}\)</span>, <span class="math inline">\(d(\mathbf{x}, \mathbf{y})=0\)</span></li>
+For any <span class="math inline">\(\mathbf{x}\ne \mathbf{y}\)</span>, <span class="math inline">\(d(\mathbf{x}, \mathbf{y})&gt; 0\)</span>; if <span class="math inline">\(\mathbf{x}=\mathbf{y}\)</span>, <span class="math inline">\(d(\mathbf{x}, \mathbf{y})=0\)</span></li>
 <li>Symmetric. <span class="math inline">\(d(\mathbf{x}, \mathbf{y})=d(\mathbf{y}, \mathbf{x})\)</span>.</li>
 <li>Definite. If <span class="math inline">\(d(\mathbf{x}, \mathbf{y})=0\)</span>, then <span class="math inline">\(\mathbf{x}=\mathbf{y}\)</span>.</li>
 <li>Triangle inequality. For any <span class="math inline">\(\mathbf{x}\ne \mathbf{y}, \mathbf{z}\)</span>, <span class="math inline">\(d(\mathbf{x}, \mathbf{y})\le d(\mathbf{x}, \mathbf{z})+d(\mathbf{z}, \mathbf{y})\)</span>.</li>
@@ -533,17 +533,15 @@ d_{ijk}=\left\{
 <p>To summarize, <span class="math inline">\(\delta_{ijk}=0\)</span> for only 0-0 pairs of asymmetric binary variables.</p>
 <p><strong>Example: Gower’s Coefficient</strong></p>
 <p>Find the Gower’s coefficients for the following three individuals:</p>
-[
 <span class="math display">\[\begin{array}{c|ccccc}
 \hline
-&amp;Gender&amp;Hair Color&amp; Asian&amp;Height&amp;Weight\\
+&amp;$\text{Gender}$&amp;$\text{Hair}$ $\text{Color}$&amp; $\text{Asian}$&amp;$\text{Height}$&amp;$\text{Weight}$\\
 \hline
-Kate&amp;F&amp;Brown&amp;Yes&amp;60&amp;80\\
+$\text{Kate}$&amp;$\text{F}$&amp;$\text{Brown}$&amp;$\text{Yes}$&amp;$\text{60}$&amp;80\\
 John&amp;M&amp;Grey&amp;No&amp;50&amp;60\\
 Adam&amp;M&amp;Brown&amp;No&amp;70&amp;90\\
 \hline
 \end{array}\]</span>
-<p>]</p>
 <p>Among the categorical variables ‘’Gender’‘,’‘Hair color’‘,’‘Asian’‘,’‘Asian’’ is asymmetric binary. We can construct a working table to find the distance between the observations.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="displaying-multivariate-data-and-measures-of-distance.html#cb3-1" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">&quot;F&quot;</span>,<span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>))</span>
 <span id="cb3-2"><a href="displaying-multivariate-data-and-measures-of-distance.html#cb3-2" tabindex="-1"></a>haircolor <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">&quot;Brown&quot;</span>,<span class="st">&quot;Grey&quot;</span>,<span class="st">&quot;Brown&quot;</span>))</span>
@@ -664,7 +662,7 @@ where <span class="math inline">\(\mu_1=E(X_1), \mu_2=E(X_2), \sigma_{11}=Var(X_
 \right].
 \]</span>
 The distributions (surface plots) of the three bivariate normal are shown in the first row of Figure <a href="displaying-multivariate-data-and-measures-of-distance.html#fig:surfContour">4.6</a> and their corresponding contour plots are shown in the second row. The values on the contour paths are the value of density <span class="math inline">\(f(x_1, x_2)\)</span> given in Equation <a href="displaying-multivariate-data-and-measures-of-distance.html#eq:denbivariate">(4.3)</a>.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:bivariateNormalDists"></span>
 <img src="Plots/bivariate_normal_rho0.png" alt="Surface plots of density for three bivariate normal distributions" width="32%" /><img src="Plots/bivariate_normal_rho0.75.png" alt="Surface plots of density for three bivariate normal distributions" width="32%" /><img src="Plots/bivariate_normal_rho_negative0.75.png" alt="Surface plots of density for three bivariate normal distributions" width="32%" />
 <p class="caption">
 Figure 4.5: Surface plots of density for three bivariate normal distributions

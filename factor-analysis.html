@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-01-02" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -752,7 +752,7 @@ Plug the maximum likelihood estimates of <span class="math inline">\(\mathbf{L}\
 <span id="cb9-5"><a href="factor-analysis.html#cb9-5" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
 <span id="cb9-6"><a href="factor-analysis.html#cb9-6" tabindex="-1"></a><span class="fu">kable</span>(dmat, <span class="at">caption =</span> <span class="st">&quot;33 men&#39;s decathlon performances&quot;</span>) <span class="co">#show the data</span></span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-5">Table 7.1: </span>33 men’s decathlon performances</caption>
+<caption><span id="tab:olympic">Table 7.1: </span>33 men’s decathlon performances</caption>
 <thead>
 <tr class="header">
 <th align="right">100</th>
@@ -1381,7 +1381,7 @@ Figure 7.2: Determine the Number of Common Factors
 <span id="cb18-6"><a href="factor-analysis.html#cb18-6" tabindex="-1"></a>lmat <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cbind</span>(mpc<span class="sc">$</span>loading,mmle<span class="sc">$</span>loading),<span class="dv">3</span>) </span>
 <span id="cb18-7"><a href="factor-analysis.html#cb18-7" tabindex="-1"></a><span class="fu">kable</span>(lmat, <span class="at">caption =</span> <span class="st">&quot;Factor Loading without Rotation&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-7">Table 7.3: </span>Factor Loading without Rotation</caption>
+<caption><span id="tab:unnamed-chunk-2">Table 7.3: </span>Factor Loading without Rotation</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -1469,7 +1469,7 @@ Figure 7.2: Determine the Number of Common Factors
 <span id="cb19-3"><a href="factor-analysis.html#cb19-3" tabindex="-1"></a>lmat1 <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">cbind</span>(mpc1<span class="sc">$</span>loading,mmle1<span class="sc">$</span>loading),<span class="dv">3</span>) </span>
 <span id="cb19-4"><a href="factor-analysis.html#cb19-4" tabindex="-1"></a><span class="fu">kable</span>(lmat1, <span class="at">caption =</span> <span class="st">&quot;Factor Loading with Rotation&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-7">Table 7.3: </span>Factor Loading with Rotation</caption>
+<caption><span id="tab:unnamed-chunk-2">Table 7.3: </span>Factor Loading with Rotation</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
@@ -1600,7 +1600,7 @@ Figure 7.2: Determine the Number of Common Factors
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="factor-analysis.html#cb21-1" tabindex="-1"></a>fscore <span class="ot">&lt;-</span> <span class="fu">round</span>(mmle1<span class="sc">$</span>scores,<span class="dv">3</span>) <span class="co">#factor scores</span></span>
 <span id="cb21-2"><a href="factor-analysis.html#cb21-2" tabindex="-1"></a><span class="fu">kable</span>(fscore[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,], <span class="at">caption =</span> <span class="st">&quot;Factor Scores for ten athletes&quot;</span>) </span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-9">Table 7.4: </span>Factor Scores for ten athletes</caption>
+<caption><span id="tab:unnamed-chunk-4">Table 7.4: </span>Factor Scores for ten athletes</caption>
 <thead>
 <tr class="header">
 <th align="right">ML2</th>

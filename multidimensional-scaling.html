@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-01-02" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -411,21 +411,21 @@ Non-metric scaling methods do not use the actual magnitude of <span class="math 
 <span id="cb1-3"><a href="multidimensional-scaling.html#cb1-3" tabindex="-1"></a>y <span class="ot">&lt;-</span> loc[,<span class="dv">2</span>]</span>
 <span id="cb1-4"><a href="multidimensional-scaling.html#cb1-4" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;n&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">asp=</span><span class="dv">1</span>)</span>
 <span id="cb1-5"><a href="multidimensional-scaling.html#cb1-5" tabindex="-1"></a><span class="fu">text</span>(x,y,<span class="fu">rownames</span>(loc),<span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-2-1.png" width="80%" /></p>
+<p><img src="Plots/eurodist-1.png" width="80%" /></p>
 <p>Does it make sense? We would expect Stockholm to be the most northern city of the bunch and Athens to be the most southern. Let’s simply multiply the second column by -1. Plot of recovered from the distances gives a reasonably accurate representation of the actual locations of the European cities.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="multidimensional-scaling.html#cb2-1" tabindex="-1"></a>loc<span class="ot">=</span><span class="fu">cmdscale</span>(eurodist) <span class="co"># metric scaling</span></span>
 <span id="cb2-2"><a href="multidimensional-scaling.html#cb2-2" tabindex="-1"></a>x<span class="ot">=</span>loc[,<span class="dv">1</span>]</span>
 <span id="cb2-3"><a href="multidimensional-scaling.html#cb2-3" tabindex="-1"></a>y<span class="ot">=</span><span class="sc">-</span>loc[,<span class="dv">2</span>]</span>
 <span id="cb2-4"><a href="multidimensional-scaling.html#cb2-4" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;n&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;&quot;</span>,<span class="at">asp=</span><span class="dv">1</span>)</span>
 <span id="cb2-5"><a href="multidimensional-scaling.html#cb2-5" tabindex="-1"></a><span class="fu">text</span>(x,y,<span class="fu">rownames</span>(loc),<span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-3-1.png" width="80%" /></p>
+<p><img src="Plots/eurodistmetrics-1.png" width="80%" /></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="multidimensional-scaling.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb3-2"><a href="multidimensional-scaling.html#cb3-2" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">isoMDS</span>(eurodist,<span class="at">k=</span><span class="dv">2</span>, <span class="at">trace=</span>F) <span class="co"># non-metric scaling</span></span>
 <span id="cb3-3"><a href="multidimensional-scaling.html#cb3-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> fit<span class="sc">$</span>points[,<span class="dv">1</span>]</span>
 <span id="cb3-4"><a href="multidimensional-scaling.html#cb3-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span>fit<span class="sc">$</span>points[,<span class="dv">2</span>]</span>
 <span id="cb3-5"><a href="multidimensional-scaling.html#cb3-5" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">&quot;n&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;&quot;</span>)</span>
 <span id="cb3-6"><a href="multidimensional-scaling.html#cb3-6" tabindex="-1"></a><span class="fu">text</span>(x,y,<span class="fu">rownames</span>(loc),<span class="at">cex=</span><span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-3-2.png" width="80%" /></p>
+<p><img src="Plots/eurodistmetrics-2.png" width="80%" /></p>
 <p></p>
 </div>
 <div id="revisit-learning-outcomes-3" class="section level2 unnumbered hasAnchor">

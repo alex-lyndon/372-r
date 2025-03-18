@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-01-02" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -436,7 +436,7 @@ As a result, the cluster dendrogram is as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="clustering-analysis.html#cb3-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="clustering-analysis.html#cb3-2" tabindex="-1"></a>shcm <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(x),<span class="at">method=</span><span class="st">&quot;single&quot;</span>)</span>
 <span id="cb3-3"><a href="clustering-analysis.html#cb3-3" tabindex="-1"></a><span class="fu">plot</span>(shcm, <span class="at">ylab=</span><span class="st">&quot;Distance&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Variables&quot;</span>,<span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-3-1.png" width="65%" /></p>
+<p><img src="Plots/dendro1-1.png" width="65%" /></p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Conduct a hierarchical clustering with complete linkage.</li>
 </ol>
@@ -463,7 +463,7 @@ As a result, the cluster dendrogram is as follows:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="clustering-analysis.html#cb4-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
 <span id="cb4-2"><a href="clustering-analysis.html#cb4-2" tabindex="-1"></a>chcm <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(x),<span class="at">method=</span><span class="st">&quot;complete&quot;</span>)</span>
 <span id="cb4-3"><a href="clustering-analysis.html#cb4-3" tabindex="-1"></a><span class="fu">plot</span>(chcm, <span class="at">ylab=</span><span class="st">&quot;Distance&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Variables&quot;</span>,<span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-4-1.png" width="65%" /></p>
+<p><img src="Plots/dendro2-1.png" width="65%" /></p>
 <ol start="4" style="list-style-type: lower-alpha">
 <li>Conduct a hierarchical clustering with average linkage.</li>
 </ol>
@@ -507,7 +507,7 @@ As a result, the cluster dendrogram is as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="clustering-analysis.html#cb5-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">9</span>,<span class="dv">6</span>,<span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="clustering-analysis.html#cb5-2" tabindex="-1"></a>ahcm <span class="ot">&lt;-</span> <span class="fu">hclust</span>(<span class="fu">dist</span>(x),<span class="at">method=</span><span class="st">&quot;average&quot;</span>)</span>
 <span id="cb5-3"><a href="clustering-analysis.html#cb5-3" tabindex="-1"></a><span class="fu">plot</span>(ahcm, <span class="at">ylab=</span><span class="st">&quot;Distance&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;Variables&quot;</span>,<span class="at">hang=</span><span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-5-1.png" width="65%" /></p>
+<p><img src="Plots/dendro3-1.png" width="65%" /></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="clustering-analysis.html#cb6-1" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">cutree</span>(ahcm,<span class="dv">2</span>)</span>
 <span id="cb6-2"><a href="clustering-analysis.html#cb6-2" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">cutree</span>(ahcm,<span class="dv">3</span>)</span></code></pre></div>
 <p>This dendrogram tells us that cutting at distance=5 results in two clusters <span class="math inline">\(\{x_3\}, \{x_1,x_4,x_2,x_5\}\)</span>; cutting at distance=3 results in three clusters <span class="math inline">\(\{x_3\}, \{x_1,x_4\}, \{x_2,x_5\}\)</span>.</p>
@@ -645,7 +645,7 @@ w_{ij}=\left\{
 ##  [9] &quot;df&quot;             &quot;bic&quot;            &quot;icl&quot;            &quot;hypvol&quot;        
 ## [13] &quot;parameters&quot;     &quot;z&quot;              &quot;classification&quot; &quot;uncertainty&quot;</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="clustering-analysis.html#cb9-1" tabindex="-1"></a><span class="fu">plot</span>(tt,<span class="at">what=</span><span class="st">&quot;classification&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-8-1.png" width="65%" /></p>
+<p><img src="Plots/modelbasediris-1.png" width="65%" /></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="clustering-analysis.html#cb10-1" tabindex="-1"></a>tt<span class="sc">$</span>classification</span></code></pre></div>
 <pre><code>##   [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 ##  [38] 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
@@ -662,7 +662,7 @@ w_{ij}=\left\{
 ##  [9] &quot;df&quot;             &quot;bic&quot;            &quot;icl&quot;            &quot;hypvol&quot;        
 ## [13] &quot;parameters&quot;     &quot;z&quot;              &quot;classification&quot; &quot;uncertainty&quot;</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="clustering-analysis.html#cb14-1" tabindex="-1"></a><span class="fu">plot</span>(mb,<span class="at">what=</span><span class="st">&quot;classification&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-9-1.png" width="65%" /></p>
+<p><img src="Plots/vvviris-1.png" width="65%" /></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="clustering-analysis.html#cb15-1" tabindex="-1"></a><span class="fu">table</span>(iris[,yind],mb<span class="sc">$</span>classification)</span></code></pre></div>
 <pre><code>##             
 ##               1  2  3
@@ -728,7 +728,7 @@ w_{ij}=\left\{
 <div id="the-elbow-plot-method" class="section level3 hasAnchor" number="9.3.1">
 <h3><span class="header-section-number">9.3.1</span> The Elbow Plot Method<a href="clustering-analysis.html#the-elbow-plot-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We use the <span class="math inline">\(\verb`elbow plot`\)</span> (scree plot) to help identify the most proper value of <span class="math inline">\(K\)</span>. Recall the decomposition of the total variation of the observations (SST) into between-group variation (SSB) and within-group variation (SSW), i.e., <span class="math inline">\(SST=SSB+SSW\)</span>. If all objects are in one group, then <span class="math inline">\(SSW=SST\)</span>. The within-group variation drops when number of clusters <span class="math inline">\(K\)</span> increases. The <span class="math inline">\(\verb`elbow plot`\)</span> plots SSW versus # of groups, we choose the value of <span class="math inline">\(K\)</span> at where the plot starts flat. Recall the resulting dendrogram of clustering the observations <span class="math inline">\(x_1=5, x_2=3, x_3=9, x_4=6, x_5=1\)</span> using hierarchical clustering with average linkage is</p>
-<p><img src="Plots/unnamed-chunk-10-1.png" width="65%" /></p>
+<p><img src="Plots/elbowplot-1.png" width="65%" /></p>
 <p>To draw the scree plot, we calculate the within-cluster variation SSW for different values of <span class="math inline">\(K\)</span>:</p>
 <ul>
 <li>When <span class="math inline">\(K=2\)</span>, the two clusters are <span class="math inline">\(\{x_1, x_4, x_2, x_5\}\)</span> and <span class="math inline">\(\{x_3\}\)</span>. The centers for the two groups are <span class="math inline">\(m_1=\frac{5+6+3+1}{4}=3.75\)</span> and <span class="math inline">\(m_2=9\)</span>. And the
@@ -746,7 +746,7 @@ SSW=[(5-5.5)^2+(6-5.5)^2]+0+0+0=0.5
 </ul>
 <p>The scree plot is given by</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="clustering-analysis.html#cb17-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">c</span>(<span class="fl">14.75</span>,<span class="fl">2.5</span>,<span class="fl">0.5</span>),<span class="at">xlab=</span><span class="st">&quot;K: # of Groups&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;SSW: Within Sum of Squares&quot;</span>, <span class="at">cex=</span><span class="fl">1.5</span>,<span class="at">type=</span><span class="st">&quot;o&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-11-1.png" width="65%" /></p>
+<p><img src="Plots/scree-1.png" width="65%" /></p>
 <p>The scree plot shows that curve becomes flat at <span class="math inline">\(K=3\)</span>; therefore, <span class="math inline">\(K=3\)</span> is a proper number of clusters. We can calculate the within-group sum of squares using K-means:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="clustering-analysis.html#cb18-1" tabindex="-1"></a>kvec <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span></span>
 <span id="cb18-2"><a href="clustering-analysis.html#cb18-2" tabindex="-1"></a>klen <span class="ot">&lt;-</span> <span class="fu">length</span>(kvec)</span>
@@ -756,7 +756,7 @@ SSW=[(5-5.5)^2+(6-5.5)^2]+0+0+0=0.5
 <span id="cb18-6"><a href="clustering-analysis.html#cb18-6" tabindex="-1"></a>  wss[i] <span class="ot">&lt;-</span> kmeans_result<span class="sc">$</span>tot.withinss</span>
 <span id="cb18-7"><a href="clustering-analysis.html#cb18-7" tabindex="-1"></a>}</span>
 <span id="cb18-8"><a href="clustering-analysis.html#cb18-8" tabindex="-1"></a><span class="fu">plot</span>(kvec, wss, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Elbow Method&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Number of Clusters&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Within-cluster Sum of Squares&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-12-1.png" width="65%" /></p>
+<p><img src="Plots/kscree2-1.png" width="65%" /></p>
 </div>
 <div id="the-silhouette-score" class="section level3 hasAnchor" number="9.3.2">
 <h3><span class="header-section-number">9.3.2</span> The Silhouette Score<a href="clustering-analysis.html#the-silhouette-score" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -776,7 +776,7 @@ where <span class="math inline">\(a(i)\)</span> is the average distance from the
 <span id="cb19-9"><a href="clustering-analysis.html#cb19-9" tabindex="-1"></a>  ss[i] <span class="ot">&lt;-</span> obj<span class="sc">$</span>avg.width</span>
 <span id="cb19-10"><a href="clustering-analysis.html#cb19-10" tabindex="-1"></a>}</span>
 <span id="cb19-11"><a href="clustering-analysis.html#cb19-11" tabindex="-1"></a><span class="fu">plot</span>(kvec, ss, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Silhouette Method&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Number of Clusters&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Average Silhouette Width&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-13-1.png" width="65%" />
+<p><img src="Plots/silho-1.png" width="65%" />
 Since <span class="math inline">\(K=2\)</span> gives the largest silhouette score, the optimal number of clusters is two.</p>
 </div>
 <div id="gap-statistics" class="section level3 hasAnchor" number="9.3.3">
@@ -799,11 +799,11 @@ where <span class="math inline">\(W_k\)</span> is the total intra-cluster variat
 <span id="cb20-4"><a href="clustering-analysis.html#cb20-4" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="dv">5</span>]), kmeans, <span class="at">method =</span> <span class="st">&quot;wss&quot;</span>) <span class="sc">+</span></span>
 <span id="cb20-5"><a href="clustering-analysis.html#cb20-5" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">4</span>, <span class="at">linetype =</span> <span class="dv">2</span>)<span class="sc">+</span></span>
 <span id="cb20-6"><a href="clustering-analysis.html#cb20-6" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Elbow method&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-14-1.png" width="65%" /></p>
+<p><img src="Plots/standardizeftrs-1.png" width="65%" /></p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="clustering-analysis.html#cb21-1" tabindex="-1"></a><span class="co"># Silhouette method</span></span>
 <span id="cb21-2"><a href="clustering-analysis.html#cb21-2" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="dv">5</span>]), kmeans, <span class="at">method =</span> <span class="st">&quot;silhouette&quot;</span>)<span class="sc">+</span></span>
 <span id="cb21-3"><a href="clustering-analysis.html#cb21-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Silhouette method&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-14-2.png" width="65%" /></p>
+<p><img src="Plots/standardizeftrs-2.png" width="65%" /></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="clustering-analysis.html#cb22-1" tabindex="-1"></a><span class="co"># Gap statistic method</span></span>
 <span id="cb22-2"><a href="clustering-analysis.html#cb22-2" tabindex="-1"></a><span class="co"># nboot = 50 to keep the function speedy. </span></span>
 <span id="cb22-3"><a href="clustering-analysis.html#cb22-3" tabindex="-1"></a><span class="co"># recommended value: nboot= 500 for your analysis.</span></span>
@@ -811,17 +811,17 @@ where <span class="math inline">\(W_k\)</span> is the total intra-cluster variat
 <span id="cb22-5"><a href="clustering-analysis.html#cb22-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
 <span id="cb22-6"><a href="clustering-analysis.html#cb22-6" tabindex="-1"></a><span class="fu">fviz_nbclust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="dv">5</span>]), kmeans, <span class="at">nstart =</span> <span class="dv">25</span>,  <span class="at">method =</span> <span class="st">&quot;gap_stat&quot;</span>, <span class="at">nboot =</span> <span class="dv">50</span>)<span class="sc">+</span></span>
 <span id="cb22-7"><a href="clustering-analysis.html#cb22-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Gap statistic method&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-14-3.png" width="65%" /></p>
+<p><img src="Plots/standardizeftrs-3.png" width="65%" /></p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="clustering-analysis.html#cb23-1" tabindex="-1"></a><span class="co">#voting of multiple indices</span></span>
 <span id="cb23-2"><a href="clustering-analysis.html#cb23-2" tabindex="-1"></a>nb <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="dv">5</span>]), <span class="at">distance =</span> <span class="st">&quot;euclidean&quot;</span>,<span class="at">min.nc=</span><span class="dv">2</span>, <span class="at">max.nc=</span><span class="dv">10</span>, </span>
 <span id="cb23-3"><a href="clustering-analysis.html#cb23-3" tabindex="-1"></a>           <span class="at">method =</span> <span class="st">&quot;kmeans&quot;</span>,<span class="at">index =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="Plots/multipleindices-1.png" width="672" /></p>
 <pre><code>## *** : The Hubert index is a graphical method of determining the number of clusters.
 ##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
 ##                 significant increase of the value of the measure i.e the significant peak in Hubert
 ##                 index second differences plot. 
 ## </code></pre>
-<p><img src="Plots/unnamed-chunk-15-2.png" width="672" /></p>
+<p><img src="Plots/multipleindices-2.png" width="672" /></p>
 <pre><code>## *** : The D index is a graphical method of determining the number of clusters. 
 ##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
 ##                 second differences plot) that corresponds to a significant increase of the value of
@@ -843,13 +843,13 @@ where <span class="math inline">\(W_k\)</span> is the total intra-cluster variat
 ## *******************************************************************</code></pre>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="clustering-analysis.html#cb26-1" tabindex="-1"></a>nb2 <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(<span class="fu">scale</span>(iris[,<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>)]), <span class="at">distance =</span> <span class="st">&quot;euclidean&quot;</span>,<span class="at">min.nc=</span><span class="dv">2</span>, <span class="at">max.nc=</span><span class="dv">10</span>, </span>
 <span id="cb26-2"><a href="clustering-analysis.html#cb26-2" tabindex="-1"></a>            <span class="at">method =</span> <span class="st">&quot;kmeans&quot;</span>,<span class="at">index =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-15-3.png" width="672" /></p>
+<p><img src="Plots/multipleindices-3.png" width="672" /></p>
 <pre><code>## *** : The Hubert index is a graphical method of determining the number of clusters.
 ##                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
 ##                 significant increase of the value of the measure i.e the significant peak in Hubert
 ##                 index second differences plot. 
 ## </code></pre>
-<p><img src="Plots/unnamed-chunk-15-4.png" width="672" /></p>
+<p><img src="Plots/multipleindices-4.png" width="672" /></p>
 <pre><code>## *** : The D index is a graphical method of determining the number of clusters. 
 ##                 In the plot of D index, we seek a significant knee (the significant peak in Dindex
 ##                 second differences plot) that corresponds to a significant increase of the value of

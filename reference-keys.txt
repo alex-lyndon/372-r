@@ -165,3 +165,8 @@ tab:unnamed-chunk-23
 tab:unnamed-chunk-5
 tab:unnamed-chunk-9
 tab:unnamed-chunk-34
+fig:bivariateNormalDists
+tab:tidyoutputmanova
+tab:olympic
+tab:unnamed-chunk-2
+tab:bostondata

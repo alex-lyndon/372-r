@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-01-02" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1580,7 +1580,7 @@ E[g(Y)]=\sum_{\mbox{all } y} g(y) p(y).
 \mbox{Var}{(Y)}=E[(Y-\mu)^2]
 \]</span>
 and denoted as <span class="math inline">\(\sigma^2\)</span>.</li>
-<li>The positive square root of <span class="math inline">\(\mbox{Var}{Y}\)</span> is the {} of <span class="math inline">\(Y\)</span>, denoted as <span class="math inline">\(\sigma\)</span>. That is
+<li>The positive square root of <span class="math inline">\(Var{Y}\)</span> is the {<span class="math inline">\(\textit{standard deviation}\)</span>} of <span class="math inline">\(Y\)</span>, denoted as <span class="math inline">\(\sigma\)</span>. That is
 <span class="math display">\[
 \sigma=\sqrt{E[(Y-\mu)^2]}.
 \]</span></li>
@@ -1633,15 +1633,14 @@ p(y)&amp;\quad 0.4&amp;\quad 0.4 \quad&amp;\quad0.2\quad\\
 \hline
 \end{array}
 \]</span></p>
-<p>Find the expected value and variance of <span class="math inline">\(g(Y)=2Y+1\)</span>.
-</p>
+<p>Find the expected value and variance of <span class="math inline">\(g(Y)=2Y+1\)</span>.</p>
 </div>
 <div id="continuous-random-variables" class="section level3 hasAnchor" number="2.4.3">
 <h3><span class="header-section-number">2.4.3</span> Continuous Random Variables<a href="intro.html#continuous-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We use the so-called <em>density curve</em> and the area under the curve to describe continuous random variables. Let <span class="math inline">\(f(y)\)</span> be the probability density function (pdf) of random variable <span class="math inline">\(Y\)</span>, <span class="math inline">\(f(y)\)</span> has the following properties:
-* The total area under the curve is 1. That is <span class="math inline">\(\int f(y)dy=1\)</span>.
-* The entire curve is above the horizontal axis. That is <span class="math inline">\(f(y)\ge 0\)</span>.
-* Area under the curve=probability. For example, <span class="math inline">\(P(Y\le t)=\int_{-\infty}^tf(y)dy\)</span>; <span class="math inline">\(P(a&lt;Y\le b)=P(a\le Y\le b)=P(a&lt;Y&lt; b)=P(a&lt;Y&lt;b)=\int_{a}^b f(y)dy\)</span>.
+- The total area under the curve is 1. That is <span class="math inline">\(\int f(y)dy=1\)</span>.
+- The entire curve is above the horizontal axis. That is <span class="math inline">\(f(y)\ge 0\)</span>.
+- Area under the curve=probability. For example, <span class="math inline">\(P(Y\le t)=\int_{-\infty}^tf(y)dy\)</span>; <span class="math inline">\(P(a&lt;Y\le b)=P(a\le Y\le b)=P(a&lt;Y&lt; b)=P(a&lt;Y&lt;b)=\int_{a}^b f(y)dy\)</span>.
 * <span class="math inline">\(P(Y=a)=0\)</span>.</p>
 <p>Recall that the density function of a normal distribution <span class="math inline">\(Y\sim N(\mu, \sigma)\)</span> is given by
 <span class="math display">\[
@@ -1664,7 +1663,6 @@ provided that the integral exists.</li>
 \mbox{Var}(Y)=\mbox{E}(Y^2)-[\mbox{E}(Y)]^2, \text{ with } \mbox{E}(Y^2)=\int_{-\infty}^{\infty} y^2f(y)dy
 \]</span></li>
 </ul>
-<p><img src="Plots/unnamed-chunk-4-1.png" width="672" /></p>
 <p><strong>Example</strong>: Binomial Distribution</p>
 <p>A quiz consists of 10 multiple choices questions with four choices A, B, C and D. I did not study and randomly picked one answer for each question.</p>
 <ol style="list-style-type: lower-alpha">

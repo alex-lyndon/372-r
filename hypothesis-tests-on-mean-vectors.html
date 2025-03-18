@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-01-02" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -546,13 +546,13 @@ should follow a standard normal distribution. If we plot the normal scores <span
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="hypothesis-tests-on-mean-vectors.html#cb9-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">75</span>, <span class="dv">40</span>)</span>
 <span id="cb9-2"><a href="hypothesis-tests-on-mean-vectors.html#cb9-2" tabindex="-1"></a><span class="fu">qqnorm</span>(x, <span class="at">main=</span><span class="st">&quot;Normal QQ Plot of Grade&quot;</span>)</span>
 <span id="cb9-3"><a href="hypothesis-tests-on-mean-vectors.html#cb9-3" tabindex="-1"></a><span class="fu">qqline</span>(x)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-3-1.png" width="70%" /></p>
-<p>If we use the ,</p>
+<p><img src="Plots/qqplotgrade-1.png" width="70%" /></p>
+<p>If we use the <span class="math inline">\(\texttt{ggplot2}\)</span>,</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="hypothesis-tests-on-mean-vectors.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb10-2"><a href="hypothesis-tests-on-mean-vectors.html#cb10-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">grade=</span><span class="fu">c</span>(<span class="dv">75</span>, <span class="dv">80</span>, <span class="dv">90</span>, <span class="dv">85</span>, <span class="dv">75</span>, <span class="dv">40</span>))</span>
 <span id="cb10-3"><a href="hypothesis-tests-on-mean-vectors.html#cb10-3" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">sample =</span> grade)) <span class="sc">+</span> <span class="fu">stat_qq</span>() <span class="sc">+</span> <span class="fu">stat_qq_line</span>()<span class="sc">+</span></span>
 <span id="cb10-4"><a href="hypothesis-tests-on-mean-vectors.html#cb10-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Normal QQ Plot for Grade&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Theoretical Quantiles&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sample Quantiles&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-4-1.png" width="60%" /></p>
+<p><img src="Plots/ggplotQQ-1.png" width="60%" /></p>
 <p>The six points do not fall in a straight line; the data do not seem to come from a normal distribution. The point on the lower left corner might be an outlier. If we remove this potential outlier, the other five points roughly fall on a straight line.</p>
 <p><img src="Plots/TableIII.png" width="75%" style="display: block; margin: auto;" /></p>
 <p>The following section explains how the normal scores given in Table III were calculated.</p>
@@ -723,7 +723,7 @@ Figure 5.3: Scatter Plot Matrix for Setosa
 <span id="cb21-21"><a href="hypothesis-tests-on-mean-vectors.html#cb21-21" tabindex="-1"></a><span class="fu">plot</span>(qtheo_chisq, qobs_chisq, <span class="at">xlab=</span><span class="st">&quot;Theoretical Quantile&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Observed Quantile&quot;</span>, <span class="at">pch=</span><span class="dv">16</span>)</span>
 <span id="cb21-22"><a href="hypothesis-tests-on-mean-vectors.html#cb21-22" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
 <span id="cb21-23"><a href="hypothesis-tests-on-mean-vectors.html#cb21-23" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Chi-square Q-Q Plot for Admission Data&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-8-1.png" width="90%" /></p>
+<p><img src="Plots/distancefunctions-1.png" width="90%" /></p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="hypothesis-tests-on-mean-vectors.html#cb22-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <ul>
 <li>Based on graphs above, address whether the bivariate normality assumption is satisfied.
@@ -824,7 +824,7 @@ Use <span class="math inline">\(T^2=(\mathbf{\bar x}-\boldsymbol{\mu}_0)^T\mathb
 <span id="cb31-19"><a href="hypothesis-tests-on-mean-vectors.html#cb31-19" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span>cib[<span class="dv">1</span>,],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
 <span id="cb31-20"><a href="hypothesis-tests-on-mean-vectors.html#cb31-20" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>cib[<span class="dv">2</span>,],<span class="at">lty=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
 <span id="cb31-21"><a href="hypothesis-tests-on-mean-vectors.html#cb31-21" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">645</span>,<span class="fl">3.7</span>,<span class="fu">c</span>(<span class="st">&quot;Simultaneous&quot;</span>,<span class="st">&quot;Bonferroni&quot;</span>),<span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-11-1.png" width="70%" /></p>
+<p><img src="Plots/confintervalsb-1.png" width="70%" /></p>
 </div>
 </div>
 <div id="hypothesis-test-for-two-mean-vectors" class="section level2 hasAnchor" number="5.2">
@@ -1085,7 +1085,7 @@ T^2&amp;=[(\mathbf{\bar x_1}-\mathbf{\bar x_2})-(\boldsymbol{\mu_1}-\boldsymbol{
 <span id="cb34-22"><a href="hypothesis-tests-on-mean-vectors.html#cb34-22" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Chi-squre Q-Q Plot for Non-admitted&quot;</span>)</span>
 <span id="cb34-23"><a href="hypothesis-tests-on-mean-vectors.html#cb34-23" tabindex="-1"></a><span class="fu">chiqq</span>(adf1)</span>
 <span id="cb34-24"><a href="hypothesis-tests-on-mean-vectors.html#cb34-24" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Chi-squre Q-Q Plot for Admitted&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="Plots/chiassumpt-1.png" width="672" /></p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="hypothesis-tests-on-mean-vectors.html#cb35-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 <p>Both chi-square Q-Q plots do not show strong evidence against the bivariate normality assumption for both the non-admitted and admitted groups. We use Box’s M-test for Homogeneity of Covariance Matrices with <span class="math inline">\(H_0: \boldsymbol{\Sigma}_1=\boldsymbol{\Sigma}_2\)</span>.</p>
 <div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="hypothesis-tests-on-mean-vectors.html#cb36-1" tabindex="-1"></a><span class="fu">library</span>(biotools)</span>
@@ -1611,7 +1611,7 @@ compared with <span class="math inline">\(\chi^2_{p(k-1)}(0.05)=\chi^2_4(0.05)=9
 <span id="cb56-6"><a href="hypothesis-tests-on-mean-vectors.html#cb56-6" tabindex="-1"></a><span class="co"># Use knitr to create a table of the output</span></span>
 <span id="cb56-7"><a href="hypothesis-tests-on-mean-vectors.html#cb56-7" tabindex="-1"></a><span class="fu">kable</span>(manova_fit, <span class="at">caption=</span><span class="st">&quot;Manova Table for Iris Data&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-23">Table 5.1: </span>Manova Table for Iris Data</caption>
+<caption><span id="tab:tidyoutputmanova">Table 5.1: </span>Manova Table for Iris Data</caption>
 <thead>
 <tr class="header">
 <th align="left">term</th>

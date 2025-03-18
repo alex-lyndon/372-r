@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-01-02" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -428,7 +428,7 @@ which is even larger than the misclassification rate <span class="math inline">\
 <li>Middle panel: the model has a good discriminant power, it separates the two classes quite well. The area under the ROC curve is 0.8726.</li>
 <li>Right panel: the model has a perfect discriminant power, it separates the two classes perfectly. The area under the ROC curve is close to 1.</li>
 </ul>
-<p><img src="Plots/unnamed-chunk-2-1.png" width="33%" /><img src="Plots/unnamed-chunk-2-2.png" width="33%" /><img src="Plots/unnamed-chunk-2-3.png" width="33%" />
+<p><img src="Plots/roccurve-1.png" width="33%" /><img src="Plots/roccurve-2.png" width="33%" /><img src="Plots/roccurve-3.png" width="33%" />
 The area under the ROC curve equals the probability of correctly ranking a random class-1 and class-0 pair. The larger the area the better. If a classifier assigns score to the subjects randomly or by guessing, the AUC is 0.5, any classifier with an AUC below 0.5 is useless. The perfect classifier has AUC 1.</p>
 </div>
 <div id="overfitting-and-cross-validation" class="section level2 hasAnchor" number="8.3">
@@ -505,7 +505,7 @@ Figure 8.4: Basic Idea of KNN
 <span id="cb3-3"><a href="discriminant-analysis-and-classification.html#cb3-3" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">k =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>) <span class="co">#grid of k</span></span>
 <span id="cb3-4"><a href="discriminant-analysis-and-classification.html#cb3-4" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">train</span>(training, training_labels, <span class="at">method =</span> <span class="st">&quot;knn&quot;</span>, <span class="at">tuneGrid =</span> grid, <span class="at">trControl =</span> ctrl)</span>
 <span id="cb3-5"><a href="discriminant-analysis-and-classification.html#cb3-5" tabindex="-1"></a><span class="fu">plot</span>(model)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-3-1.png" width="60%" /></p>
+<p><img src="Plots/traintestiris-1.png" width="60%" /></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="discriminant-analysis-and-classification.html#cb4-1" tabindex="-1"></a><span class="fu">print</span>(model<span class="sc">$</span>bestTune<span class="sc">$</span>k) <span class="co"># Print the best k value</span></span></code></pre></div>
 <pre><code>## [1] 16</code></pre>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="discriminant-analysis-and-classification.html#cb6-1" tabindex="-1"></a><span class="co">#accuracy on the testing set</span></span>
@@ -592,7 +592,7 @@ In general, there is no closed form solutions and Newton-Raphson method will be 
 <p>From the scatter plot matrix, the variables <span class="math inline">\(\texttt{Petal Length}\)</span> and <span class="math inline">\(\texttt{Petal Width}\)</span> can separate the two species very well. <span class="math inline">\(\texttt{Sepal Length}\)</span> and <span class="math inline">\(\texttt{Petal Length}\)</span> are highly correlated, so are <span class="math inline">\(\texttt{Petal Length}\)</span> and <span class="math inline">\(\texttt{Petal Width}\)</span>.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="discriminant-analysis-and-classification.html#cb16-1" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
 <span id="cb16-2"><a href="discriminant-analysis-and-classification.html#cb16-2" tabindex="-1"></a><span class="fu">ggpairs</span>(training[,<span class="sc">-</span><span class="dv">5</span>],<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">color =</span> training[,<span class="dv">5</span>]))</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="Plots/ggally-1.png" width="672" /></p>
 <p>Remove the variable <span class="math inline">\(\texttt{Petal Length}\)</span> and refit the logistic model, we have.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="discriminant-analysis-and-classification.html#cb17-1" tabindex="-1"></a>logitfit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Species<span class="sc">~</span>.,<span class="at">data=</span>training[,<span class="sc">-</span><span class="dv">3</span>],<span class="at">family=</span><span class="st">&quot;binomial&quot;</span>) </span>
 <span id="cb17-2"><a href="discriminant-analysis-and-classification.html#cb17-2" tabindex="-1"></a><span class="fu">summary</span>(logitfit)</span></code></pre></div>
@@ -1512,12 +1512,12 @@ We can also summarize the procedure in a table.</p>
 <span id="cb85-2"><a href="discriminant-analysis-and-classification.html#cb85-2" tabindex="-1"></a>mf <span class="ot">&lt;-</span> <span class="fu">glm</span>(output<span class="sc">~</span>age<span class="sc">+</span>sex<span class="sc">+</span>trtbps<span class="sc">+</span>sex<span class="sc">*</span>trtbps,data <span class="ot">&lt;-</span> hdf,<span class="at">family=</span>binomial)</span>
 <span id="cb85-3"><a href="discriminant-analysis-and-classification.html#cb85-3" tabindex="-1"></a>res.mf <span class="ot">&lt;-</span> <span class="fu">simulateResiduals</span>(mf)</span>
 <span id="cb85-4"><a href="discriminant-analysis-and-classification.html#cb85-4" tabindex="-1"></a><span class="fu">plot</span>(res.mf)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-23-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="Plots/resids-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="discriminant-analysis-and-classification.html#cb86-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
 <span id="cb86-2"><a href="discriminant-analysis-and-classification.html#cb86-2" tabindex="-1"></a><span class="fu">plotResiduals</span>(res.mf, hdf<span class="sc">$</span>age)</span>
 <span id="cb86-3"><a href="discriminant-analysis-and-classification.html#cb86-3" tabindex="-1"></a><span class="fu">plotResiduals</span>(res.mf, hdf<span class="sc">$</span>sex)</span>
 <span id="cb86-4"><a href="discriminant-analysis-and-classification.html#cb86-4" tabindex="-1"></a><span class="fu">plotResiduals</span>(res.mf, hdf<span class="sc">$</span>trtbps)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-24-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p><img src="Plots/plotresids-1.png" width="864" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="discriminant-analysis-and-classification.html#cb87-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
 </div>
 <div id="preditive-power-accuracy-and-roc-curve" class="section level3 hasAnchor" number="8.9.2">
@@ -1542,11 +1542,11 @@ We can also summarize the procedure in a table.</p>
 <span id="cb96-2"><a href="discriminant-analysis-and-classification.html#cb96-2" tabindex="-1"></a>mf <span class="ot">&lt;-</span> <span class="fu">glm</span>(output<span class="sc">~</span>age<span class="sc">+</span>sex<span class="sc">+</span>trtbps<span class="sc">+</span>sex<span class="sc">*</span>trtbps,<span class="at">data=</span>hdf,<span class="at">family=</span>binomial)</span>
 <span id="cb96-3"><a href="discriminant-analysis-and-classification.html#cb96-3" tabindex="-1"></a>haroc <span class="ot">&lt;-</span> <span class="fu">roc.curve</span>(mf<span class="sc">$</span>fitted.values[hdf<span class="sc">$</span>output<span class="sc">==</span><span class="st">&quot;1&quot;</span>],mf<span class="sc">$</span>fitted.values[hdf<span class="sc">$</span>output<span class="sc">==</span><span class="st">&quot;0&quot;</span>],<span class="at">curve=</span>T)</span>
 <span id="cb96-4"><a href="discriminant-analysis-and-classification.html#cb96-4" tabindex="-1"></a><span class="fu">plot</span>(haroc,<span class="at">cex.lab=</span><span class="fl">1.5</span>,<span class="at">cex.axis=</span><span class="fl">1.35</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-26-1.png" width="60%" /></p>
+<p><img src="Plots/prroc-1.png" width="60%" /></p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="discriminant-analysis-and-classification.html#cb97-1" tabindex="-1"></a><span class="fu">library</span>(pROC)</span>
 <span id="cb97-2"><a href="discriminant-analysis-and-classification.html#cb97-2" tabindex="-1"></a>rocplot <span class="ot">&lt;-</span> <span class="fu">roc</span>(output <span class="sc">~</span> <span class="fu">fitted</span>(mf), <span class="at">data=</span>hdf)</span>
 <span id="cb97-3"><a href="discriminant-analysis-and-classification.html#cb97-3" tabindex="-1"></a><span class="fu">plot.roc</span>(rocplot, <span class="at">legacy.axes=</span><span class="cn">TRUE</span>) <span class="co"># Specificity on x axis if legacy.axes=F</span></span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-26-2.png" width="60%" /></p>
+<p><img src="Plots/prroc-2.png" width="60%" /></p>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="discriminant-analysis-and-classification.html#cb98-1" tabindex="-1"></a><span class="fu">auc</span>(rocplot)</span></code></pre></div>
 <pre><code>## Area under the curve: 0.7369</code></pre>
 </div>
@@ -1560,7 +1560,7 @@ We can also summarize the procedure in a table.</p>
 </ul>
 <p><span class="math inline">\(\textbf{Example}\)</span>: Gini Index</p>
 <p>Suppose there are two partitions: <span class="math inline">\(x_1=1.5\)</span> and <span class="math inline">\(x_2=2\)</span>. Calculate the Gini index for these two cuts and explain which cut is better, i.e., gives a smaller Gini index.
-<img src="Plots/unnamed-chunk-27-1.png" width="50%" /></p>
+<img src="Plots/gini-1.png" width="50%" /></p>
 <p>Keep searching and partitioning until the cut can not further improve the purity or a certain stopping criterion is met, say the number of items in each terminal node is at least 5. The pseudo-code for the algorithm is as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Start at the root node.</li>
@@ -1572,13 +1572,13 @@ We can also summarize the procedure in a table.</p>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="discriminant-analysis-and-classification.html#cb100-1" tabindex="-1"></a>ctrl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">10</span>)</span>
 <span id="cb100-2"><a href="discriminant-analysis-and-classification.html#cb100-2" tabindex="-1"></a>treem <span class="ot">&lt;-</span> <span class="fu">train</span>(Species <span class="sc">~</span> ., <span class="at">data =</span> training, <span class="at">method =</span> <span class="st">&quot;rpart&quot;</span>, <span class="at">trControl =</span> ctrl)</span>
 <span id="cb100-3"><a href="discriminant-analysis-and-classification.html#cb100-3" tabindex="-1"></a><span class="fu">plot</span>(treem)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-28-1.png" width="55%" /></p>
+<p><img src="Plots/crossval-1.png" width="55%" /></p>
 <p>To classify new observations, we just follow the paths of the tree. The resulting tree is as follows. It shows <span class="math inline">\(\texttt{Petal.Length}\)</span> is an important variable to separate the three species. Take the first flower in the training set for example, it has Petal.Length=1.4 which is smaller than 2.5, we classify as setosa. It turns out to be correct. And the accuracy for classification tree is 0.9333.</p>
 <div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="discriminant-analysis-and-classification.html#cb101-1" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
 <span id="cb101-2"><a href="discriminant-analysis-and-classification.html#cb101-2" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
 <span id="cb101-3"><a href="discriminant-analysis-and-classification.html#cb101-3" tabindex="-1"></a>final_tree <span class="ot">&lt;-</span> treem<span class="sc">$</span>finalModel <span class="co"># Extract the final tree</span></span>
 <span id="cb101-4"><a href="discriminant-analysis-and-classification.html#cb101-4" tabindex="-1"></a><span class="fu">rpart.plot</span>(final_tree) <span class="co"># Plot the tree</span></span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-29-1.png" width="55%" /></p>
+<p><img src="Plots/rpartTree-1.png" width="55%" /></p>
 <div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="discriminant-analysis-and-classification.html#cb102-1" tabindex="-1"></a>training[<span class="dv">1</span>,]</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa</code></pre>
@@ -1611,7 +1611,7 @@ We can also summarize the procedure in a table.</p>
 <span id="cb109-2"><a href="discriminant-analysis-and-classification.html#cb109-2" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
 <span id="cb109-3"><a href="discriminant-analysis-and-classification.html#cb109-3" tabindex="-1"></a>mt0 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(y<span class="sc">~</span>., <span class="at">data=</span>train, <span class="at">cp=</span><span class="dv">0</span>) <span class="co">#classification tree without pruning</span></span>
 <span id="cb109-4"><a href="discriminant-analysis-and-classification.html#cb109-4" tabindex="-1"></a><span class="fu">rpart.plot</span>(mt0)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-31-1.png" width="672" /></p>
+<p><img src="Plots/noprune-1.png" width="672" /></p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="discriminant-analysis-and-classification.html#cb110-1" tabindex="-1"></a>tab <span class="ot">&lt;-</span> mt0<span class="sc">$</span>cptable <span class="co">#CP table </span></span>
 <span id="cb110-2"><a href="discriminant-analysis-and-classification.html#cb110-2" tabindex="-1"></a><span class="fu">round</span>(tab, <span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##        CP nsplit rel error xerror   xstd
@@ -1647,7 +1647,7 @@ We can also summarize the procedure in a table.</p>
 <pre><code>## [1] 0.0007352941</code></pre>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="discriminant-analysis-and-classification.html#cb114-1" tabindex="-1"></a>mt.prune <span class="ot">&lt;-</span> <span class="fu">prune</span>(mt0,<span class="at">cp=</span>cp1) <span class="co">#prune the tree</span></span>
 <span id="cb114-2"><a href="discriminant-analysis-and-classification.html#cb114-2" tabindex="-1"></a><span class="fu">rpart.plot</span>(mt.prune)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="Plots/pruned-1.png" width="672" /></p>
 <p>Calculate the accuracy of the pruned classification tree.</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="discriminant-analysis-and-classification.html#cb115-1" tabindex="-1"></a>pred_tr <span class="ot">&lt;-</span> <span class="fu">predict</span>(mt.prune,test) <span class="co">#return prob of each class</span></span>
 <span id="cb115-2"><a href="discriminant-analysis-and-classification.html#cb115-2" tabindex="-1"></a><span class="fu">head</span>(pred_tr) </span></code></pre></div>
@@ -1675,7 +1675,7 @@ We can also summarize the procedure in a table.</p>
 <span id="cb121-2"><a href="discriminant-analysis-and-classification.html#cb121-2" tabindex="-1"></a>bdf <span class="ot">&lt;-</span> Boston <span class="co">#the data set is in R</span></span>
 <span id="cb121-3"><a href="discriminant-analysis-and-classification.html#cb121-3" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(bdf), <span class="at">caption =</span> <span class="st">&quot;Boston Housing Data&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-34">Table 8.1: </span>Boston Housing Data</caption>
+<caption><span id="tab:bostondata">Table 8.1: </span>Boston Housing Data</caption>
 <colgroup>
 <col width="10%" />
 <col width="3%" />
@@ -1816,7 +1816,7 @@ We can also summarize the procedure in a table.</p>
 <span id="cb122-4"><a href="discriminant-analysis-and-classification.html#cb122-4" tabindex="-1"></a>test <span class="ot">&lt;-</span> bdf[flds[[<span class="dv">3</span>]],]</span>
 <span id="cb122-5"><a href="discriminant-analysis-and-classification.html#cb122-5" tabindex="-1"></a>mrt <span class="ot">&lt;-</span> <span class="fu">rpart</span>(medv<span class="sc">~</span>.,<span class="at">data=</span>train,<span class="at">cp=</span><span class="dv">0</span>) <span class="co">#fit a big tree without pruning</span></span>
 <span id="cb122-6"><a href="discriminant-analysis-and-classification.html#cb122-6" tabindex="-1"></a><span class="fu">rpart.plot</span>(mrt) <span class="co">#plot the tree without pruning</span></span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-35-1.png" width="672" /></p>
+<p><img src="Plots/bostonRegressiontree-1.png" width="672" /></p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="discriminant-analysis-and-classification.html#cb123-1" tabindex="-1"></a>(tab <span class="ot">&lt;-</span> mrt<span class="sc">$</span>cptable) <span class="co">#CP table</span></span></code></pre></div>
 <pre><code>##              CP nsplit rel error    xerror       xstd
 ## 1  0.4820793362      0 1.0000000 1.0089155 0.10216415
@@ -1852,7 +1852,7 @@ We can also summarize the procedure in a table.</p>
 <pre><code>## [1] 0.003529659</code></pre>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="discriminant-analysis-and-classification.html#cb127-1" tabindex="-1"></a>mrt.prune <span class="ot">&lt;-</span> <span class="fu">prune</span>(mrt,<span class="at">cp=</span>cp1) <span class="co">#prune the tree</span></span>
 <span id="cb127-2"><a href="discriminant-analysis-and-classification.html#cb127-2" tabindex="-1"></a><span class="fu">rpart.plot</span>(mrt.prune) <span class="co">#plot the pruned tree</span></span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-35-2.png" width="672" /></p>
+<p><img src="Plots/bostonRegressiontree-2.png" width="672" /></p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="discriminant-analysis-and-classification.html#cb128-1" tabindex="-1"></a><span class="co">#calculate the fitted value by regression tree</span></span>
 <span id="cb128-2"><a href="discriminant-analysis-and-classification.html#cb128-2" tabindex="-1"></a>pvec1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(mrt.prune,test) </span>
 <span id="cb128-3"><a href="discriminant-analysis-and-classification.html#cb128-3" tabindex="-1"></a><span class="fu">kable</span>(test[<span class="dv">1</span>,])</span></code></pre></div>
@@ -2014,7 +2014,7 @@ We can also summarize the procedure in a table.</p>
 <span id="cb139-9"><a href="discriminant-analysis-and-classification.html#cb139-9" tabindex="-1"></a><span class="fu">points</span>(test<span class="sc">$</span>medv,prf,<span class="at">pch=</span><span class="dv">20</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
 <span id="cb139-10"><a href="discriminant-analysis-and-classification.html#cb139-10" tabindex="-1"></a><span class="fu">legend</span>(<span class="dv">5</span>,<span class="dv">45</span>,<span class="fu">c</span>(<span class="st">&quot;Random Forest&quot;</span>,<span class="st">&quot;Regression Tree&quot;</span>,<span class="st">&quot;Multiple Regression&quot;</span>),</span>
 <span id="cb139-11"><a href="discriminant-analysis-and-classification.html#cb139-11" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;black&quot;</span>),<span class="at">pch=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">19</span>, <span class="dv">17</span>))</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-38-1.png" width="70%" /></p>
+<p><img src="Plots/rfBoston-1.png" width="70%" /></p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="discriminant-analysis-and-classification.html#cb140-1" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">sum</span>((prf<span class="sc">-</span>test<span class="sc">$</span>medv)<span class="sc">^</span><span class="dv">2</span>),<span class="fu">sum</span>((pvec1<span class="sc">-</span>test<span class="sc">$</span>medv)<span class="sc">^</span><span class="dv">2</span>),<span class="fu">sum</span>((pvec2<span class="sc">-</span>test<span class="sc">$</span>medv)<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 1902.103 3318.591 3508.860</code></pre>
 </div>
@@ -2126,7 +2126,7 @@ is positive semi-definite, i.e., has non-negative eigenvalues. Three common kern
 <span id="cb142-6"><a href="discriminant-analysis-and-classification.html#cb142-6" tabindex="-1"></a>              <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">&quot;cv&quot;</span>, <span class="at">number =</span> <span class="dv">10</span>),</span>
 <span id="cb142-7"><a href="discriminant-analysis-and-classification.html#cb142-7" tabindex="-1"></a>              <span class="at">tuneGrid =</span> <span class="fu">expand.grid</span>(<span class="at">sigma =</span> grid_sigma, <span class="at">C =</span> grid_cost))</span>
 <span id="cb142-8"><a href="discriminant-analysis-and-classification.html#cb142-8" tabindex="-1"></a><span class="fu">plot</span>(svmm)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-39-1.png" width="70%" /></p>
+<p><img src="Plots/svmcrossval-1.png" width="70%" /></p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="discriminant-analysis-and-classification.html#cb143-1" tabindex="-1"></a>svmm<span class="sc">$</span>finalModel</span></code></pre></div>
 <pre><code>## Support Vector Machine object of class &quot;ksvm&quot; 
 ## 
@@ -2192,7 +2192,7 @@ where <span class="math inline">\(\mathbf{U}^T=[1, U_1, U_2]\)</span>.</p>
 <span id="cb149-5"><a href="discriminant-analysis-and-classification.html#cb149-5" tabindex="-1"></a>nnm<span class="ot">=</span><span class="fu">neuralnet</span>(Species <span class="sc">~</span> Sepal.Length <span class="sc">+</span> Sepal.Width <span class="sc">+</span> Petal.Length <span class="sc">+</span> Petal.Width, </span>
 <span id="cb149-6"><a href="discriminant-analysis-and-classification.html#cb149-6" tabindex="-1"></a>              <span class="at">data =</span> training, <span class="at">hidden =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>), <span class="at">linear.output =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb149-7"><a href="discriminant-analysis-and-classification.html#cb149-7" tabindex="-1"></a><span class="fu">plot</span>(nnm,<span class="at">rep=</span><span class="st">&quot;best&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-43-1.png" width="70%" /></p>
+<p><img src="Plots/nnettrain-1.png" width="70%" /></p>
 <p>The resulting nnet yields an accuracy of 0.96667 on the testing set.</p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="discriminant-analysis-and-classification.html#cb150-1" tabindex="-1"></a><span class="co"># Predict the response on the testing set</span></span>
 <span id="cb150-2"><a href="discriminant-analysis-and-classification.html#cb150-2" tabindex="-1"></a>nnpred <span class="ot">&lt;-</span>  <span class="fu">compute</span>(nnm, testing[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])<span class="sc">$</span>net.result</span>
@@ -2368,7 +2368,7 @@ Classify <span class="math inline">\(\mathbf{x}=[4, 6]^T\)</span> to either clas
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="discriminant-analysis-and-classification.html#cb166-1" tabindex="-1"></a>(<span class="at">ldar=</span><span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(<span class="fu">diag</span>(ldatab))<span class="sc">/</span><span class="fu">sum</span>(ldatab))</span></code></pre></div>
 <pre><code>## [1] 0.04</code></pre>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="discriminant-analysis-and-classification.html#cb168-1" tabindex="-1"></a><span class="fu">partimat</span>(Species<span class="sc">~</span>.,<span class="at">data=</span>train,<span class="at">method=</span><span class="st">&quot;lda&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-47-1.png" width="85%" /></p>
+<p><img src="Plots/misrate-1.png" width="85%" /></p>
 <p>The misclassification rate of Fisher’s QDA method is 0.04, i.e., the accuracy is 96%.</p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="discriminant-analysis-and-classification.html#cb169-1" tabindex="-1"></a>objqda <span class="ot">&lt;-</span> <span class="fu">qda</span>(Species<span class="sc">~</span>.,<span class="at">data=</span>train)</span>
 <span id="cb169-2"><a href="discriminant-analysis-and-classification.html#cb169-2" tabindex="-1"></a>qdap <span class="ot">&lt;-</span> <span class="fu">predict</span>(objqda,test)</span>
@@ -2380,7 +2380,7 @@ Classify <span class="math inline">\(\mathbf{x}=[4, 6]^T\)</span> to either clas
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="discriminant-analysis-and-classification.html#cb171-1" tabindex="-1"></a>(qdar <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(<span class="fu">diag</span>(qdatab))<span class="sc">/</span><span class="fu">sum</span>(qdatab))</span></code></pre></div>
 <pre><code>## [1] 0.04</code></pre>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="discriminant-analysis-and-classification.html#cb173-1" tabindex="-1"></a><span class="fu">partimat</span>(Species<span class="sc">~</span>.,<span class="at">data=</span>train,<span class="at">method=</span><span class="st">&quot;qda&quot;</span>)</span></code></pre></div>
-<p><img src="Plots/unnamed-chunk-48-1.png" width="85%" /></p>
+<p><img src="Plots/qdametrics-1.png" width="85%" /></p>
 </div>
 </div>
 <div id="summary" class="section level2 hasAnchor" number="8.16">
