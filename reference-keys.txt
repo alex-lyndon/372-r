@@ -170,3 +170,6 @@ tab:tidyoutputmanova
 tab:olympic
 tab:unnamed-chunk-2
 tab:bostondata
+eq:eq1
+eq:eq2
+eq:eq3

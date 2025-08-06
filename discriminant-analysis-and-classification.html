@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -530,8 +530,8 @@ Figure 8.4: Basic Idea of KNN
 \]</span>
 The meaning of <span class="math inline">\(\beta_0, \beta_1, \cdots, \beta_k\)</span>:</p>
 <ul>
-<li><span class="math inline">\(\beta_0\)</span>: the when <span class="math inline">\(x_1=0, x_2=0, \cdots, x_k=0\)</span>.</li>
-<li><span class="math inline">\(\beta_i\)</span>: the change in the when <span class="math inline">\(x_i\)</span> while keeping other predictor variables the same.</li>
+<li><span class="math inline">\(\beta_0\)</span>: the <span class="math inline">\(\textbf{mean response}\)</span> when <span class="math inline">\(x_1=0, x_2=0, \cdots, x_k=0\)</span>.</li>
+<li><span class="math inline">\(\beta_i\)</span>: the change in the <span class="math inline">\(\textbf{mean response}\)</span> when <span class="math inline">\(x_i\)</span> <span class="math inline">\(\textbf{increases by 1 unit}\)</span> while keeping other predictor variables the same.</li>
 </ul>
 <p>Similar to the multiple regression, we would like to model <span class="math inline">\(P(Y=j|\mathbf{x})\)</span> using the explanatory variables <span class="math inline">\(\mathbf{x}=\{x_1, \cdots, x_p\}\)</span>. However, the domain of <span class="math inline">\(P(Y=j|\mathbf{x})\)</span> is <span class="math inline">\([0, 1]\)</span> which is bounded. The logistic regression models the log odd ratio and the explanatory variables using a regression model. We start with the binary case to introduce the idea. The logistic regression model for a binary response variable is given by
 <span class="math display">\[
@@ -852,7 +852,7 @@ which implies
 That is the odds of resulting in category <span class="math inline">\(j\)</span> or below is <span class="math inline">\(e^{\alpha_j-\alpha_i}\)</span> times of the odds of resulting in category <span class="math inline">\(i\)</span> or below given that <span class="math inline">\(x\)</span> is the same.</p></li>
 <li><p>Interpretation of <span class="math inline">\(\beta\)</span>. With one unit increase in <span class="math inline">\(x\)</span>,
 <span class="math display">\[
-\logit P(Y\le j|x=a+1)-\logit P(Y\le j|x=a)=[\alpha_j+\beta (a+1)]-[\alpha_j+\beta a]=\beta
+\text{logit} P(Y\le j|x=a+1)-\text{logit} P(Y\le j|x=a)=[\alpha_j+\beta (a+1)]-[\alpha_j+\beta a]=\beta
 \]</span>
 which implies
 <span class="math display">\[
@@ -863,7 +863,7 @@ This means the odds of resulting in category <span class="math inline">\(j\)</sp
 <p>If <span class="math inline">\(\beta&gt;0\)</span> then the probability to fall into a lower category increases with increasing <span class="math inline">\(x\)</span>. This is against the usual interpretation, positive slope is associated with a positive correlation. For this reason, some statistical software models <span class="math inline">\(\text{logit}(P(Y\le j))=\alpha_j-\beta x\)</span> and reports the negative of the slope. Make sure that you read the documentation of the built-in functions. For example in R, <span class="math inline">\(\texttt{polr}\)</span> function in package <span class="math inline">\(\texttt{MASS}\)</span> reports the negative of the slope. However, the <span class="math inline">\(\texttt{vglm}\)</span> function in package <span class="math inline">\(\texttt{VGAM}\)</span> reports the positive of the slope.</p>
 <p>In general, logistic regression for ordinal response is given by
 <span class="math display">\[
-\logit[P(Y \le j)]=\alpha_j+\beta_1 x_1+\beta_2x_2+\cdots+\beta_kx_k, j=1, 2, \cdots, c-1,
+\text{logit}[P(Y \le j)]=\alpha_j+\beta_1 x_1+\beta_2x_2+\cdots+\beta_kx_k, j=1, 2, \cdots, c-1,
 \]</span>
 the intercept <span class="math inline">\(\alpha\)</span> varies but the slopes <span class="math inline">\(\beta_i\)</span>s are the same for all categories <span class="math inline">\(j=1, 2, \cdots c-1\)</span>. This model has <span class="math inline">\((c-1)+k\)</span> parameters, much smaller than the number of parameters of the baseline logistic regression for nominal response which uses different intercept and slopes <span class="math inline">\(\beta_i\)</span>s for each categories <span class="math inline">\(j=2, \cdots c\)</span> given that <span class="math inline">\(c=1\)</span> is the reference level. The number of parameters in a baseline logistic regression model is <span class="math inline">\((c-1)(k+1)\)</span>.</p>
 </div>
@@ -883,7 +883,7 @@ P(Y=j)=P(Y\le j)-P(Y\le j-1), j=2, 3, \cdots, c.
 \]</span>
 Note that <span class="math inline">\(P(Y=1)=P(Y\le 1)\)</span>. We assign the observation to the category with the largest probability, i.e.,
 <span class="math display">\[
-\hat y=\argmax_j P(Y=j).
+\hat y=\text{argmax}_j P(Y=j).
 \]</span></p>
 <p><span class="math inline">\(\textbf{Example}\)</span>: Proportional Odds Model for Ordinal Response</p>
 <p>Consider the heart disease data with variables</p>
@@ -1555,8 +1555,8 @@ We can also summarize the procedure in a table.</p>
 <h2><span class="header-section-number">8.10</span> Classification Tree (Recursive Partitioning)<a href="discriminant-analysis-and-classification.html#classification-tree-recursive-partitioning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The main idea of the classification tree is to recursively partition the explanatory variable space into small rectangles (or cubes) to make the response variable as pure as possible within the rectangles. It picks one variable and one cut value at a time and chooses the cut that maximizes the purity or minimizes the impurity. There are two popular ways to quantify impurity: the Gini index and entropy.</p>
 <ul>
-<li>Gini index: <span class="math inline">\(G=\dsum_{i=1}^c p_i(1-p_i)\)</span>. Measures total variance across all classes, smaller when <span class="math inline">\(p_i\)</span> is closer to either 0 or 1.</li>
-<li>Entropy: <span class="math inline">\(D=-\dsum_{i=1}^c p_i \ln{p_i}\)</span>. <span class="math inline">\(D\approx 0\)</span> if all <span class="math inline">\(p_i\)</span> are either 1 or 0.</li>
+<li>Gini index: <span class="math inline">\(G=\sum_{i=1}^c p_i(1-p_i)\)</span>. Measures total variance across all classes, smaller when <span class="math inline">\(p_i\)</span> is closer to either 0 or 1.</li>
+<li>Entropy: <span class="math inline">\(D=-\sum_{i=1}^c p_i \ln{p_i}\)</span>. <span class="math inline">\(D\approx 0\)</span> if all <span class="math inline">\(p_i\)</span> are either 1 or 0.</li>
 </ul>
 <p><span class="math inline">\(\textbf{Example}\)</span>: Gini Index</p>
 <p>Suppose there are two partitions: <span class="math inline">\(x_1=1.5\)</span> and <span class="math inline">\(x_2=2\)</span>. Calculate the Gini index for these two cuts and explain which cut is better, i.e., gives a smaller Gini index.
@@ -1587,11 +1587,11 @@ We can also summarize the procedure in a table.</p>
 <span id="cb104-3"><a href="discriminant-analysis-and-classification.html#cb104-3" tabindex="-1"></a>ttab <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(predictions, testing<span class="sc">$</span>Species)<span class="sc">$</span>table</span>
 <span id="cb104-4"><a href="discriminant-analysis-and-classification.html#cb104-4" tabindex="-1"></a>(<span class="at">accuracy=</span><span class="fu">sum</span>(<span class="fu">diag</span>(ttab))<span class="sc">/</span><span class="fu">sum</span>(ttab))</span></code></pre></div>
 <pre><code>## [1] 0.9333333</code></pre>
-<p>: Classification Tree on the Spam Data</p>
+<p><span class="math inline">\(\textbf{Example}:\)</span> Classification Tree on the Spam Data</p>
 <p>The Spam Email database contains 4601 instances: 2788 emails (<span class="math inline">\(y=0\)</span>) and 1813 spams (<span class="math inline">\(y=1\)</span>). For each instance, 57 explanatory variables:</p>
 <ul>
-<li>48 variables indicating the frequencies of 48 words such as <code>edu'',</code>you’’.</li>
-<li>6 variables indicating the frequencies of 6 characters such as <code>\$'',</code>!’’.</li>
+<li>48 variables indicating the frequencies of 48 words such as “edu”, “you”.</li>
+<li>6 variables indicating the frequencies of 6 characters such as $, !.</li>
 <li>3 variables telling the average length of uninterrupted sequences of capital letters, length of longest uninterrupted sequence of capital letters, and total number of capital letters in the e-mail, respectively.</li>
 </ul>
 <p>We first split the data into 75% for training and 25% for testing.</p>
@@ -1669,7 +1669,7 @@ We can also summarize the procedure in a table.</p>
 <div id="regression-tree" class="section level2 hasAnchor" number="8.11">
 <h2><span class="header-section-number">8.11</span> Regression Tree<a href="discriminant-analysis-and-classification.html#regression-tree" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The recursive partitioning method can be applied to numerical responses as well. The tree model is called . The main difference between a regression tree and a classification tree is the performance measure. For each split, we choose the best cut that gives the smallest sum of squared deviation between the sample mean in each rectangle and the overall sample mean.</p>
-<p>: Housing Values in Suburbs of Boston</p>
+<p><span class="math inline">\(\textbf{Example}:\)</span> Housing Values in Suburbs of Boston</p>
 <p>The Boston data frame has 506 rows and 14 columns: crim (per capita crime rate by town), zn (proportion of residential land zoned for lots over 25,000 sq.ft.), indus (proportion of non-retail business acres per town), chas (Charles River dummy variable, 1 if tract bounds river; 0 otherwise), nox (nitrogen oxides concentration, parts per 10 million), rm (average number of rooms per dwelling), age (proportion of owner-occupied units built prior to 1940), dis (weighted mean of distances to five Boston employment centres), rad (index of accessibility to radial highways), tax (full-value property-tax rate per $10,000), ptratio (pupil-teacher ratio by town), black (<span class="math inline">\(1000(Bk - 0.63)^2\)</span> where <span class="math inline">\(Bk\)</span> is the proportion of blacks by town), lstat (lower status of the population (percent), medv (median value of owner-occupied homes in $1000s).</p>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="discriminant-analysis-and-classification.html#cb121-1" tabindex="-1"></a><span class="co">#library(MASS)</span></span>
 <span id="cb121-2"><a href="discriminant-analysis-and-classification.html#cb121-2" tabindex="-1"></a>bdf <span class="ot">&lt;-</span> Boston <span class="co">#the data set is in R</span></span>
@@ -2222,7 +2222,7 @@ where <span class="math inline">\(\mathbf{\mu_i}\)</span> and <span class="math 
 <h3><span class="header-section-number">8.15.2</span> Bayes Posterior<a href="discriminant-analysis-and-classification.html#bayes-posterior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Suppose there are <span class="math inline">\(K\)</span> classes, <span class="math inline">\(\mathbf{x}|Y=i \sim f_i(\mathbf{x})\)</span>, and the relative frequency of each class is <span class="math inline">\(P(Y=i)=\pi_i\)</span> (we call this the prior). By Bayes rule, the posterior probability is
 <span class="math display">\[
-P(Y=i|\mathbf{x})=\frac{P(Y=i, \mathbf{x})}{P(\mathbf{x})}=\frac{P(\mathbf{x}|Y=i)P(Y=i)}{\dsum_{j=1}^KP(\mathbf{x}|Y=j)P(Y=j)}=\frac{f_i(\mathbf{x})\pi_i}{\dsum_{j=1}^K f_j(\mathbf{x})\pi_j}\propto f_i(\mathbf{x})\pi_i
+P(Y=i|\mathbf{x})=\frac{P(Y=i, \mathbf{x})}{P(\mathbf{x})}=\frac{P(\mathbf{x}|Y=i)P(Y=i)}{\sum_{j=1}^KP(\mathbf{x}|Y=j)P(Y=j)}=\frac{f_i(\mathbf{x})\pi_i}{\sum_{j=1}^K f_j(\mathbf{x})\pi_j}\propto f_i(\mathbf{x})\pi_i
 \]</span>
 Assign the observation <span class="math inline">\(\mathbf{x}\)</span> to the class yielding the largest posterior probability, i.e.,
 <span class="math display">\[

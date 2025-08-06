@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-05-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -424,7 +424,7 @@ x_1+y_1\\ x_2+y_2\\ \vdots\\ x_n+y_n
 \end{array}
 \right]
 \]</span></li>
-<li>For any two vectors with the same number of elements, the {} of the two vectors is
+<li>For any two vectors with the same number of elements, the <span class="math inline">\({\it inner \: product}\)</span> of the two vectors is
 <span class="math display">\[
 \mathbf{x}^{T}\mathbf{y}=[x_1, x_2, \cdots, x_n]\left[
 \begin{array}{c}
@@ -506,7 +506,7 @@ which is a <span class="math inline">\(n\times m\)</span> matrix.</p>
 <h3><span class="header-section-number">3.2.1</span> Basic Operations on Matrix<a href="matrix-algebra.html#basic-operations-on-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>The <em>trace</em> of square matrix <span class="math inline">\(\mathbf{A}_{n\times n}\)</span> is defined as the sum of the diagonal elements. That is <span class="math inline">\(\mbox{Trace}(\mathbf{A})=\displaystyle\sum_{i=1}^n a_{ii}\)</span>.</li>
-<li>For an square matrix <span class="math inline">\(\mathbf{A}_{n\times n}\)</span>, if there exists another square matrix <span class="math inline">\(\mathbf{B}_{n\times n}\)</span>, such that <span class="math inline">\(\mathbf{A}\mathbf{B}=\mathbf{B}\mathbf{A}=\mathbf{I}_{n\times n}\)</span>, then <span class="math inline">\(\mathbf{B}\)</span> is called the {} of <span class="math inline">\(\mathbf{A}\)</span>. The inverse of a matrix does not necessarily exist, the condition that the inverse of <span class="math inline">\(\mathbf{A}_{n\times n}\)</span> exists is that the <span class="math inline">\(n\)</span> columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent.</li>
+<li>For an square matrix <span class="math inline">\(\mathbf{A}_{n\times n}\)</span>, if there exists another square matrix <span class="math inline">\(\mathbf{B}_{n\times n}\)</span>, such that <span class="math inline">\(\mathbf{A}\mathbf{B}=\mathbf{B}\mathbf{A}=\mathbf{I}_{n\times n}\)</span>, then <span class="math inline">\(\mathbf{B}\)</span> is called the <span class="math inline">\({\it inverse}\)</span> of <span class="math inline">\(\mathbf{A}\)</span>. The inverse of a matrix does not necessarily exist, the condition that the inverse of <span class="math inline">\(\mathbf{A}_{n\times n}\)</span> exists is that the <span class="math inline">\(n\)</span> columns of <span class="math inline">\(\mathbf{A}\)</span> are linearly independent.</li>
 <li>For any constant <span class="math inline">\(c\)</span>, we have
 <span class="math display">\[
 c\mathbf{A}=
@@ -621,7 +621,8 @@ where <span class="math inline">\(\mathbf{P}=[\mathbf{e_1}, \mathbf{e_2}, \cdots
 </ul>
 <p><strong>Example: Spectral Decomposition</strong></p>
 <ul>
-<li>[(a)] Verify that <span class="math display">\[\mathbf{A}=
+<li><ol style="list-style-type: lower-alpha">
+<li>Verify that <span class="math display">\[\mathbf{A}=
 \left[
 \begin{array}{cc}
 1&amp; -5\\
@@ -630,8 +631,11 @@ where <span class="math inline">\(\mathbf{P}=[\mathbf{e_1}, \mathbf{e_2}, \cdots
 \right]
 \]</span> is diagonalizable and has a spectral decomposition.
 </li>
-<li>[(b)] Write down the spectral decomposition of <span class="math inline">\(\mathbf{A}\)</span>.
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-alpha">
+<li>Write down the spectral decomposition of <span class="math inline">\(\mathbf{A}\)</span>.
 </li>
+</ol></li>
 </ul>
 <p><strong>Definition</strong></p>
 <p>A symmetric matrix <span class="math inline">\(\mathbf{A}_{n\times n}\)</span> is called <em>positive semidefinite</em> if the quadratic form <span class="math inline">\(\mathbf{x}^T\mathbf{A} \mathbf{x}\ge 0\)</span> for all <span class="math inline">\(\mathbf{x} \in \Re^n\)</span>. It is called <em>positive definite</em> if <span class="math inline">\(\mathbf{x}^T\mathbf{A} \mathbf{x}&gt; 0\)</span> for all non-zero <span class="math inline">\(\mathbf{x} \in \Re^n\)</span>.</p>

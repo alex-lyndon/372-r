@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -411,19 +411,61 @@ where <span class="math inline">\(\mathbf{X}\)</span> is a <span class="math inl
 <li><span class="math display">\[Cov(\mathbf{\epsilon}, \mathbf{F})=E(\mathbf{\epsilon}\mathbf{F}^T)=\mathbf{0}_{p\times m}; Cov(\mathbf{F}, \mathbf{\epsilon})=E(\mathbf{F}\mathbf{\epsilon}^T)=\mathbf{0}_{m\times p}\]</span>
 Then
 <span class="math display">\[
-(\mathbf{X}-\mathbf{\mu})(\mathbf{X}-\mathbf{\mu})^T=(\mathbf{LF}+\mathbf{\epsilon})(\mathbf{LF}+\mathbf{\epsilon})^T=\mathbf{LF}\mathbf{F}^T\mathbf{L}^T+\mathbf{\epsilon}(\mathbf{LF})^T+\mathbf{LF}\mathbf{\epsilon}^T+\mathbf{\epsilon}\mathbf{\epsilon}^T=\mathbf{LF}\mathbf{F}^T\mathbf{L}^T+\mathbf{\epsilon}\mathbf{F}^T\mathbf{L}^T+\mathbf{L}\mathbf{F}\mathbf{\epsilon}^T+\mathbf{\epsilon}\mathbf{\epsilon}^T
+E[(\mathbf{X}-\mathbf{\mu})(\mathbf{X}-\mathbf{\mu})^T]=(\mathbf{LF}+\mathbf{\epsilon})(\mathbf{LF}+\mathbf{\epsilon})^T=\mathbf{LF}\mathbf{F}^T\mathbf{L}^T+\mathbf{\epsilon}(\mathbf{LF})^T+\mathbf{LF}\mathbf{\epsilon}^T+\mathbf{\epsilon}\mathbf{\epsilon}^T=E[\mathbf{LF}\mathbf{F}^T\mathbf{L}^T+\mathbf{\epsilon}\mathbf{F}^T\mathbf{L}^T+\mathbf{L}\mathbf{F}\mathbf{\epsilon}^T+\mathbf{\epsilon}\mathbf{\epsilon}^T]
 \]</span>
 <span class="math display">\[
-\mathbf{\Sigma}=\E[(\mathbf{X}-\mathbf{\mu})(\mathbf{X}-\mathbf{\mu})^T]=\mathbf{L}\E(\mathbf{F}\mathbf{F}^T)\mathbf{L}^T+\E(\mathbf{\epsilon}\mathbf{F}^T)\mathbf{L}^T+\mathbf{L}\E(\mathbf{F}\mathbf{\epsilon}^T)+\E(\mathbf{\epsilon}\mathbf{\epsilon}^T)=\mathbf{L}\mathbf{L}^T+\mathbf{\Psi}.
+\mathbf{\Sigma}=E[(\mathbf{X}-\mathbf{\mu})(\mathbf{X}-\mathbf{\mu})^T]=\mathbf{L}E(\mathbf{F}\mathbf{F}^T)\mathbf{L}^T+E(\mathbf{\epsilon}\mathbf{F}^T)\mathbf{L}^T+\mathbf{L}E(\mathbf{F}\mathbf{\epsilon}^T)+E(\mathbf{\epsilon}\mathbf{\epsilon}^T)=\mathbf{L}\mathbf{L}^T+\mathbf{\Psi}.
 \]</span>
-Suppose <span class="math inline">\(p=2\)</span>, write out <span class="math inline">\(\mathbf{\Sigma}=\mathbf{L}\mathbf{L}^T+\mathbf{\Psi}\)</span> by terms.
-</li>
+Suppose <span class="math inline">\(p=2\)</span>, write out <span class="math inline">\(\mathbf{\Sigma}=\mathbf{L}\mathbf{L}^T+\mathbf{\Psi}\)</span> by terms.</li>
 </ul>
+<p>Recall: Var(X) = <span class="math inline">\(E[(X-\mu)^2] = \sigma^2\)</span>
+and that <span class="math inline">\(\Sigma = E[(\vec{x}-\vec{\mu})(\vec{x}-\vec{\mu})^{\top}]\)</span></p>
+<p><span class="math inline">\(p=2 \quad \Sigma = LL^{\top} + \Psi\)</span></p>
+<p><span class="math inline">\(\vec{X} = \begin{pmatrix} X_1 \\ X_2 \end{pmatrix}, \quad \vec{\mu} = \begin{pmatrix} \mu_1 \\ \mu_2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(\vec{F} = \begin{pmatrix} F_1 \\ F_2 \end{pmatrix}, \quad \vec{\varepsilon} = \begin{pmatrix} \varepsilon_1 \\ \varepsilon_2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(X_1 - \mu_1 = l_{11}F_1 + l_{12}F_2 + \varepsilon_1\)</span>
+<span class="math inline">\(X_2 - \mu_2 = l_{21}F_1 + l_{22}F_2 + \varepsilon_2\)</span></p>
+<p><span class="math display">\[
+\Sigma = \begin{pmatrix}
+\text{Var}(X_1) &amp; \text{Cov}(X_1, X_2) \\
+\text{Cov}(X_2, X_1) &amp; \text{Var}(X_2)
+\end{pmatrix}, \quad L = \begin{pmatrix} l_{11} &amp; l_{12} \\ l_{21} &amp; l_{22} \end{pmatrix}
+\]</span></p>
+<p><span class="math inline">\(\text{Var}(X_1) = E[(X_1 - \mu_1)^2] = E[(l_{11}F_1 + l_{12}F_2 + \varepsilon_1)^2]\)</span>
+<span class="math display">\[
+\begin{aligned}
+&amp;= E[l_{11}^2 F_1^2 + l_{12}^2 F_2^2 + \varepsilon_1^2 + 2l_{11}l_{12}F_1F_2 + 2l_{11}F_1\varepsilon_1 + 2l_{12}F_2\varepsilon_1] \\
+&amp;\text{Note: } E[aX+bY] = aE[X]+bE[Y] \\
+&amp;= l_{11}^2 E[F_1^2] + l_{12}^2 E[F_2^2] + E[\varepsilon_1^2] + 2l_{11}l_{12} E[F_1F_2] + 2l_{11}E[F_1\varepsilon_1] + 2l_{12}E[F_2\varepsilon_2] \\
+&amp;\text{Note: } E[F_1F_2] = Cov(F_1,F_2), \text{ and } E[F_i\varepsilon_i] = 0 \text{ which leaves us with: } \\
+&amp;= l_{11}^2 \times 1 + l_{12}^2 \times 1 + \Psi_1 + 0 + 0 + 0 \\
+&amp;= l_{11}^2 + l_{12}^2 + \Psi_1 \\
+\text{Var}(X_2) &amp;= E[(X_2 - \mu_2)^2] = E[(l_{21}F_1 + l_{22}F_2 + \varepsilon_2)^2] \\
+&amp;= l_{21}^2 + l_{22}^2 + \Psi_2
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+L L^{\top} + \Psi = \begin{pmatrix} l_{11} &amp; l_{12} \\ l_{21} &amp; l_{22} \end{pmatrix} \begin{pmatrix} l_{11} &amp; l_{21} \\ l_{12} &amp; l_{22} \end{pmatrix} + \begin{pmatrix} \Psi_1 &amp; 0 \\ 0 &amp; \Psi_2 \end{pmatrix}
+\]</span></p>
+<p><span class="math inline">\(\text{Cov}(X_1, X_2) = E[(X_1 - \mu_1)(X_2 - \mu_2)]\)</span>
+<span class="math display">\[
+\begin{aligned}
+&amp;= E[(l_{11}F_1 + l_{12}F_2 + \varepsilon_1)(l_{21}F_1 + l_{22}F_2 + \varepsilon_2)] \\
+&amp;= E[l_{11}F_1^2 + l_{11}l_{22}F_1F_2 + l_{11}F_1\varepsilon_2 + l_{12}l_{21}F_1F_2 + l_{12}F_2^2 + l_{12}F_2\varepsilon_2 + l_{21}F_1\varepsilon_1 + l_{22}F_2\varepsilon_1 + \varepsilon_1\varepsilon_2] \\
+&amp;= l_{11}l_{21} + l_{12}l_{22} \quad \\
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\therefore \Sigma = \begin{pmatrix}
+l_{11}^2 + l_{12}^2 + \Psi_1 &amp; l_{11}l_{21} + l_{12}l_{22} \\
+l_{21}l_{11} + l_{22}l_{12} &amp; l_{21}^2 + l_{22}^2 + \Psi_2
+\end{pmatrix}
+\]</span></p>
 <p>There are some terminologies in factor analysis.</p>
 <ul>
 <li>The variance of <span class="math inline">\(X_i\)</span> can be decomposed into two parts: communality <span class="math inline">\(h_i^2=l_{i1}^2+l_{i2}^2+\cdots+l_{im}^2\)</span> and specific variance <span class="math inline">\(\psi_i\)</span>. That is
 <span class="math display">\[
-Var(X_i)=\underbrace{l_{i1}^2+l_{i2}^2+\cdots+l_{im}^2}\limits_{\mbox{{\small communality}}}+\underbrace{\psi_i}\limits_{\mbox{{\small specific variance}}}=h_i^2+\psi_i.
+Var(X_i)=\underbrace{l_{i1}^2+l_{i2}^2+\cdots+l_{im}^2}\limits_{\mbox{{small communality}}}+\underbrace{\psi_i}\limits_{\mbox{{small specific variance}}}=h_i^2+\psi_i.
 \]</span>
 The communality of variable <span class="math inline">\(X_i\)</span> is the sum of squares of the <span class="math inline">\(i\)</span>th row of the loading matrix <span class="math inline">\(\mathbf{L}\)</span>. If we use the correlation matrix <span class="math inline">\(\mathbf{\rho}\)</span> to conduct the factor analysis, we have <span class="math inline">\(Var(X_i)=h_i^2+\psi_i=1\)</span>.</li>
 <li>The number of common factors can be determined by the number of eigenvalues that are at least 1 for the correlation matrix, which is referred to be the Kaiser rule. Or, one can draw the scree plot to determine the number of common factors required to capture a certain account of the total variation of the data.</li>
@@ -1735,12 +1777,12 @@ x_1\\x_2\\
 \]</span>
 Obtain the factor loading with <span class="math inline">\(m=1\)</span> (only one common factor), communalities, specific variances, and the proportion of variance explained by the common factor. We have
 <span class="math display">\[\begin{align*}
-X_1&amp;=l_{11}F_1+\epsilon_1=4F_1+\epsilon_1\Longrightarrow \var(X_1)=l_{11}^2+\psi_1\\
-X_2&amp;=l_{21}F_1+\epsilon_2=F_1+\epsilon_2\Longrightarrow \var(X_2)=l_{21}^2+\psi_2
+X_1&amp;=l_{11}F_1+\epsilon_1=4F_1+\epsilon_1\Longrightarrow \text{Var}(X_1)=l_{11}^2+\psi_1\\
+X_2&amp;=l_{21}F_1+\epsilon_2=F_1+\epsilon_2\Longrightarrow \text{Var}(X_2)=l_{21}^2+\psi_2
 \end{align*}\]</span>
 The communality (common variance explained by the common factor <span class="math inline">\(F_1\)</span>) for <span class="math inline">\(X_1\)</span> is <span class="math inline">\(h_1^2=l_{11}^2=4^2=16\)</span>, and the communality for <span class="math inline">\(X_2\)</span> is <span class="math inline">\(h_2^2=l_{21}^2=1^2=1\)</span>, specific variances for <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are <span class="math inline">\(\psi_1=1\)</span> and <span class="math inline">\(\psi_2=1\)</span> respectively. The proportion of total variance explained by the common factor <span class="math inline">\(F_1\)</span> is
 <span class="math display">\[
-\frac{l_{11}^2+l_{21}^2}{\var(X_1)+\var(X_2)}=\frac{h_1^2+h_2^2}{17+2}=\frac{16+1}{19}=0.8947
+\frac{l_{11}^2+l_{21}^2}{\text{Var}(X_1)+\text{Var}(X_2)}=\frac{h_1^2+h_2^2}{17+2}=\frac{16+1}{19}=0.8947
 \]</span></p></li>
 <li><p>[(c)] Given an observation <span class="math inline">\(\mathbf{x}=[1 \quad 2]^T\)</span> and <span class="math inline">\(\mathbf{\mu}=\mathbf{0}\)</span>, calculate its score on the first principal component.
 The score on the first PC is

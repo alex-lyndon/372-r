@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -477,12 +477,34 @@ For any <span class="math inline">\(\mathbf{x}\ne \mathbf{y}\)</span>, <span cla
 <p><strong>Note</strong>: If a ‘’unit change’’ means dramatically different things for different variables, we shall standardize the measurements by subtracting its mean and dividing its standard deviation before we calculate the distance.</p>
 <p><strong>Example</strong>: Verify that the Euclidean distance is a valid distance merit.
 </p>
+<p>Example: Verify that the Euclidean distance is a valid distance metric.
+1. <span class="math inline">\(d(\vec{x}, \vec{y}) = \sqrt{\sum (x_i - y_i)^2} \ge 0 \quad \checkmark\)</span>
+2. <span class="math inline">\(d(\vec{x}, \vec{x}) = \sqrt{\sum (x_i - x_i)^2} = 0 \quad \checkmark\)</span>
+3. <span class="math inline">\(d(\vec{x}, \vec{y}) = \sqrt{\sum (x_i - y_i)^2} = \sqrt{\sum (y_i - x_i)^2} = d(\vec{y}, \vec{x}) \quad \checkmark\)</span>
+4. <span class="math inline">\(d(\vec{x}, \vec{y}) = \sqrt{\sum (x_i - y_i)^2} = 0 \iff x_i - y_i = 0 \iff x_i = y_i \iff \vec{x} = \vec{y} \quad \checkmark\)</span></p>
+<ol start="5" style="list-style-type: decimal">
+<li><span class="math inline">\(\forall \vec{x}, \vec{y}, \vec{z}\)</span>, We need to prove
+<span class="math inline">\(d(\vec{x}, \vec{y}) \le d(\vec{x}, \vec{z}) + d(\vec{z}, \vec{y})\)</span></li>
+</ol>
+<p><span class="math inline">\(\iff \sqrt{\sum (x_i - y_i)^2} \le \sqrt{\sum (x_i - z_i)^2} + \sqrt{\sum (z_i - y_i)^2}\)</span></p>
+<p>Squaring both sides:
+<span class="math inline">\(\left(\sqrt{\sum (x_i - z_i + z_i - y_i)^2}\right)^2 \le \left(\sqrt{\sum (x_i - z_i)^2} + \sqrt{\sum (z_i - y_i)^2}\right)^2\)</span></p>
+<p><span class="math inline">\(\iff \sum (x_i - z_i)^2 + \sum (z_i - y_i)^2 + 2 \sum (x_i - z_i)(z_i - y_i)\)</span>
+<span class="math inline">\(\le \sum (x_i - z_i)^2 + \sum (z_i - y_i)^2 + 2 \sqrt{\sum (x_i - z_i)^2} \sqrt{\sum (z_i - y_i)^2}\)</span></p>
+<p><span class="math inline">\(\iff \sum (x_i - z_i)(z_i - y_i) \le \sqrt{\sum (x_i - z_i)^2} \cdot \sqrt{\sum (z_i - y_i)^2}\)</span></p>
+<p>Let <span class="math inline">\(\vec{u} = \vec{x} - \vec{z}\)</span> and <span class="math inline">\(\vec{v} = \vec{z} - \vec{y}\)</span>.
+<span class="math inline">\(\iff (\vec{x} - \vec{z})^T (\vec{z} - \vec{y}) \le \|\vec{x} - \vec{z}\| \cdot \|\vec{z} - \vec{y}\|\)</span></p>
+<p><span class="math inline">\(\iff \frac{(\vec{x} - \vec{z})^T (\vec{z} - \vec{y})}{\|\vec{x} - \vec{z}\| \|\vec{z} - \vec{y}\|} \le 1\)</span></p>
+<p><span class="math inline">\(\iff \cos\theta \le 1 \quad \checkmark\)</span></p>
 </div>
 <div id="distance-for-categorical-variables" class="section level3 hasAnchor" number="4.2.2">
 <h3><span class="header-section-number">4.2.2</span> Distance for Categorical Variables<a href="displaying-multivariate-data-and-measures-of-distance.html#distance-for-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For categorical variables whose values are categories, it is meaningless to calculate the distance using the functions given in the previous section. For example, there are four possible blood types: A, B, O, AB. Even though we can recode the values as 1=A, 2=B, 3=O and 4=AB, we would not say that the distance between types A and B is closer than the distance between types A and O. For categorical measurements, we can use the <em>Hamming</em> distance
 <span class="math display">\[
 d(\mathbf{x}, \mathbf{y})=\sum_{i=1}^p \mbox{I}(x_i\ne y_i),
+\]</span></p>
+<p><span class="math display">\[
+I(x_i \ne y_i) = \begin{cases} 1 &amp; \text{if } x_i \ne y_i \\ 0 &amp; \text{if } x_i = y_i \end{cases}
 \]</span>
 where I(.) is an indicator function which takes the value 1 if the statement is true otherwise 0. Hamming distance between two observations counts the number of not-matched measurements. For example,</p>
 <p><span class="math display">\[
@@ -535,14 +557,44 @@ d_{ijk}=\left\{
 <p>Find the Gower’s coefficients for the following three individuals:</p>
 <span class="math display">\[\begin{array}{c|ccccc}
 \hline
-&amp;$\text{Gender}$&amp;$\text{Hair}$ $\text{Color}$&amp; $\text{Asian}$&amp;$\text{Height}$&amp;$\text{Weight}$\\
+&amp;Gender&amp;Hair Color &amp; Asian&amp;Height&amp;Weight\\
 \hline
-$\text{Kate}$&amp;$\text{F}$&amp;$\text{Brown}$&amp;$\text{Yes}$&amp;$\text{60}$&amp;80\\
+Kate&amp;F&amp;Brown&amp;Yes&amp;60&amp;80\\
 John&amp;M&amp;Grey&amp;No&amp;50&amp;60\\
 Adam&amp;M&amp;Brown&amp;No&amp;70&amp;90\\
 \hline
 \end{array}\]</span>
 <p>Among the categorical variables ‘’Gender’‘,’‘Hair color’‘,’‘Asian’‘,’‘Asian’’ is asymmetric binary. We can construct a working table to find the distance between the observations.</p>
+<p><span class="math inline">\(d(\text{Kate, John}) = \frac{4.167}{5} = 0.8334\)</span>.
+<span class="math inline">\(d(\text{John, Adam}) = \frac{3}{4} = 0.75\)</span>.</p>
+<p><span class="math display">\[\begin{array}{|c|c|c|c|}
+\hline
+\text{k} &amp; \delta_{ijk} &amp; d_{ijk} &amp; \delta_{ijk} \cdot d_{ijk} \\
+\hline
+1 &amp; 1 &amp; 1 &amp; 1 \\
+2 &amp; 1 &amp; 1 &amp; 1 \\
+3 &amp; 1 &amp; 1 &amp; 1 \\
+4 &amp; 1 &amp; 0.5 = \frac{|60-50|}{70-50} &amp; 0.5 \\
+5 &amp; 1 &amp; 0.667 = \frac{|80-60|}{90-60} &amp; 0.667 \\
+\hline
+\text{sum} &amp; 5 &amp; &amp; 4.167 \\
+\hline
+\end{array}
+\qquad
+\begin{array}{|c|c|c|}
+\hline
+\text{k} &amp; \delta_{ijk} &amp; d_{ijk} \\
+\hline
+1 &amp; 1 &amp; 0 \\
+2 &amp; 1 &amp; 1 \\
+3 &amp; 0 &amp; 0 \\
+4 &amp; 1 &amp; \frac{|50-70|}{70-50}=1 \\
+5 &amp; 1 &amp; \frac{|60-90|}{90-60}=1 \\
+\hline
+\text{sum} &amp; 4 &amp; 3 \\
+\hline
+\end{array}
+\]</span></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="displaying-multivariate-data-and-measures-of-distance.html#cb3-1" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">&quot;F&quot;</span>,<span class="st">&quot;M&quot;</span>, <span class="st">&quot;M&quot;</span>))</span>
 <span id="cb3-2"><a href="displaying-multivariate-data-and-measures-of-distance.html#cb3-2" tabindex="-1"></a>haircolor <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">c</span>(<span class="st">&quot;Brown&quot;</span>,<span class="st">&quot;Grey&quot;</span>,<span class="st">&quot;Brown&quot;</span>))</span>
 <span id="cb3-3"><a href="displaying-multivariate-data-and-measures-of-distance.html#cb3-3" tabindex="-1"></a>asian <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
@@ -630,10 +682,45 @@ where <span class="math inline">\(\mu_1=E(X_1), \mu_2=E(X_2), \sigma_{11}=Var(X_
 <p><strong>Example: Bivariate Normal Distribution</strong></p>
 <p>If <span class="math inline">\(X_1\sim N(\mu_1, \sigma_1), X_2\sim N(\mu_2, \sigma_2)\)</span>, and they are independent.</p>
 <ol style="list-style-type: decimal">
-<li><p>Find the joint density of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>.</p></li>
-<li><p>Find the joint density of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> using the matrix form.</p></li>
-<li><p>How about if <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> and not independent and with correlation <span class="math inline">\(\rho\)</span>?</p></li>
+<li>Find the joint density of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>.</li>
 </ol>
+<p><span class="math inline">\(\Sigma = \begin{pmatrix} Var(X_1) &amp; Cov(X_1, X_2) \\ Cov(X_2, X_1) &amp; Var(X_2) \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(= \begin{pmatrix} \sigma_1^2 &amp; 0 \\ 0 &amp; \sigma_2^2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(|\Sigma| = \sigma_1^2 \sigma_2^2\)</span></p>
+<p><span class="math inline">\(\Sigma^{-1} = \begin{pmatrix} 1/\sigma_1^2 &amp; 0 \\ 0 &amp; 1/\sigma_2^2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(f(x_1, x_2) = f_1(x_1) \cdot f_2(x_2)\)</span>
+<span class="math inline">\(= \frac{1}{\sqrt{2\pi}\sigma_1} e^{-\frac{(x_1-\mu_1)^2}{2\sigma_1^2}} \cdot \frac{1}{\sqrt{2\pi}\sigma_2} e^{-\frac{(x_2-\mu_2)^2}{2\sigma_2^2}}\)</span>
+<span class="math inline">\(= \frac{1}{(2\pi)^{2/2} \sqrt{\sigma_1^2 \sigma_2^2}} \exp\left\{-\frac{1}{2}\left[\frac{(x_1-\mu_1)^2}{\sigma_1^2} + \frac{(x_2-\mu_2)^2}{\sigma_2^2}\right]\right\}\)</span>
+<span class="math inline">\(= \frac{1}{|\Sigma|^{1/2}} \exp\left\{-\frac{1}{2}(\vec{x}-\vec{\mu})^T \Sigma^{-1} (\vec{x}-\vec{\mu})\right\}\)</span></p>
+<p><span class="math inline">\(\vec{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}\)</span>, <span class="math inline">\(\vec{\mu} = \begin{pmatrix} \mu_1 \\ \mu_2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\((\vec{x}-\vec{\mu}) = \begin{pmatrix} x_1-\mu_1 \\ x_2-\mu_2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(\Sigma^{-1} = \begin{pmatrix} 1/\sigma_1^2 &amp; 0 \\ 0 &amp; 1/\sigma_2^2 \end{pmatrix} \begin{pmatrix} x_1-\mu_1 \\ x_2-\mu_2 \end{pmatrix}\)</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Find the joint density of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> using the matrix form.</li>
+</ol>
+<p>Given that <span class="math inline">\(X_1 \sim N(\mu_1, \sigma_1^2)\)</span> and <span class="math inline">\(X_2 \sim N(\mu_2, \sigma_2^2)\)</span> are independent,
+the covariance between <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> is <span class="math inline">\(Cov(X_1, X_2) = 0\)</span>.</p>
+<p>The mean vector is <span class="math inline">\(\vec{\mu} = \begin{pmatrix} \mu_1 \\ \mu_2 \end{pmatrix}\)</span>.</p>
+<p>The covariance matrix is <span class="math inline">\(\Sigma = \begin{pmatrix} Var(X_1) &amp; Cov(X_1, X_2) \\ Cov(X_2, X_1) &amp; Var(X_2) \end{pmatrix} = \begin{pmatrix} \sigma_1^2 &amp; 0 \\ 0 &amp; \sigma_2^2 \end{pmatrix}\)</span>.</p>
+<p>The determinant of the covariance matrix is <span class="math inline">\(|\Sigma| = \sigma_1^2 \sigma_2^2\)</span>.</p>
+<p>The inverse of the covariance matrix is <span class="math inline">\(\Sigma^{-1} = \begin{pmatrix} 1/\sigma_1^2 &amp; 0 \\ 0 &amp; 1/\sigma_2^2 \end{pmatrix}\)</span>.</p>
+<p>The vector <span class="math inline">\(\vec{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}\)</span>, and the difference vector is <span class="math inline">\(\vec{x} - \vec{\mu} = \begin{pmatrix} x_1 - \mu_1 \\ x_2 - \mu_2 \end{pmatrix}\)</span>.</p>
+<p>The quadratic form is <span class="math inline">\((\vec{x}-\vec{\mu})^T \Sigma^{-1} (\vec{x}-\vec{\mu})\)</span>.
+<span class="math inline">\(= \begin{pmatrix} x_1 - \mu_1 &amp; x_2 - \mu_2 \end{pmatrix} \begin{pmatrix} 1/\sigma_1^2 &amp; 0 \\ 0 &amp; 1/\sigma_2^2 \end{pmatrix} \begin{pmatrix} x_1 - \mu_1 \\ x_2 - \mu_2 \end{pmatrix}\)</span>
+<span class="math inline">\(= \begin{pmatrix} \frac{x_1 - \mu_1}{\sigma_1^2} &amp; \frac{x_2 - \mu_2}{\sigma_2^2} \end{pmatrix} \begin{pmatrix} x_1 - \mu_1 \\ x_2 - \mu_2 \end{pmatrix}\)</span>
+<span class="math inline">\(= \frac{(x_1 - \mu_1)^2}{\sigma_1^2} + \frac{(x_2 - \mu_2)^2}{\sigma_2^2}\)</span>.</p>
+<p>The joint probability density function for a bivariate normal distribution in matrix form is:
+<span class="math inline">\(f(\vec{x}) = \frac{1}{(2\pi)^{d/2} |\Sigma|^{1/2}} \exp\left\{-\frac{1}{2}(\vec{x}-\vec{\mu})^T \Sigma^{-1} (\vec{x}-\vec{\mu})\right\}\)</span>
+where <span class="math inline">\(d\)</span> is the dimension of the vector, here <span class="math inline">\(d=2\)</span>.</p>
+<p>Substituting the values for the independent case:
+<span class="math inline">\(f(x_1, x_2) = \frac{1}{(2\pi)^{2/2} (\sigma_1^2 \sigma_2^2)^{1/2}} \exp\left\{-\frac{1}{2}\left(\frac{(x_1-\mu_1)^2}{\sigma_1^2} + \frac{(x_2-\mu_2)^2}{\sigma_2^2}\right)\right\}\)</span>
+<span class="math inline">\(f(x_1, x_2) = \frac{1}{2\pi \sigma_1 \sigma_2} \exp\left\{-\frac{1}{2}\left(\frac{(x_1-\mu_1)^2}{\sigma_1^2} + \frac{(x_2-\mu_2)^2}{\sigma_2^2}\right)\right\}\)</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>How about if <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> and not independent and with correlation <span class="math inline">\(\rho\)</span>?</li>
+</ol>
+<p><span class="math inline">\(\Sigma = \begin{pmatrix} \sigma_1^2 &amp; \sigma_{12} \\ \sigma_{21} &amp; \sigma_2^2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(M = \begin{pmatrix} (-1)^{1+1} \sigma_2^2 &amp; (-1)^{1+2} \sigma_{21} \\ (-1)^{2+1} \sigma_{12} &amp; (-1)^{2+2} \sigma_1^2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(\Sigma^{-1} = \frac{M^T}{|\Sigma|} = \frac{1}{|\Sigma|} \begin{pmatrix} \sigma_2^2 &amp; -\sigma_{12} \\ -\sigma_{21} &amp; \sigma_1^2 \end{pmatrix}\)</span></p>
 <p><strong>Example: Surface and Contour Plot of Bivariate Normal</strong></p>
 <p>Consider the bivariate normal distributions with the following mean vectors and covariance matrices:
 <span class="math display">\[
@@ -726,12 +813,20 @@ x_1\\ x_2
 \]</span>
 which is a circle with radius <span class="math inline">\(r=\sqrt{5.991}\)</span>.</p>
 <ul>
-<li>Suppose <span class="math inline">\(\boldsymbol{\mu}=\left[ \begin{array}{c} 0\\ 0 \end{array} \right] ,\quad \boldsymbol{\Sigma}=\left[ \begin{array}{cc} 1&amp;0\\ 0&amp;4 \end{array} \right]\)</span>, find a 95% contour for the bivariate normal distribution.
+<li>Suppose <span class="math inline">\(\boldsymbol{\mu}=\left[ \begin{array}{c} 0\\ 0 \end{array} \right] ,\quad \boldsymbol{\Sigma}=\left[ \begin{array}{cc} 1&amp;0\\ 0&amp;1/4 \end{array} \right]\)</span>, find a 95% contour for the bivariate normal distribution.
 For bivariate normal distribution, a 95% contour is
 <span class="math display">\[
 (\mathbf{x}-\boldsymbol{\mu})^{T}\boldsymbol{\Sigma}^{-1} (\mathbf{x}-\boldsymbol{\mu})=5.991 \Longrightarrow \hspace{10cm}
-\]</span>
-</li>
+\]</span></li>
+</ul>
+<p>For bivariate normal distribution, a 95% contour is
+<span class="math inline">\((\vec{x}-\vec{\mu})^T \Sigma^{-1} (\vec{x}-\vec{\mu}) = 5.991\)</span></p>
+<p><span class="math inline">\(\implies \begin{pmatrix} x_1 &amp; x_2 \end{pmatrix} \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; 1/4 \end{pmatrix}^{-1} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = 5.991\)</span></p>
+<p><span class="math inline">\(\implies \begin{pmatrix} x_1 &amp; \frac{1}{4x_2} \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = x_1^2 + \frac{x_2^2}{4} = 5.991\)</span></p>
+<p><span class="math inline">\(\implies \frac{x_1^2}{5.991} + \frac{x_2^2}{4 \times 5.991} = 1\)</span>.</p>
+<p>This is an ellipse center at <span class="math inline">\((0,0)\)</span>
+with axes <span class="math inline">\(\pm \sqrt{5.991}\)</span> and <span class="math inline">\(\pm \sqrt{4 \times 5.991}\)</span></p>
+<ul>
 <li>Suppose <span class="math display">\[\boldsymbol{\mu}=\left[
 \begin{array}{c}
 0\\ 0
@@ -874,6 +969,24 @@ and
 \end{array}
 \right]\]</span>, find a 95% contour for the bivariate normal distribution.</li>
 </ul>
+<p><span class="math inline">\(| \Sigma - \lambda I | = \begin{vmatrix} 1-\lambda &amp; 3/4 \\ 3/4 &amp; 1-\lambda \end{vmatrix} = (1-\lambda)^2 - (3/4)^2 = 0\)</span></p>
+<p><span class="math inline">\(1-\lambda = \pm 3/4 \implies \lambda_1 = 7/4 \text{ and } \lambda_2 = 1/4\)</span></p>
+<p>When <span class="math inline">\(\lambda_1 = 7/4\)</span>:
+<span class="math inline">\(\Sigma \vec{x} = \lambda \vec{x} \implies \begin{pmatrix} 1 &amp; 3/4 \\ 3/4 &amp; 1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \frac{7}{4} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(\begin{cases} \textbf{1: } x_1 + \frac{3}{4}x_2 = \frac{7}{4}x_1 \\ \textbf{2: } \frac{3}{4}x_1 + x_2 = \frac{7}{4}x_2 \end{cases}\)</span></p>
+<p><span class="math inline">\(\implies \frac{3}{4}x_1 = \frac{3}{4}x_2 \implies x_1 = x_2 \implies x_1 = 1 \text{ and } x_2 = 1\)</span></p>
+<p><span class="math inline">\(\vec{x}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix} \implies \vec{e}_1 = \begin{pmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{pmatrix}\)</span></p>
+<p>When <span class="math inline">\(\lambda_2 = 1/4\)</span>:
+<span class="math inline">\(\Sigma \vec{x} = \lambda \vec{x} \implies \begin{pmatrix} 1 &amp; 3/4 \\ 3/4 &amp; 1 \end{pmatrix} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix} = \frac{1}{4} \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(x_1 + \frac{3}{4}x_2 = \frac{1}{4}x_1\)</span>
+<span class="math inline">\(\frac{3}{4}x_1 = -\frac{3}{4}x_2\)</span>
+<span class="math inline">\(x_1 = -x_2\)</span></p>
+<p><span class="math inline">\(\vec{x}_2 = \begin{pmatrix} 1 \\ -1 \end{pmatrix} \implies \vec{e}_2 = \begin{pmatrix} 1/\sqrt{2} \\ -1/\sqrt{2} \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(\pm C \sqrt{\lambda_i} \vec{e}_i\)</span></p>
+<p><span class="math inline">\(\lambda_1 = \frac{7}{4}\)</span>
+<span class="math inline">\(\pm \sqrt{5.991} \cdot \sqrt{\frac{7}{4}} \times \begin{pmatrix} 1/\sqrt{2} \\ 1/\sqrt{2} \end{pmatrix} = \pm \begin{pmatrix} 2.2896 \\ 2.2896 \end{pmatrix}\)</span></p>
+<p><span class="math inline">\(\lambda_2 = \frac{1}{4}\)</span>
+<span class="math inline">\(\pm \sqrt{5.991} \sqrt{\frac{1}{4}} \begin{pmatrix} 1/\sqrt{2} \\ -1/\sqrt{2} \end{pmatrix} = \pm \begin{pmatrix} 0.8654 \\ -0.8654 \end{pmatrix}\)</span></p>
 </div>
 </div>
 <div id="the-sampling-distribution-of-mathbfbar-x-and-boldsymbols" class="section level2 hasAnchor" number="4.4">

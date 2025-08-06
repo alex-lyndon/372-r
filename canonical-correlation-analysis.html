@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -394,19 +394,19 @@ p\le q
 \]</span>
 with
 <span class="math display">\[
-\cov\left[
+\text{cov}\left[
 \begin{array}{c}
 \mathbf{X}\\ \cdots\\\mathbf{Y}
 \end{array}
-\right]=\cov\left[
+\right]=\text{cov}\left[
 \begin{array}{c}
 X_1\\ X_2\\ \vdots\\ X_p\\ \cdots \\ Y_1\\ Y_2\\ \vdots\\ Y_q
 \end{array}
 \right]=\left[
 \begin{array}{ccc}
-\var(\mathbf{X}) &amp;\vdots &amp;\cov(\mathbf{X},\mathbf{Y})   \\
+\text{var}(\mathbf{X}) &amp;\vdots &amp;\text{cov}(\mathbf{X},\mathbf{Y})   \\
 \cdots&amp;\cdots&amp;\cdots\\
-\cov(\mathbf{Y},\mathbf{X})   &amp;\vdots &amp;  \var(\mathbf{Y})\\
+\text{cov}(\mathbf{Y},\mathbf{X})   &amp;\vdots &amp;  \text{var}(\mathbf{Y})\\
 \end{array}
 \right]=\left[
 \begin{array}{ccc}
@@ -429,19 +429,78 @@ v_q&amp;=\mathbf{b}_q^{T}\mathbf{Y}=b_{q1}Y_1+b_{q2}Y_2+\cdots+b_{qq}Y_q\\
 \end{align*}\]</span>
 with
 <span class="math display">\[
-\cov(u_1, v_1)\ge \cov(u_2, v_2)\ge \cdots \ge \cov(u_p, v_p).
+\text{cov}(u_1, v_1)\ge \text{cov}(u_2, v_2)\ge \cdots \ge \text{cov}(u_p, v_p).
 \]</span>
 And the canonical variates pairs <span class="math inline">\((u_i, v_i)\)</span> are uncorrelated, that is
 <span class="math display">\[
-\cov(u_i, u_j)=0, \cov(u_i, v_j)=0, \cov(v_i, v_j)=0, \cov(u_j, v_i)=0, \mbox{ for $i&lt;j$}.
+\text{cov}(u_i, u_j)=0, \text{cov}(u_i, v_j)=0, \text{cov}(v_i, v_j)=0, \text{cov}(u_j, v_i)=0, \mbox{ for $i&lt;j$}.
 \]</span>
 The correlations of the canonical variates pairs <span class="math inline">\(\rho_i=\text{Corr}(u_i, v_i)\)</span> are called the canonical correlations. Canonical correlation analysis allows us to summarize the covariance matrix <span class="math inline">\(\mathbf{\Sigma}_{12}\)</span> whose dimension is <span class="math inline">\(p\times q\)</span> using <span class="math inline">\(p\)</span> canonical correlations <span class="math inline">\(\rho_i, i=1, 2, \cdots, p\)</span>.</p>
 </div>
 <div id="obtain-the-canonical-variates-pairs" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> Obtain the Canonical Variates Pairs<a href="canonical-correlation-analysis.html#obtain-the-canonical-variates-pairs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>It can be shown that the first canonical variates pair is associated to the eigenvector corresponding to the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>, the correlation of the first canonical pair is the square root of the largest eigenvalue. In general, the <span class="math inline">\(i\)</span>th canonical variates pair is associated to the eigenvector corresponding to the <span class="math inline">\(i\)</span>th largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>.</p>
-<p><span class="math inline">\(\textbf{Proof}\)</span>: We want to maximize <span class="math inline">\(\cov(u, v)=\cov(\mathbf{a}^T\mathbf{X},\mathbf{b}^T\mathbf{Y})=\mathbf{a}^T\mathbf{\Sigma}_{12}\mathbf{b}\)</span> with the constraints <span class="math inline">\(\mathbf{a}^T\mathbf{\Sigma}_{11}\mathbf{a}=1\)</span> and <span class="math inline">\(\mathbf{b}^T\mathbf{\Sigma}_{22}\mathbf{b}=1\)</span>.
-The steps to obtain the canonical variates pairs are as follows.</p>
+<p><span class="math inline">\(\textbf{Proof}\)</span>: We want to maximize <span class="math inline">\(\text{cov}(u, v)=\text{cov}(\mathbf{a}^T\mathbf{X},\mathbf{b}^T\mathbf{Y})=\mathbf{a}^T\mathbf{\Sigma}_{12}\mathbf{b}\)</span> with the constraints <span class="math inline">\(\mathbf{a}^T\mathbf{\Sigma}_{11}\mathbf{a}=1\)</span> and <span class="math inline">\(\mathbf{b}^T\mathbf{\Sigma}_{22}\mathbf{b}=1\)</span>.</p>
+<p><span class="math display">\[
+\rho = \text{corr}(u,v) = \frac{\text{cov}(u,v)}{\sqrt{\text{Var}(u) \text{Var}(v)}} = \frac{\vec{a}^{\top} \Sigma_{12} \vec{b}}{\sqrt{(\vec{a}^{\top} \Sigma_{11} \vec{a})(\vec{b}^{\top} \Sigma_{22} \vec{b})}}
+\]</span></p>
+<p><span class="math inline">\(\text{Want to maximize }\)</span> <span class="math inline">\(\rho\)</span></p>
+<p><span class="math inline">\(\text{Maximize }\)</span> <span class="math inline">\(\vec{a}^{\top} \Sigma_{12} \vec{b} \quad \text{s.t.}\)</span>
+<span class="math inline">\(\vec{a}^{\top} \Sigma_{11} \vec{a} = 1, \quad \vec{b}^{\top} \Sigma_{22} \vec{b} = 1\)</span></p>
+<p><span class="math inline">\(\text{The objective function is}\)</span>
+<span class="math display">\[
+Q(\vec{a},\vec{b}, \lambda, \gamma) = \vec{a}^{\top} \Sigma_{12} \vec{b} - \frac{\lambda}{2}(\vec{a}^{\top} \Sigma_{11} \vec{a} - 1) - \frac{\gamma}{2}(\vec{b}^{\top} \Sigma_{22} \vec{b} - 1)
+\]</span></p>
+<p><span class="math display">\[
+Q(\vec{a},\vec{b}, \lambda, \gamma) = \vec{a}^{\top} \Sigma_{12} \vec{b} - \frac{\lambda}{2}(\vec{a}^{\top} \Sigma_{11} \vec{a} - 1) - \frac{\gamma}{2}(\vec{b}^{\top} \Sigma_{22} \vec{b} - 1)
+\]</span>
+<span class="math display">\[
+\frac{\partial Q}{\partial \vec{a}} \quad \text{(px1)} = \Sigma_{12} \vec{b} - \frac{\lambda}{2}(\Sigma_{11} \vec{a} + (\vec{a}^{\top} \Sigma_{11})^{\top}) \\
+= \Sigma_{12} \vec{b} - \frac{\lambda}{2}(\Sigma_{11} \vec{a} + \Sigma_{11}^{\top} \vec{a}) \quad \Sigma_{11} = \Sigma_{11}^{\top} \\
+= \Sigma_{12} \vec{b} - \lambda \Sigma_{11} \vec{a} = 0 \\
+\implies \Sigma_{12} \vec{b} = \lambda \Sigma_{11} \vec{a} \quad \text{(1)}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial Q}{\partial \vec{b}} \quad \text{qx1} = (\vec{a}^{\top} \Sigma_{12})^{\top} - 0 - \frac{\gamma}{2}(\Sigma_{22} \vec{b} + (\vec{b}^{\top} \Sigma_{22})^{\top}) \\
+= \Sigma_{12}^{\top} \vec{a} - \frac{\gamma}{2}(\Sigma_{22} \vec{b} + \Sigma_{22}^{\top} \vec{b}) \quad \Sigma_{22}^{\top} = \Sigma_{22} \\
+= \Sigma_{21} \vec{a} - \gamma \Sigma_{22} \vec{b} = 0 \\
+\implies \Sigma_{21} \vec{a} = \gamma \Sigma_{22} \vec{b} \quad \text{(2)} \implies \vec{b} = \Sigma_{22}^{-1} \frac{\Sigma_{21}}{\gamma} \vec{a}
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial Q}{\partial \lambda} = -\frac{1}{2}(\vec{a}^{\top} \Sigma_{11} \vec{a} - 1) = 0 \implies \vec{a}^{\top} \Sigma_{11} \vec{a} = 1
+\]</span></p>
+<p><span class="math display">\[
+\frac{\partial Q}{\partial \gamma} = -\frac{1}{2}(\vec{b}^{\top} \Sigma_{22} \vec{b} - 1) = 0 \implies \vec{b}^{\top} \Sigma_{22} \vec{b} = 1
+\]</span></p>
+<p><span class="math display">\[
+\vec{a}^{\top} \times \text{(1)} \quad \quad \quad  = \vec{a}^{\top} \Sigma_{12} \vec{b} = \lambda \vec{a}^{\top} \Sigma_{11} \vec{a} = \lambda \cdot 1 = \lambda
+\]</span></p>
+<p><span class="math display">\[
+\vec{b}^{\top} \times \text{(2)} \quad \quad \quad  = \vec{b}^{\top} \Sigma_{21} \vec{a} = \gamma \vec{b}^{\top} \Sigma_{22} \vec{b} = \gamma \cdot 1 = \gamma
+\]</span>
+<span class="math display">\[
+\implies \lambda = \gamma
+\]</span></p>
+<p><span class="math display">\[\text{From (2)} \implies \vec{b} = \Sigma_{22}^{-1} \Sigma_{21} \vec{a} / \gamma \]</span>
+<span class="math display">\[
+\vec{b} = \frac{1}{\gamma} \Sigma_{22}^{-1} \Sigma_{21} \vec{a} \quad \text{(3)}
+\]</span>
+<span class="math inline">\(\text{Plug (3) back to (1)}\)</span>
+<span class="math display">\[
+\Sigma_{12} \vec{b} = \lambda \Sigma_{11} \vec{a} \\
+\implies \Sigma_{12} \frac{1}{\gamma} \Sigma_{22}^{-1} \Sigma_{21} \vec{a} = \lambda \Sigma_{11} \vec{a} \\
+\Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21} \vec{a} = \lambda \gamma \Sigma_{11} \vec{a} \\
+\Sigma_{11}^{-1} \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21} \vec{a} = \lambda^2 \vec{a}
+\]</span>
+<span class="math inline">\(\lambda^2 \text{ is an eigenvalue of } \Sigma_{11}^{-1} \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}\)</span>
+<span class="math inline">\(\text{and }\)</span> <span class="math inline">\(\vec{a} \text{ is the corresponding eigenvector.}\)</span>
+<span class="math inline">\(\text{where }\)</span> <span class="math inline">\(A\vec{a}=\lambda\vec{a}\)</span></p>
+<p><span class="math inline">\(\lambda = \vec{a}^{\top} \Sigma_{11} \vec{b}\)</span>
+<span class="math inline">\(\text{to maximize }\)</span> <span class="math inline">\(\vec{a}^{\top} \Sigma_{11} \vec{b} \text{ is to maximize } \lambda \text{ (or } \lambda^2)\)</span></p>
+<p><span class="math inline">\(\vec{a} \text{ is related to the eigenvector}\)</span>
+<span class="math inline">\(\text{associated to the largest eigenvalue}\)</span>
+<span class="math inline">\(\text{of }\)</span> <span class="math inline">\(\Sigma_{11}^{-1} \Sigma_{12} \Sigma_{22}^{-1} \Sigma_{21}\)</span></p>
+<p>The steps to obtain the canonical variates pairs are as follows.</p>
 <ol style="list-style-type: decimal">
 <li>Find the eigenvalues of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>, <span class="math inline">\(\lambda_1^2 \ge \lambda_2^2 \ge \cdots \ge \lambda_p^2\)</span>. Obtain the corresponding unit eigenvectors <span class="math inline">\(\mathbf{e}_1, \mathbf{e}_2, \cdots, \mathbf{e}_p\)</span>.</li>
 <li>The <span class="math inline">\(i\)</span>th canonical variates pair <span class="math inline">\((u_i, v_i)\)</span> is given by
@@ -453,7 +512,7 @@ v_i=\mathbf{b}_i^T\mathbf{Y}; \quad \mathbf{b}_i=\frac{1}{\lambda_i}\mathbf{\Sig
 \]</span>
 And the correlation of <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span> is
 <span class="math display">\[
-\rho_i=\frac{\cov(u_i, v_i)}{\sqrt{\var(u_i)\var(v_i)}}=\frac{\mathbf{a}_i^T \mathbf{\Sigma}_{12}\mathbf{b}_i}{\sqrt{(\mathbf{a}_i^T \mathbf{\Sigma}_{11}\mathbf{a}_i)(\mathbf{b}_i^T \mathbf{\Sigma}_{22}\mathbf{b}_i)}}=\lambda_i
+\rho_i=\frac{\text{cov}(u_i, v_i)}{\sqrt{\text{var}(u_i)\text{var}(v_i)}}=\frac{\mathbf{a}_i^T \mathbf{\Sigma}_{12}\mathbf{b}_i}{\sqrt{(\mathbf{a}_i^T \mathbf{\Sigma}_{11}\mathbf{a}_i)(\mathbf{b}_i^T \mathbf{\Sigma}_{22}\mathbf{b}_i)}}=\lambda_i
 \]</span></li>
 </ol>
 <p><span class="math inline">\(\textbf{Note}\)</span>:If we want to find <span class="math inline">\(q\)</span> canonical variates to represent <span class="math inline">\(\mathbf{Y}\)</span>, we can find the eigenvalues of the matrix <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\)</span>, <span class="math inline">\(\lambda_1^2 \ge \lambda_2^2 \ge \cdots \ge \lambda_p^2\ge \cdots \ge \lambda_q^2\)</span>. The first <span class="math inline">\(p\)</span> eigenvalues are the same as those of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>. Obtain the corresponding unit eigenvectors <span class="math inline">\(\mathbf{f}_1, \mathbf{f}_2, \cdots, \mathbf{f}_q\)</span>. Then
@@ -462,26 +521,32 @@ And the correlation of <span class="math inline">\(u_i\)</span> and <span class=
 \]</span></p>
 <p><span class="math inline">\(\textbf{Proof}\)</span>:The first canonical variates pair is the one giving the largest correlation. That is to maximize
 <span class="math display">\[
-\rho=\frac{\cov(u, v)}{\sqrt{\var(u)\var(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}.
+\rho=\frac{\text{cov}(u, v)}{\sqrt{\text{var}(u)\text{var}(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}.
 \]</span>
 This is equivalent to maximizing <span class="math inline">\(\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}\)</span> with the constraints <span class="math inline">\(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a}=1\)</span> and <span class="math inline">\(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b}=1\)</span>. Using the Lagrange multiplier method, we want to find
 <span class="math display">\[
 \arg \max_{\mathbf{a},\mathbf{b}, \lambda, \gamma} Q=\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}-\frac{\lambda}{2}(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a}-1)-\frac{\gamma}{2}(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b}-1)
-\]</span>
-<span class="math display">\[\begin{align}
-\label{eq:eq1}
+\]</span></p>
+<p><span class="math display" id="eq:eq1">\[\begin{align}
+
 \frac{\partial Q}{\partial \mathbf{a}}&amp;=\mathbf{\Sigma}_{12}\mathbf{b}-\lambda \mathbf{\Sigma}_{11}\mathbf{a}=0 \Longrightarrow \mathbf{a}^T\mathbf{\Sigma}_{12}\mathbf{b}=\lambda \mathbf{a}^T\mathbf{\Sigma}_{11}\mathbf{a}=\lambda \\
-\label{eq:eq2}
-\frac{\partial Q}{\partial \mathbf{b}}&amp;=\mathbf{\Sigma}_{21}\mathbf{a}-\gamma \mathbf{\Sigma}_{22}\mathbf{b}=0 \Longrightarrow \mathbf{b}^T\mathbf{\Sigma}_{21}\mathbf{a}=\gamma \mathbf{b}^T\mathbf{\Sigma}_{22}\mathbf{b}=\gamma\\
+\tag{10.1}
+\end{align}\]</span></p>
+<p><span class="math display" id="eq:eq2">\[\begin{align}
+\frac{\partial Q}{\partial \mathbf{b}}&amp;=\mathbf{\Sigma}_{21}\mathbf{a}-\gamma \mathbf{\Sigma}_{22}\mathbf{b}=0 \Longrightarrow \mathbf{b}^T\mathbf{\Sigma}_{21}\mathbf{a}=\gamma \mathbf{b}^T\mathbf{\Sigma}_{22}\mathbf{b}=\gamma
+\tag{10.2}
+\end{align}\]</span>
+<span class="math display">\[\begin{align}
+\\
 \frac{\partial Q}{\partial \lambda}&amp;=0\Longrightarrow  \mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a}=1\nonumber\\
 \frac{\partial Q}{\partial \gamma}&amp;=0\Longrightarrow \mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b}=1\nonumber
 \end{align}\]</span>
-Equations (<span class="math inline">\(\ref{eq:eq1}\)</span>) and (<span class="math inline">\(\ref{eq:eq2}\)</span>) imply <span class="math inline">\(\lambda=\gamma\)</span>. Equation (<span class="math inline">\(\ref{eq:eq2}\)</span>) also implies <span class="math inline">\(\mathbf{b}=\frac{1}{\gamma}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{a}\)</span>. Plug it in back to Equation (<span class="math inline">\(\ref{eq:eq1}\)</span>),
+Equations (<a href="canonical-correlation-analysis.html#eq:eq1">(10.1)</a>) and (<a href="canonical-correlation-analysis.html#eq:eq2">(10.2)</a>) imply <span class="math inline">\(\lambda=\gamma\)</span>. Equation (<a href="canonical-correlation-analysis.html#eq:eq2">(10.2)</a>) also implies <span class="math inline">\(\mathbf{b}=\frac{1}{\gamma}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{a}\)</span>. Plug it in back to Equation (<a href="canonical-correlation-analysis.html#eq:eq1">(10.1)</a>),
 we have
 <span class="math display">\[
 \mathbf{\Sigma}_{12}\frac{1}{\gamma}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{a}=\lambda \mathbf{\Sigma}_{11} \mathbf{a} \Longrightarrow \mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{a}=\lambda^2\mathbf{a}.
 \]</span>
-This implies <span class="math inline">\(\lambda^2\)</span> is an eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span> and <span class="math inline">\(\mathbf{a}\)</span> is the corresponding eigenvector. By Equation (<span class="math inline">\(\ref{eq:eq1}\)</span>), <span class="math inline">\(\mathbf{a}^T\mathbf{\Sigma}_{12}\mathbf{b}=\lambda\)</span>; therefore, to maximize <span class="math inline">\(\mathbf{a}^T\mathbf{\Sigma}_{12}\mathbf{b}\)</span> is to maximize <span class="math inline">\(\lambda\)</span> (or <span class="math inline">\(\lambda^2\)</span>), i.e., the largest eigenvalue. As a result, <span class="math inline">\(\mathbf{a}\)</span> is an eigenvector associated with the largest eigenvalue <span class="math inline">\(\lambda^2\)</span> of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>. We need to scale <span class="math inline">\(\mathbf{a}\)</span> such that <span class="math inline">\(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a}=1\)</span>. Suppose <span class="math inline">\(\mathbf{e}\)</span> is the unit eigenvector associated to the largest eigenvalue <span class="math inline">\(\lambda^2\)</span>, let
+This implies <span class="math inline">\(\lambda^2\)</span> is an eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span> and <span class="math inline">\(\mathbf{a}\)</span> is the corresponding eigenvector. By Equation (<a href="canonical-correlation-analysis.html#eq:eq1">(10.1)</a>), <span class="math inline">\(\mathbf{a}^T\mathbf{\Sigma}_{12}\mathbf{b}=\lambda\)</span>; therefore, to maximize <span class="math inline">\(\mathbf{a}^T\mathbf{\Sigma}_{12}\mathbf{b}\)</span> is to maximize <span class="math inline">\(\lambda\)</span> (or <span class="math inline">\(\lambda^2\)</span>), i.e., the largest eigenvalue. As a result, <span class="math inline">\(\mathbf{a}\)</span> is an eigenvector associated with the largest eigenvalue <span class="math inline">\(\lambda^2\)</span> of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\)</span>. We need to scale <span class="math inline">\(\mathbf{a}\)</span> such that <span class="math inline">\(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a}=1\)</span>. Suppose <span class="math inline">\(\mathbf{e}\)</span> is the unit eigenvector associated to the largest eigenvalue <span class="math inline">\(\lambda^2\)</span>, let
 <span class="math display">\[
 \mathbf{a}=\frac{\mathbf{e}}{\sqrt{c}}, \quad \mbox{where $c=\mathbf{e}^T \mathbf{\Sigma}_{11}\mathbf{e}$}.
 \]</span>
@@ -501,11 +566,11 @@ It can be shown that <span class="math inline">\(\mathbf{b}^T \mathbf{\Sigma}_{2
 <span class="math display">\[
 u_i=\mathbf{a}_i^T\mathbf{X}; \quad \mathbf{a}_i=\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_i; \quad \quad v_i=\mathbf{b}_i^T\mathbf{Y}; \quad \mathbf{b}_i=\mathbf{\Sigma}_{22}^{-1/2}\mathbf{f}_i
 \]</span>
-And the correlation of <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span> is <span class="math inline">\(\rho_i=\frac{\cov(u_i, v_i)}{\sqrt{\var(u_i)\var(v_i)}}=\lambda_i\)</span>.</li>
+And the correlation of <span class="math inline">\(u_i\)</span> and <span class="math inline">\(v_i\)</span> is <span class="math inline">\(\rho_i=\frac{\text{cov}(u_i, v_i)}{\sqrt{\text{var}(u_i)\text{var}(v_i)}}=\lambda_i\)</span>.</li>
 </ol>
 <p><span class="math inline">\(\textbf{Proof}\)</span>: Recall that we want to find <span class="math inline">\(\mathbf{a}\)</span> and <span class="math inline">\(\mathbf{b}\)</span> such that
 <span class="math display">\[
-\rho=\frac{\cov(u, v)}{\sqrt{\var(u)\var(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}.
+\rho=\frac{\text{cov}(u, v)}{\sqrt{\text{var}(u)\text{var}(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}.
 \]</span>
 is maximized. Let
 <span class="math display">\[
@@ -513,7 +578,7 @@ is maximized. Let
 \]</span>
 then
 <span class="math display">\[
-\rho=\corr(u,v)=\frac{\cov(u, v)}{\sqrt{\var(u)\var(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}=\frac{\mathbf{c}^T\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\mathbf{d}}{\sqrt{(\mathbf{c}^T\mathbf{c})(\mathbf{d}^T\mathbf{d})}}.
+\rho=\text{corr}(u,v)=\frac{\text{cov}(u, v)}{\sqrt{\text{var}(u)\text{var}(v)}}=\frac{\mathbf{a}^T \mathbf{\Sigma}_{12}\mathbf{b}}{\sqrt{(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})}}=\frac{\mathbf{c}^T\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\mathbf{d}}{\sqrt{(\mathbf{c}^T\mathbf{c})(\mathbf{d}^T\mathbf{d})}}.
 \]</span>
 By Cauchy Schwarz inequality, the numerator
 <span class="math display">\[
@@ -523,24 +588,24 @@ By Cauchy Schwarz inequality, the numerator
 <span class="math display">\[
 \mathbf{c}^T\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{c}\le \lambda_1\mathbf{c}^T\mathbf{c}
 \]</span>
-where <span class="math inline">\(\lambda_1\)</span> is the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\)</span> and maximum is attained when <span class="math inline">\(\mathbf{c}=\mathbf{e}_1\)</span>, the unit eigenvector associated with <span class="math inline">\(\lambda_1\)</span>. Therefore, <span class="math inline">\(\mathbf{a}=\mathbf{\Sigma}_{11}^{-1/2} \mathbf{c}=\mathbf{\Sigma}_{11}^{-1/2} \mathbf{e}_1\)</span> and <span class="math inline">\(\mathbf{b} \propto \mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1\)</span>, the <span class="math inline">\(\max_{\mathbf{a}, \mathbf{b}}\corr(\mathbf{a}^T\mathbf{X},\mathbf{b}^T\mathbf{Y})=\sqrt{\lambda_1}\)</span>. Take <span class="math inline">\(\mathbf{b}=\mathbf{\Sigma}_{22}^{-1/2}\mathbf{f}_1\)</span> where <span class="math inline">\(\mathbf{f}_1=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{|\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1|}=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{\sqrt{\lambda_1}}\)</span>, the normalized form of <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1\)</span>.</p>
-<p>It can be shown that <span class="math inline">\(\mathbf{f}_1\)</span> is the unit engenvector corresponding to the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\)</span>. Since <span class="math inline">\(\mathbf{e}_1\)</span> is the unit eigenvector corresponding to the largest eigenvalue of <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\)</span>, we have
-<span class="math display">\[\begin{equation}
-\label{eq:eq3}
+where <span class="math inline">\(\lambda_1\)</span> is the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\)</span> and maximum is attained when <span class="math inline">\(\mathbf{c}=\mathbf{e}_1\)</span>, the unit eigenvector associated with <span class="math inline">\(\lambda_1\)</span>. Therefore, <span class="math inline">\(\mathbf{a}=\mathbf{\Sigma}_{11}^{-1/2} \mathbf{c}=\mathbf{\Sigma}_{11}^{-1/2} \mathbf{e}_1\)</span> and <span class="math inline">\(\mathbf{b} \propto \mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1\)</span>, the <span class="math inline">\(\max_{\mathbf{a}, \mathbf{b}}\text{corr}(\mathbf{a}^T\mathbf{X},\mathbf{b}^T\mathbf{Y})=\sqrt{\lambda_1}\)</span>. Take <span class="math inline">\(\mathbf{b}=\mathbf{\Sigma}_{22}^{-1/2}\mathbf{f}_1\)</span> where <span class="math inline">\(\mathbf{f}_1=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{|\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1|}=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{\sqrt{\lambda_1}}\)</span>, the normalized form of <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1\)</span>.</p>
+<p>It can be shown that <span class="math inline">\(\mathbf{f}_1\)</span> is the unit eigenvector corresponding to the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\)</span>. Since <span class="math inline">\(\mathbf{e}_1\)</span> is the unit eigenvector corresponding to the largest eigenvalue of <span class="math inline">\(\mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\)</span>, we have</p>
+<p><span class="math display" id="eq:eq3">\[\begin{align}
 \mathbf{\Sigma}_{11}^{-1/2}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1=\lambda_1 \mathbf{e}_1
-\end{equation}\]</span>
-multiplying equation (<span class="math inline">\(\ref{eq:eq3}\)</span>) both sides by <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\)</span>, we have
+\tag{10.3}
+\end{align}\]</span></p>
+<p>multiplying equation (<a href="canonical-correlation-analysis.html#eq:eq3">(10.3)</a>) both sides by <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\)</span>, we have
 <span class="math display">\[
 \mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\underbrace{(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1)}\limits_{\mbox{eigenvector}}=\lambda_1 \underbrace{(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1)}\limits_{\mbox{eigenvector}},
 \]</span>
 which means <span class="math inline">\(\lambda_1\)</span> is also the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\)</span> and the corresponding unit eigenvector is
 <span class="math display">\[
 \mathbf{f}_1=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{|\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1|}
-=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{\sqrt{\mathbf{e}_1^T \underbrace{\mathbf{\Sigma}_{11}^{-1/2} \mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}\limits_{\lambda_1\mathbf{e}_1 \mbox{  by Equation (\ref{eq:eq1})}}}}=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{\sqrt{\lambda_1}}.
+=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{\sqrt{\mathbf{e}_1^T \underbrace{\mathbf{\Sigma}_{11}^{-1/2} \mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}\limits_{\lambda_1\mathbf{e}_1 \mbox{  by Equation (\@ref(eq:eq1)}}}}=\frac{\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1/2}\mathbf{e}_1}{\sqrt{\lambda_1}}.
 \]</span>
 Another way, an easier way to show that <span class="math inline">\(\mathbf{b}=\mathbf{\Sigma}_{22}^{-1/2}\mathbf{f}\)</span> where <span class="math inline">\(\mathbf{f}\)</span> is the unit eigenvector corresponding to the largest eigenvalue of the matrix <span class="math inline">\(\mathbf{\Sigma}_{22}^{-1/2}\mathbf{\Sigma}_{21}\mathbf{\Sigma}_{11}^{-1}\mathbf{\Sigma}_{12}\mathbf{\Sigma}_{22}^{-1/2}\)</span> is
 <span class="math display">\[
-\rho=\frac{\cov(u, v)}{\sqrt{\var(u)\var(v)}}=\frac{\cov(v, u)}{\sqrt{\var(v)\var(u)}}\frac{\mathbf{b}^T \mathbf{\Sigma}_{21}\mathbf{a}}{\sqrt{(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})}}.
+\rho=\frac{\text{cov}(u, v)}{\sqrt{\text{var}(u)\text{var}(v)}}=\frac{\text{cov}(v, u)}{\sqrt{\text{var}(v)\text{var}(u)}}\frac{\mathbf{b}^T \mathbf{\Sigma}_{21}\mathbf{a}}{\sqrt{(\mathbf{b}^T \mathbf{\Sigma}_{22}\mathbf{b})(\mathbf{a}^T \mathbf{\Sigma}_{11}\mathbf{a})}}.
 \]</span>
 We will arrive at the conclusion by the same logic as we did for <span class="math inline">\(\mathbf{a}\)</span> using Cauchy Schwarz inequality.</p>
 <p><span class="math inline">\(\textbf{Result}\)</span></p>
@@ -603,7 +668,7 @@ We will arrive at the conclusion by the same logic as we did for <span class="ma
 <span class="math display">\[
 u_1=1.2501X_1-0.2367X_2+1.2491X_3, \quad v_1=0.0440Y_1+0.0551Y_2+0.0194Y_3-0.0038Y_4
 \]</span>
-<span class="math inline">\(u_1\)</span> is more related to locus-of-control and motivation since their coefficients are larger in magnitude.<span class="math inline">\(v_1\)</span> is contributed by reading, writing and math. And their correlation is <span class="math inline">\(\rho_1=\corr(u_1, v_1)=0.4464\)</span>.</p>
+<span class="math inline">\(u_1\)</span> is more related to locus-of-control and motivation since their coefficients are larger in magnitude.<span class="math inline">\(v_1\)</span> is contributed by reading, writing and math. And their correlation is <span class="math inline">\(\rho_1=\text{corr}(u_1, v_1)=0.4464\)</span>.</p>
 <p>Similarly, the second and third pairs are
 <span class="math display">\[
 u_2=-0.7660X_1-0.8421X_2+2.6360X_3, \quad v_2=0.0016Y_1+0.0904Y_2+0.0030Y_3-0.1242Y_4

@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -454,17 +454,87 @@ Similarly, <span class="math inline">\(\frac{\partial c}{\partial \mathbf{v}}=\m
 <ol style="list-style-type: decimal">
 <li>Show that the first principal component is the unit eigenvector corresponding to the largest eigenvalue of the covariance matrix <span class="math inline">\(\mathbf{\Sigma}\)</span>.</li>
 </ol>
-<p>We need to solve an optimization problem with constraints. That is to find the maximum of <span class="math inline">\(\mathbf{a}_1^{T}\mathbf{\Sigma}\mathbf{a}_1\)</span> subject to <span class="math inline">\(\mathbf{a}_1^{T}\mathbf{a}_1=1\)</span>. A <span class="math inline">\(\gamma\)</span> is introduced to deal with the constraint.</p>
+<p>We need to solve an optimization problem with constraints. That is to find the maximum of <span class="math inline">\(\mathbf{a}_1^{T}\mathbf{\Sigma}\mathbf{a}_1\)</span> subject to <span class="math inline">\(\mathbf{a}_1^{T}\mathbf{a}_1=1\)</span>. A <span class="math inline">\(\textit{Lagrange multiplier}\)</span> <span class="math inline">\(\gamma\)</span> is introduced to deal with the constraint.</p>
+<p><span class="math inline">\(\text{Max } f(\vec{a}_1, \gamma) = \vec{a}_1^{\top} \Sigma \vec{a}_1 - \gamma (\vec{a}_1^{\top} \vec{a}_1 - 1)\)</span></p>
+<p><span class="math inline">\(\frac{\partial f}{\partial \vec{a}_1} = \Sigma \vec{a}_1 + (\vec{a}_1^{\top} \Sigma)^{\top} - \gamma (\vec{a}_1^{\top} + (\vec{a}_1)^{\top} - 0)\)</span></p>
+<p><span class="math inline">\(\text{Where: } \Sigma\vec{a_1} \text{ has dimensions } (p \times p) \cdot (p \times 1)\)</span></p>
+<p><span class="math inline">\(= \Sigma\vec{a}_1 + \Sigma^{\top} \vec{a}_1 - \gamma (\vec{a}_1 + \vec{a}_1)\)</span></p>
+<p><span class="math inline">\(= 2\Sigma \vec{a}_1 - 2\gamma \vec{a}_1 = 0 \implies \Sigma \vec{a}_1 = \gamma \vec{a}_1 \quad (1)\)</span></p>
+<p><span class="math inline">\(\frac{\partial f}{\partial \gamma} = \vec{a}_1^{\top} \vec{a}_1 - 1 = 0 \implies \vec{a}_1^{\top} \vec{a}_1 = 1 \quad (2)\)</span></p>
+<p><span class="math inline">\(\text{From (1), } \gamma \text{ is an eigen value of } \Sigma \text{and } \vec{a}_1 \text{ is the corresponding eigen-vector.}\)</span>
+<span class="math inline">\(\text{From (2), } \vec{a}_1 \text{ is a unit vector.} \therefore \vec{a}_1 \text{ is the corresponding unit eigen-vector}\)</span></p>
+<p><span class="math inline">\(\vec{a}_1^{\top} \times (1) : \\\)</span>
+<span class="math inline">\(\vec{a}_1^{\top} \Sigma \vec{a}_1 = \gamma \vec{a}_1^{\top} \vec{a}_1 \\\)</span>
+<span class="math inline">\(\vec{a}_1^{\top} \Sigma \vec{a}_1 = \gamma \\\)</span></p>
+<p><span class="math inline">\(\text{Where: } \vec{a_1}^T\Sigma\vec{a_1} = \text{Var}(Y_1) \\\)</span></p>
+<p><span class="math inline">\(\text{To maximize } \vec{a}_1^{\top} \Sigma \vec{a}_1 \text{ is to maximize } \gamma\)</span>
+<span class="math inline">\(\therefore \gamma \text{ is the largest eigen value of } \Sigma \text{ and } \vec{a}_1 \text{ is the corresponding unit eigen-vector}\)</span></p>
 <ol start="2" style="list-style-type: decimal">
 <li>The second principal component is the linear combination of <span class="math inline">\(X_i\)</span> with the second largest variation and orthogonal to the first principal component.</li>
 </ol>
 <p>Show that the second principal component is the unit eigenvector corresponding to the second largest eigenvalue of the covariance matrix <span class="math inline">\(\mathbf{\Sigma}\)</span>.</p>
+<p><span class="math display">\[
+\text{Maximize } \vec{a}_2^{\top} \Sigma \vec{a}_2 \quad \text{with constraints: }
+\\
+\text{(1)}\quad \vec{a}_2^{\top} \vec{a}_2 = 1
+\\
+(2)\quad \vec{a}_1^{\top} \vec{a}_2 = 0
+\]</span></p>
+<p><span class="math display">\[
+f(\vec{a}_2, \gamma, \lambda) = \vec{a}_2^{\top} \Sigma \vec{a}_2 - \gamma (\vec{a}_2^{\top} \vec{a}_2 - 1) - \lambda (\vec{a}_1^{\top} \vec{a}_2 - 0) \\
+\frac{\partial f}{\partial \vec{a}_2} = \Sigma \vec{a}_2 + (\vec{a}_2^{\top} \Sigma)^{\top} - \gamma (\vec{a}_2 + ((\vec{a}_2)^{\top})^{\top} - 0) - \lambda (\vec{a}_1)^{\top} \\
+= \Sigma \vec{a}_2 + \Sigma^{\top} \vec{a}_2 - 2\gamma \vec{a}_2 - \lambda \vec{a}_1 \\
+= 2\Sigma \vec{a}_2 - 2\gamma \vec{a}_2 - \lambda \vec{a}_1 = 0 \quad \text{(1)} \\
+\frac{\partial f}{\partial \gamma} = \vec{a}_2^{\top} \vec{a}_2 - 1 = 0 \implies \vec{a}_2^{\top} \vec{a}_2 = 1 \quad \text{(2)} \\
+\frac{\partial f}{\partial \lambda} = \vec{a}_1^{\top} \vec{a}_2 - 0 = 0 \implies \vec{a}_1^{\top} \vec{a}_2 = 0 \quad \text{(3)} \\
+\vec{a}_1^{\top} \times \text{(1)} \quad  \\
+2\vec{a}_1^{\top} \Sigma \vec{a}_2 - 2\gamma \vec{a}_1^{\top} \vec{a}_2 - \lambda \vec{a}_1^{\top} \vec{a}_1 = 0 \\
+\text{cov}(Y_1, Y_2) = 0 \\
+\quad \text{plug in (1)} \\
+2\Sigma \vec{a}_2 - 2\gamma \vec{a}_2 - 0 \times \vec{a}_1 = 0 \implies \Sigma \vec{a}_2 = \gamma \vec{a}_2 \quad \text{(4)}
+\]</span>
+<span class="math inline">\(\therefore\)</span> <span class="math inline">\(\gamma \text{ is an eigenvalue of } \Sigma \text{ and } \vec{a}_2 \text{ is the corresponding unit eigenvector.}\)</span></p>
+<p><span class="math display">\[\text{To maximize } \text{Var}(Y_2) = \vec{a}_2^{\top} \Sigma \vec{a}_2 \text{ is to maximize } \gamma
+\]</span>
+<span class="math display">\[
+\vec{a}_2^{\top} \times \text{(4)} \implies \vec{a}_2^{\top} \Sigma \vec{a}_2 = \gamma \cdot \vec{a}_2^{\top} \vec{a}_2 = \gamma
+\]</span></p>
+<p><span class="math inline">\(\therefore \vec{a}_2 \text{ is the unit eigenvector of the 2nd largest eigenvalue of $\Sigma$.}\)</span></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Given the fact that <span class="math inline">\(tr(\mathbf{AB})=tr(\mathbf{BA})\)</span>, show that the total variance
 <span class="math display">\[
 \sigma_{11}+\sigma_{22}+\cdots+\sigma_{pp}=\sum_{i=1}^p Var(X_i)=\lambda_1+\lambda_2+\cdots+\lambda_p=\sum_{i=1}^p Var(Y_i).
 \]</span></li>
 </ol>
+<p><span class="math display">\[
+\Sigma =
+\begin{pmatrix}
+\text{Var}(X_1) &amp; \text{Cov}(X_1, X_2) &amp; \cdots &amp; \text{Cov}(X_1, X_p) \\
+\text{Cov}(X_2, X_1) &amp; \text{Var}(X_2) &amp; \cdots &amp; \text{Cov}(X_2, X_p) \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\text{Cov}(X_p, X_1) &amp; \text{Cov}(X_p, X_2) &amp; \cdots &amp; \text{Var}(X_p)
+\end{pmatrix}
+= \begin{pmatrix}
+\sigma_{11} &amp; \sigma_{12} &amp; \cdots &amp; \sigma_{1p} \\
+\sigma_{21} &amp; \sigma_{22} &amp; \cdots &amp; \sigma_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\sigma_{p1} &amp; \sigma_{p2} &amp; \cdots &amp; \sigma_{pp}
+\end{pmatrix}_{\text{p \(\times\) p}} \\
+\sigma_{ii} = \sigma_i^2 \\
+\text{tr}(\Sigma) = \sigma_{11} + \sigma_{22} + \cdots + \sigma_{pp}. \\
+\lambda_1, \lambda_2, \ldots, \lambda_p \text{ are the eigenvalues of } \Sigma \\
+\text{eigen-decomposition} \\
+\text{spectral} \\
+\Sigma = P \Lambda P^{\top} \\
+P = [\vec{e}_1, \vec{e}_2, \ldots, \vec{e}_p], \quad \Lambda = \begin{pmatrix} \lambda_1 &amp; &amp; 0 \\ &amp; \lambda_2 &amp; \\ &amp; &amp; \ddots \\ 0 &amp; &amp; &amp; \lambda_p \end{pmatrix} \\
+\text{tr}(\Sigma) = \text{tr}(P \Lambda P^{\top}) = \text{tr}(\Lambda P^{\top} P) \quad P^{\top} = P^{-1} \\
+= \text{tr}(\Lambda I) = \text{tr}(\Lambda) = \lambda_1 + \lambda_2 + \cdots + \lambda_p. \\
+\therefore \sigma_{11} + \sigma_{22} + \cdots + \sigma_{pp} = \text{Var}(X_1) + \text{Var}(X_2) + \cdots + \text{Var}(X_p) \\
+= \lambda_1 + \lambda_2 + \cdots + \lambda_p. \\
+\text{if we work on correlation matrix } \rho \\
+\text{instead of $\quad$ covariance matrix } \Sigma \\
+\text{Use: Var}(X_i) = 1, \quad \forall i = 1, 2, \ldots, p.
+\]</span></p>
 </div>
 <div id="scaling-in-principal-component-analysis" class="section level2 hasAnchor" number="6.2">
 <h2><span class="header-section-number">6.2</span> Scaling in Principal Component Analysis<a href="principal-component-analysis.html#scaling-in-principal-component-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -524,9 +594,20 @@ Y_2=-0.707X_1+0.707X_2
 The first PC accounts for <span class="math inline">\(\frac{\lambda_1}{\lambda_1+\lambda_2}=\frac{1.75}{2}=87.5\%\)</span> of the total variance.</p>
 <p><span class="math inline">\(\textbf{Example}: \text{PCA of Birds Data}\)</span></p>
 <p>Recall the birds data. Let’s first take a look of the correlation matrix of the five measurements.</p>
-<p>[</p>
-<p>]</p>
-<p>Figure @ref{fig:corplot} shows the correlation plot of the five measurements of the birds data. It seems that the measurements are moderately correlated.</p>
+<p><span class="math display">\[
+\begin{array}{c|ccccc}
+\hline
+&amp;X_1&amp; X_2&amp;X_3&amp; X_4&amp;X_5\\
+\hline
+X_1&amp; 1.000&amp;0.735&amp; 0.662&amp; 0.645&amp; 0.605\\
+X_2&amp; 0.735&amp; 1.000&amp; 0.674&amp; 0.769&amp; 0.529\\
+X_3&amp; 0.662&amp;0.674&amp; 1.000&amp; 0.763&amp; 0.526\\
+X_4&amp; 0.645&amp; 0.769&amp; 0.763&amp; 1.000&amp; 0.607\\
+X_5&amp; 0.605&amp; 0.529&amp; 0.526&amp; 0.607&amp; 1.000\\
+\hline
+\end{array}
+\]</span></p>
+<p>Figure <a href="principal-component-analysis.html#fig:corplot">6.1</a> shows the correlation plot of the five measurements of the birds data. It seems that the measurements are moderately correlated.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="principal-component-analysis.html#cb1-1" tabindex="-1"></a>bird <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/bumpus.txt&quot;</span>,<span class="at">header=</span>T)</span>
 <span id="cb1-2"><a href="principal-component-analysis.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
 <span id="cb1-3"><a href="principal-component-analysis.html#cb1-3" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(bird[,<span class="sc">-</span><span class="dv">1</span>]), <span class="at">order =</span> <span class="st">&quot;hclust&quot;</span>, <span class="at">tl.col=</span><span class="st">&#39;black&#39;</span>, <span class="at">tl.cex=</span>.<span class="dv">75</span>) <span class="co">#plot the correlation matrix</span></span></code></pre></div>
@@ -560,7 +641,7 @@ Y_1&amp;=0.452X_1+0.462X_2+0.451X_3+0.471X_4+0.398X_5\\
 &amp;=\mbox{constant}\times \mbox{average of the $X$&#39;s}
 \end{aligned}
 \]</span>
-The coefficients of the variables are nearly equal and about 72.3% of the variation in the data due to the overall size of the birds. This also explains why we could not find a subspace with one or two variables that distinguishes the survivors and non-survivors. Figure @ref{fig:birdpc} is the index plot of the two groups of birds using the first two PCs as the axes.</p>
+The coefficients of the variables are nearly equal and about 72.3% of the variation in the data due to the overall size of the birds. This also explains why we could not find a subspace with one or two variables that distinguishes the survivors and non-survivors. Figure <a href="principal-component-analysis.html#fig:birdpc">6.2</a> is the index plot of the two groups of birds using the first two PCs as the axes.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="principal-component-analysis.html#cb2-1" tabindex="-1"></a>bird <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/bumpus.txt&quot;</span>,<span class="at">header=</span>T)</span>
 <span id="cb2-2"><a href="principal-component-analysis.html#cb2-2" tabindex="-1"></a>bird[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span></code></pre></div>
 <pre><code>##   ID  X1  X2   X3   X4   X5
@@ -627,7 +708,7 @@ Figure 6.3:  Left: PC variance versus number of PCs; Right: cumulative PC varian
 </p>
 </div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="principal-component-analysis.html#cb6-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code></pre></div>
-<p>Figure @ref{fig:pciris} is a biplot that plots two sets of information in one plot: a scatter plot of the data and a scatter plot of the first two PCs. We can tell from the biplot that both petal length and petal width are mainly only related to the first PC, sepal length is related to both the first two PCs, sepal width is mainly related to the second PC.</p>
+<p>Figure <a href="principal-component-analysis.html#fig:pciris">6.4</a> is a biplot that plots two sets of information in one plot: a scatter plot of the data and a scatter plot of the first two PCs. We can tell from the biplot that both petal length and petal width are mainly only related to the first PC, sepal length is related to both the first two PCs, sepal width is mainly related to the second PC.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="principal-component-analysis.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(ggfortify)</span>
 <span id="cb7-2"><a href="principal-component-analysis.html#cb7-2" tabindex="-1"></a>df <span class="ot">&lt;-</span> iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
 <span id="cb7-3"><a href="principal-component-analysis.html#cb7-3" tabindex="-1"></a>pca_iris <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(df, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
@@ -640,7 +721,7 @@ Figure 6.3:  Left: PC variance versus number of PCs; Right: cumulative PC varian
 Figure 6.4: Biplot of the Iris flowers data on the first two principal components
 </p>
 </div>
-<p>We can use the first two PCs to cluster the flowers into three species and the result is shown in Figure @ref{fig:cluster}.</p>
+<p>We can use the first two PCs to cluster the flowers into three species and the result is shown in Figure <a href="principal-component-analysis.html#fig:cluster">6.5</a>.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="principal-component-analysis.html#cb8-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb8-2"><a href="principal-component-analysis.html#cb8-2" tabindex="-1"></a>iris2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(iris,irispc<span class="sc">$</span>x[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]) <span class="co">#combine the iris data and the first two pc</span></span>
 <span id="cb8-3"><a href="principal-component-analysis.html#cb8-3" tabindex="-1"></a>iris2[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,]</span></code></pre></div>

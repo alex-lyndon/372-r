@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-08-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -381,14 +381,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">11.2.1</span> Classical Scaling<a href="multidimensional-scaling.html#classical-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The classical scaling is find <span class="math inline">\(\delta_{ij}\)</span> such that <span class="math inline">\(\delta_{ij} \approx d_{ij}\)</span>, i.e., the following stress function
 <span class="math display">\[
-\mbox{Stress}=\left[\frac{\dsum_{i&lt;j}(\delta_{ij}-d_{ij})^2}{\dsum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
+\mbox{Stress}=\left[\frac{\sum_{i&lt;j}(\delta_{ij}-d_{ij})^2}{\sum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
 \]</span></p>
 </div>
 <div id="metric-scaling" class="section level3 hasAnchor" number="11.2.2">
 <h3><span class="header-section-number">11.2.2</span> Metric Scaling<a href="multidimensional-scaling.html#metric-scaling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Metric scaling methods assume there exist a monotonic function <span class="math inline">\(f\)</span> such that
 <span class="math display">\[
-\mbox{Stress}=\left[\frac{\dsum_{i&lt;j}[\delta_{ij}-f(d_{ij})]^2}{\dsum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
+\mbox{Stress}=\left[\frac{\sum_{i&lt;j}[\delta_{ij}-f(d_{ij})]^2}{\sum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
 \]</span>
 For example, we can let <span class="math inline">\(f(d_{ij})=\alpha+\beta d_{ij}\)</span>. Numerical iteration procedures are used to search for the configuration <span class="math inline">\(\delta_{ij}\)</span>, the values of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> such that the stress above is minimized. If the function <span class="math inline">\(f(d_{ij})=d_{ij}\)</span>, we have the classical scaling.
 ### Non-metric Scaling
@@ -398,7 +398,7 @@ d_{ij}&lt;d_{kl} \Longrightarrow f(d_{ij})\le f(d_{kl}) \Longrightarrow \delta_{
 \]</span>
 where <span class="math inline">\(\delta_{ij}^{\ast}\)</span> are not distance, they are just numbers representing the ranking of the original distance <span class="math inline">\(d_{ij}\)</span>. The configuration of <span class="math inline">\(\delta_{ij}\)</span> is obtained using numerical iterative methods such that the stress function
 <span class="math display">\[
-\mbox{Stress}=\left[\frac{\dsum_{i&lt;j}[\delta_{ij}-f(\delta_{ij}^{\ast})]^2}{\dsum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
+\mbox{Stress}=\left[\frac{\sum_{i&lt;j}[\delta_{ij}-f(\delta_{ij}^{\ast})]^2}{\sum_{i&lt;j}\delta_{ij}^2}\right]^{\frac{1}{2}} \mbox{  is minimized}.
 \]</span>
 Non-metric scaling methods do not use the actual magnitude of <span class="math inline">\(d_{ij}\)</span> to determine <span class="math inline">\(\delta_{ij}\)</span>, only the rank of <span class="math inline">\(d_{ij}\)</span> is used to guarantee that <span class="math inline">\(\delta_{ij}\)</span> maintains the same ranking as <span class="math inline">\(d_{ij}\)</span>.</p>
 </div>

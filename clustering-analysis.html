@@ -23,7 +23,7 @@
 <meta name="author" content="Dr. Wanhua Su" />
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -518,10 +518,10 @@ As a result, the cluster dendrogram is as follows:</p>
 <p>Compared to the hierarchical clustering, <span class="math inline">\(K\)</span>-mean is much more efficient in computation. The algorithm of <span class="math inline">\(K\)</span>-mean is as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Arbitrarily pick the centers of the <span class="math inline">\(K\)</span> clusters <span class="math inline">\(\mathbf{m}_1^{(\mbox{old})}, \mathbf{m}_2^{(\mbox{old})},\cdots, \mathbf{m}_K^{(\mbox{old})}\)</span>.</li>
-<li>Assign each object to one and only one of the clusters, choose the one with the shortest distance from the object to the group center. That is <span class="math inline">\(Y=\argmin_j d(\mathbf{x},\mathbf{m}_j)\)</span>.</li>
+<li>Assign each object to one and only one of the clusters, choose the one with the shortest distance from the object to the group center. That is <span class="math inline">\(Y=\text{argmin}_j d(\mathbf{x},\mathbf{m}_j)\)</span>.</li>
 <li>Update the group (cluster) centers
 <span class="math display">\[
-\mathbf{m}_i^{(\mbox{new})}=\frac{1}{n_i}\dsum_{\mathbf{x}\in G_i} \mathbf{x}, i=1, 2, \cdots, K, \quad \mbox{$n_i$ is the number of objects in group $i$}
+\mathbf{m}_i^{(\mbox{new})}=\frac{1}{n_i}\sum_{\mathbf{x}\in G_i} \mathbf{x}, i=1, 2, \cdots, K, \quad \mbox{$n_i$ is the number of objects in group $i$}
 \]</span></li>
 <li>Repeat steps (2) and (3) until convergence, i.e., the centers won’t change anymore.</li>
 </ol>
@@ -569,7 +569,7 @@ As a result, the cluster dendrogram is as follows:</p>
 <h3><span class="header-section-number">9.2.3</span> Model-Based Clustering<a href="clustering-analysis.html#model-based-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The model-based clustering method models the joint distribution of the data using a mixture model of <span class="math inline">\(K\)</span> components
 <span class="math display">\[
-f(\mathbf{x})=\dsum_{i=1}^K p_if_i(\mathbf{x}), \quad \mbox{ with component proportions  $p_i\ge 0$ and $\sum p_i=1$.}
+f(\mathbf{x})=\sum_{i=1}^K p_if_i(\mathbf{x}), \quad \mbox{ with component proportions  $p_i\ge 0$ and $\sum p_i=1$.}
 \]</span>
 A popular choice of the components is <span class="math inline">\(f_i(\mathbf{x})\sim \mbox{MVN}(\mathbf{\mu}_i, \mathbf{\Sigma}_i)\)</span>, which results in a multivariate normal mixture model. Suppose there are <span class="math inline">\(n\)</span> independent observations <span class="math inline">\(\mathbf{x}_1, \mathbf{x}_2, \cdots, \mathbf{x}_n\)</span>, the likelihood function of the multivariate normal mixture is
 <span class="math display">\[
@@ -579,7 +579,7 @@ There are a lot of unknown parameters in the above model:</p>
 <ul>
 <li>The mixture proportions <span class="math inline">\(p_1, p_2, \cdots, p_K\)</span> with the constraint <span class="math inline">\(\sum p_i=1 \Longrightarrow K-1\)</span> parameters.</li>
 <li>The mean vectors <span class="math inline">\(\mathbf{\mu}_i, i=1, \cdots, K\)</span>, each mean vector is a <span class="math inline">\(p\times 1\)</span> vector <span class="math inline">\(\Longrightarrow p\times K\)</span> parameters.
--The covariance matrices <span class="math inline">\(\mathbf{\Sigma}_i, i=1, \cdots, K\)</span>. A covariance matrix is symmetric with <span class="math inline">\(\var(X_i), i=1, \cdots, p\)</span> as the diagonal elements and covariance <span class="math inline">\(\cov(X_i, X_j), i&lt;j , i,j=1, \cdots, p\)</span>. Therefore, each covariance matrix consists of <span class="math inline">\(\bin{p}{2}+p=\frac{p(p+1)}{2}\)</span> parameters. There are <span class="math inline">\(K\)</span> covariance matrices <span class="math inline">\(\Longrightarrow \frac{p(p+1)}{2}\times K\)</span> parameters.</li>
+-The covariance matrices <span class="math inline">\(\mathbf{\Sigma}_i, i=1, \cdots, K\)</span>. A covariance matrix is symmetric with <span class="math inline">\(\text{var}(X_i), i=1, \cdots, p\)</span> as the diagonal elements and covariance <span class="math inline">\(\text{cov}(X_i, X_j), i&lt;j , i,j=1, \cdots, p\)</span>. Therefore, each covariance matrix consists of <span class="math inline">\(\binom{p}{2}+p=\frac{p(p+1)}{2}\)</span> parameters. There are <span class="math inline">\(K\)</span> covariance matrices <span class="math inline">\(\Longrightarrow \frac{p(p+1)}{2}\times K\)</span> parameters.</li>
 </ul>
 <p>As a result, the full model has <span class="math inline">\((k-1)+pK+\frac{p(p+1)}{2}\times K\)</span> parameters. Take the Iris data for example, with <span class="math inline">\(K=3, p=4\)</span>, the number of parameters of the mixture model ends up to be 44. When <span class="math inline">\(p\)</span> is large, the following reduced models can be considered:</p>
 [
@@ -603,22 +603,22 @@ where <span class="math inline">\(n\)</span> is the number of observations. BIC 
 <p>In order to solve the MLE of the mixture model, membership information (each object belongs to which group) is required. The membership information; however, is missing. Therefore, the <em>Expectation-Maximization</em> (EM) algorithm is used to find the MLE. The EM algorithm is a very popular method handling missing values.</p>
 <p>In order to capture the membership information, we introduce a vector of <span class="math inline">\(K\)</span> binary (unobserved) variables <span class="math inline">\(\mathbf{Z}_i^T=[Z_{i1}, Z_{i2}, \cdots, Z_{iK}]\)</span> for each object <span class="math inline">\(\mathbf{x}_i\)</span>, where <span class="math inline">\(z_{ij}=1, z_{il}=0, l\ne j\)</span> if object <span class="math inline">\(i\)</span> belongs to group <span class="math inline">\(j\)</span>. Then the membership weight of <span class="math inline">\(\mathbf{x}_i\)</span> in group <span class="math inline">\(j\)</span> is
 <span class="math display">\[
-w_{ij}=P(Z_{ij}=1|\mathbf{x}_i)=\E(Z_{ij}|\mathbf{x}_i)=P(Z_{ij}=1|\mathbf{x}_i)=\frac{f_j(\mathbf{x}_i)p_j}{\dsum_{m=1}^K f_m(\mathbf{x}_i)p_m}, \quad i=1, 2, \cdots, n, \quad j=1, 2,\cdots, K
+w_{ij}=P(Z_{ij}=1|\mathbf{x}_i)=E(Z_{ij}|\mathbf{x}_i)=P(Z_{ij}=1|\mathbf{x}_i)=\frac{f_j(\mathbf{x}_i)p_j}{\sum_{m=1}^K f_m(\mathbf{x}_i)p_m}, \quad i=1, 2, \cdots, n, \quad j=1, 2,\cdots, K
 \]</span>
-For each <span class="math inline">\(\mathbf{x}_i\)</span>, <span class="math inline">\(\dsum_{j=1}^K w_{ij}=1\)</span>. As a result, we have a <span class="math inline">\(n\times K\)</span> membership matrix with each row sum equal to 1.</p>
+For each <span class="math inline">\(\mathbf{x}_i\)</span>, <span class="math inline">\(\sum_{j=1}^K w_{ij}=1\)</span>. As a result, we have a <span class="math inline">\(n\times K\)</span> membership matrix with each row sum equal to 1.</p>
 <p>The steps of the EM algorithm are as follows:</p>
 <ol style="list-style-type: decimal">
 <li>Set the initial values for the parameters <span class="math inline">\(p_1, \cdots, p_K; \mathbf{\mu}_1, \cdots, \mathbf{\mu}_K; \mathbf{\Sigma}_1, \cdots, \mathbf{\Sigma}_K\)</span>.</li>
-<li>E-step. Update the membership weight <span class="math inline">\(w_{ij}=\E(Z_{ij})\)</span>:
+<li>E-step. Update the membership weight <span class="math inline">\(w_{ij}=E(Z_{ij})\)</span>:
 <span class="math display">\[
-w_{ij}=\frac{f_j(\mathbf{x}_i)p_j}{\dsum_{m=1}^K f_m(\mathbf{x}_i)p_m}, \quad i=1, 2, \cdots, n, \quad j=1, 2,\cdots, K
+w_{ij}=\frac{f_j(\mathbf{x}_i)p_j}{\sum_{m=1}^K f_m(\mathbf{x}_i)p_m}, \quad i=1, 2, \cdots, n, \quad j=1, 2,\cdots, K
 \]</span></li>
 <li>M-step. Update the parameters
 <span class="math display">\[
-p_j^{\mbox{new}}=\frac{n_j}{n}, \quad \mbox{with } \quad n_j=\dsum_{i=1}^n w_{ij} \quad (\mbox{sum of $j$ column of the membership weight matrix})
+p_j^{\mathbf{new}}=\frac{n_j}{n}, \quad \mbox{with } \quad n_j=\sum_{i=1}^n w_{ij} \quad (\mbox{sum of $j$ column of the membership weight matrix})
 \]</span>
 <span class="math display">\[
-\mathbf{\mu}_j^{\mbox{new}}=\frac{1}{n_j}\dsum_{i=1}^n w_{ij}\mathbf{x}_i, \quad \mathbf{\Sigma}_j^{\mbox{new}}=\frac{1}{n_j}\dsum_{i=1}^n w_{ij}(\mathbf{x}_i-\mathbf{\mu}_j^{\mbox{new}})(\mathbf{x}_i-\mathbf{\mu}_j^{\mbox{new}})^T
+\mathbf{\mu}_j^{\mbox{new}}=\frac{1}{n_j}\sum_{i=1}^n w_{ij}\mathbf{x}_i, \quad \mathbf{\Sigma}_j^{\mbox{new}}=\frac{1}{n_j}\sum_{i=1}^n w_{ij}(\mathbf{x}_i-\mathbf{\mu}_j^{\mbox{new}})(\mathbf{x}_i-\mathbf{\mu}_j^{\mbox{new}})^T
 \]</span></li>
 <li>Repeat steps (2) &amp; (3) until convergence (no change).</li>
 </ol>
@@ -981,8 +981,6 @@ is maximized. Take the derivatives with respect to <span class="math inline">\(\
 \frac{\partial Q}{\partial \sigma_1^2}&amp;=0\Longrightarrow \sum \left[\pi_i (0-\frac{1}{\sigma_1^2})-\frac{1}{2(\sigma_1^2)^2}(-1)(x_i-\mu_1)^2\right]=0\Longrightarrow \hat \sigma^2_1=\frac{\sum\pi_i(x_i-\mu_1)^2}{\sum\pi_i}\\
 \frac{\partial Q}{\partial \sigma_2^2}&amp;=0\Longrightarrow \sum \left[(1-\pi_i) (0-\frac{1}{\sigma_2^2})-\frac{1}{2(\sigma_2^2)^2}(-1)(x_i-\mu_2)^2\right]=0\Longrightarrow \hat \sigma^2_2=\frac{\sum (1-\pi_i)(x_i-\mu_2)^2}{\sum(1-\pi_i)}
 \end{align*}\]</span></p>
-<p>\end{itemize}
-\end{enumerate}</p>
 <p>We first generate observations from a mixture of two univariate normal distributions.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="clustering-analysis.html#cb29-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
 <span id="cb29-2"><a href="clustering-analysis.html#cb29-2" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fl">0.4</span></span>
